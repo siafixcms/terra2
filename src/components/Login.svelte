@@ -22,8 +22,6 @@
       console.log('New message:', message);
     });
 
-    socket.emit('message', 'test');
-
     socket.on('random username', (username) => {
       console.log('Your random username:', username);
     });
@@ -47,6 +45,7 @@
       });
       if (!response.ok) throw new Error('Could not complete logout');
       token.set(null);
+      sendMessage('Logged out!');
       errorMessage = '';
     } catch (error) {
       console.error(error);
@@ -70,6 +69,7 @@
       const data = await response.json();
       token.set(data.token);
       await updateACL(data.token);
+      sendMessage('Logged in!');
       errorMessage = '';
     } catch (error) {
       console.error(error);
