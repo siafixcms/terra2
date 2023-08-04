@@ -6,7 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"start": "concurrently \"node server.js\" \"node index.js\""
+		"start": "concurrently \"node server.js\" \"node build/index.js\""
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
