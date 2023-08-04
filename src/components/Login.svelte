@@ -29,7 +29,7 @@
   });
 
   async function sendMessage(message) {
-    socket.emit('new message', message);
+    socket.emit('message', message);
   }
 
 
