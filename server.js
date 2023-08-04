@@ -16,5 +16,5 @@ injectSocketIO(io);
 // Start the server
 const port = 3001;
 httpServer.listen(port, () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
+  console.log(`Running socket on port ${port}`);
 });
