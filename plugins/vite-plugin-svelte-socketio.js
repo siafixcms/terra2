@@ -11,7 +11,6 @@ export default function VitePluginSocketIO() {
     
     // set up the Socket.IO server
     configureServer(server) {
-      console.log('Configuring Socket.IO server...');
       const httpServer = createServer(server.app);
       io = new Server(httpServer, { path: '/socket/' });
       
