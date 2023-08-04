@@ -21,6 +21,7 @@
     socket.on('new message', (message) => {
       console.log('New message:', message);
     });
+    alert('test');
 
     socket.on('random username', (username) => {
       console.log('Your random username:', username);
