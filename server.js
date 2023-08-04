@@ -14,7 +14,7 @@ app.use(express.static('dist'));
 injectSocketIO(io);
 
 // Start the server
-const port = process.env.PORT || 3001;
+const port = 3000;
 httpServer.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
