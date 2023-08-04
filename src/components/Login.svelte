@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import CryptoJS from "crypto-js";
-  import socket from '../lib/webSocketConnection.js';
+  import socket from '../../lib/webSocketConnection.js';
   
   // State variables
   let username = "";
