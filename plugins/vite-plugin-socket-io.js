@@ -18,7 +18,7 @@ export default function VitePluginSocketIO() {
       injectSocketIO(io);
       
       // make sure to listen on the right port
-      httpServer.listen(3000); // replace with your desired port
+      httpServer.listen(3001); // replace with your desired port
     },
 
     // close the Socket.IO server when Vite is done
