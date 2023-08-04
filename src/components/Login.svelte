@@ -2,6 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import CryptoJS from "crypto-js";
+  import socket from '../lib/webSocketConnection.js';
   
   // State variables
   let username = "";
@@ -17,7 +18,20 @@
   onMount(async () => {
     // get auth and acl if already logged in
     // let's assume you have some methods to retrieve these
+    socket.on('new message', (message) => {
+      console.log('New message:', message);
+    });
+
+    socket.on('random username', (username) => {
+      console.log('Your random username:', username);
+    });
+
   });
+
+  async function sendMessage(message) {
+    socket.emit('new message', message);
+  }
+
 
   async function logout() {
     isProcessing = true;
