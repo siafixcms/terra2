@@ -12,7 +12,7 @@ export default function VitePluginSocketIO() {
     // set up the Socket.IO server
     configureServer(server) {
       const httpServer = createServer(server.app);
-      io = new Server(httpServer, { path: '/socket' });
+      io = new Server(httpServer, { path: '/socket/' });
       
       // now we can inject Socket.IO into our handler
       injectSocketIO(io);
