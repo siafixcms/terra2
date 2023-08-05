@@ -35,8 +35,8 @@
   async function apiCall(url, data) {
     const payload = JSON.stringify(data);
     const encryptedPayload = CryptoJS.AES.encrypt(payload, secret);
-    const encryptedData = encryptedObject.ciphertext.toString(CryptoJS.enc.Base64);
-    const iv = encryptedObject.iv.toString(CryptoJS.enc.Hex);
+    const encryptedData = encryptedPayload.ciphertext.toString(CryptoJS.enc.Base64);
+    const iv = encryptedPayload.iv.toString(CryptoJS.enc.Hex);
     const response = await fetch('/api' + url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
