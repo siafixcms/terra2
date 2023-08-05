@@ -21,10 +21,9 @@
     socket.on('new message', (message) => {
       console.log('New message:', message);
     });
-    alert('test');
 
-    socket.on('random username', (username) => {
-      console.log('Your random username:', username);
+    socket.on('alert', (message) => {
+      alert(message);
     });
 
   });
@@ -33,17 +32,23 @@
     socket.emit('message', message);
   }
 
+  async function apiCall(url, data) {
+    const payload = JSON.stringify(data);
+    const encryptedPayload = CryptoJS.AES.encrypt(payload, secret);
+    const encryptedData = encryptedObject.ciphertext.toString(CryptoJS.enc.Base64);
+    const iv = encryptedObject.iv.toString(CryptoJS.enc.Hex);
+    const response = await fetch('/api' + url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: encryptedData + '|_|_|' + iv
+    });
+    return response;
+  }
 
   async function logout() {
     isProcessing = true;
     try {
-      const payload = JSON.stringify({ system, action: "logout", token });
-      const encryptedPayload = CryptoJS.AES.encrypt(payload, secret).toString();
-      const response = await fetch("/api/auth", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: encryptedPayload
-      });
+      const response = await apiCall("/auth", { system, action: "logout", token });
       if (!response.ok) throw new Error('Could not complete logout');
       token.set(null);
       sendMessage('Logged out!');
@@ -59,13 +64,7 @@
   async function login() {
     isProcessing = true;
     try {
-      const payload = JSON.stringify({ username, password, system, action: "login" });
-      const encryptedPayload = CryptoJS.AES.encrypt(payload, secret).toString();
-      const response = await fetch("/api/auth", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: encryptedPayload
-      });
+      const response = await apiCall("/auth", { username, password, system, action: "login" });
       if (!response.ok) throw new Error('Could not complete login');
       const data = await response.json();
       token.set(data.token);
@@ -83,11 +82,7 @@
   async function refresh() {
     isProcessing = true;
     try {
-      const response = await fetch("/api/auth", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, system, action: "refresh" })
-      });
+      const response = await apiCall("/auth", { token, system, action: "refresh" });
       if (!response.ok) throw new Error('Could not complete refresh');
       const data = await response.json();
       token.set(data.token);
@@ -103,13 +98,7 @@
 
   async function updateACL(authToken) {
     try {
-      const payload = JSON.stringify({ token: authToken });
-      const encryptedPayload = CryptoJS.AES.encrypt(payload, secret).toString();
-      const response = await fetch("/api/acl", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${authToken}` },
-        body: encryptedPayload
-      });
+      const response = await apiCall("/acl", { token: authToken });
       if (!response.ok) throw new Error('Could not fetch ACL');
       const data = await response.json();
       acl.set(data.acl);
