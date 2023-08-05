@@ -37,9 +37,6 @@
     const encryptedPayload = CryptoJS.AES.encrypt(payload, secret);
     const encryptedData = encryptedPayload.ciphertext.toString(CryptoJS.enc.Base64);
     const iv = encryptedPayload.iv.toString(CryptoJS.enc.Hex);
-    sendMessage('encryptedPayload ' + encryptedPayload);
-    sendMessage('encryptedData ' + encryptedData);
-    sendMessage('iv ' + iv);
     const response = await fetch('/api' + url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
