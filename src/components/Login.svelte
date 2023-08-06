@@ -82,6 +82,7 @@
     });
     const encryptedPayload = await response.text();
     const decryptedResponse = await decryptData(encryptedPayload);
+    console.log(decryptedResponse);
     return decryptedResponse;
   }
 
