@@ -83,7 +83,13 @@
     });
     const encryptedPayload = await response.text();
     const decryptedResponse = await decryptData(encryptedPayload);
-    return JSON.parse(decryptedResponse);
+    let jsonResponse;
+    try {
+        jsonResponse = JSON.parse(decryptedResponse);
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+    }
+    return jsonResponse;
   }
 
   async function logout() {
