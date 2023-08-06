@@ -107,7 +107,7 @@
     try {
       const response = await apiCall("/auth", { username, password, system, action: "login" });
       console.log(response);
-      if (!response.ok) throw new Error('Could not complete login');
+      if (!response.ok) throw new Error('Could not complete login ASDASFAFS');
       const data = await response.json();
       token.set(data.token);
       await updateACL(data.token);
