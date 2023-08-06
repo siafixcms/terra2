@@ -83,7 +83,6 @@
     });
     const encryptedPayload = await response.text();
     const decryptedResponse = await decryptData(encryptedPayload);
-    console.log(decryptedResponse);
     return decryptedResponse;
   }
 
@@ -107,6 +106,7 @@
     isProcessing = true;
     try {
       const response = await apiCall("/auth", { username, password, system, action: "login" });
+      console.log(response);
       if (!response.ok) throw new Error('Could not complete login');
       const data = await response.json();
       token.set(data.token);
