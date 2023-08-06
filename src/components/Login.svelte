@@ -41,7 +41,7 @@
         false,
         ["encrypt"]
     );
-    const iv = window.crypto.getRandomValues(new Uint8Array(24));
+    const iv = window.crypto.getRandomValues(new Uint8Array(16));
     const encryptedContent = await window.crypto.subtle.encrypt(
         { name: "AES-CBC", iv: iv },
         key,
@@ -49,7 +49,7 @@
     );
     const encryptedArray = new Uint8Array(encryptedContent);
     const encryptedBase64 = btoa(String.fromCharCode(...encryptedArray));
-    const ivHex = Array.from(iv).map(b => ('00' + b.toString(24)).slice(-2)).join('');
+    const ivHex = Array.from(iv).map(b => ('00' + b.toString(16)).slice(-2)).join('');
     return { encryptedData: encryptedBase64, iv: ivHex };
   }
 
