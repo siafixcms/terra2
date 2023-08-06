@@ -8,7 +8,7 @@
   let username = "";
   let password = "";
   let system = "terra_balance";
-  let secret = "terra_balance_se";
+  let secret = "terra_balance_seterra_balance_se";
   const token = writable(null);
   const acl = writable([]);
   let isProcessing = false;
