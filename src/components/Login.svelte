@@ -53,6 +53,25 @@
     return { encryptedData: encryptedBase64, iv: ivHex };
   }
 
+  async function decryptData(encryptedPayload) {
+    const [encryptedData, ivHex] = encryptedPayload.split('|_|_|');
+    const iv = new Uint8Array(ivHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+    const decoder = new TextDecoder();
+    const key = await window.crypto.subtle.importKey(
+        "raw",
+        encoder.encode(secret),
+        { name: "AES-CBC", length: 256 },
+        false,
+        ["decrypt"]
+    );
+    const decryptedContent = await window.crypto.subtle.decrypt(
+        { name: "AES-CBC", iv: iv },
+        key,
+        new Uint8Array(atob(encryptedData).split("").map(char => char.charCodeAt(0)))
+    );
+    return decoder.decode(decryptedContent);
+  }
+
   async function apiCall(url, data) {
     const payload = JSON.stringify(data);
     const { encryptedData, iv } = await encryptData(payload);
@@ -61,7 +80,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: encryptedData + '|_|_|' + iv
     });
-    return response;
+    const encryptedPayload = await response.text();
+    const decryptedResponse = await decryptData(encryptedPayload);
+
+    return decryptedResponse;
   }
 
   async function logout() {
