@@ -13,6 +13,9 @@
   let isProcessing = false;
   let errorMessage = "";
 
+  const encoder = new TextEncoder();
+  const decoder = new TextDecoder();
+
   // Load authentication status on startup
   onMount(async () => {
     // get auth and acl if already logged in
