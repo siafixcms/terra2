@@ -114,7 +114,7 @@
       const response = await apiCall("/auth", { username, password, system, action: "login" });
       console.log(response);
       if (!response.ok) throw new Error('Could not complete login ASDASFAFS');
-      const data = await response.json();
+      const data = response;
       token.set(data.token);
       await updateACL(data.token);
       sendMessage('Logged in!');
@@ -132,7 +132,7 @@
     try {
       const response = await apiCall("/auth", { token, system, action: "refresh" });
       if (!response.ok) throw new Error('Could not complete refresh');
-      const data = await response.json();
+      const data = response;
       token.set(data.token);
       await updateACL(data.token);
       errorMessage = '';
@@ -148,7 +148,7 @@
     try {
       const response = await apiCall("/acl", { token: authToken });
       if (!response.ok) throw new Error('Could not fetch ACL');
-      const data = await response.json();
+      const data = response;
       acl.set(data.acl);
     } catch (error) {
       console.error(error);
