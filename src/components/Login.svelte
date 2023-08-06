@@ -35,7 +35,6 @@
   }
 
   async function encryptData(data) {
-    const encoder = new TextEncoder();
     const encodedData = encoder.encode(data);
     const key = await window.crypto.subtle.importKey(
         "raw",
@@ -59,7 +58,6 @@
   async function decryptData(encryptedPayload) {
     const [encryptedData, ivHex] = encryptedPayload.split('|_|_|');
     const iv = new Uint8Array(ivHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-    const decoder = new TextDecoder();
     const key = await window.crypto.subtle.importKey(
         "raw",
         encoder.encode(secret),
