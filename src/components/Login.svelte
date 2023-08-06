@@ -41,7 +41,7 @@
         false,
         ["encrypt"]
     );
-    const iv = window.crypto.getRandomValues(new Uint8Array(24));
+    const iv = window.crypto.getRandomValues(new Uint8Array(16));
     const encryptedContent = await window.crypto.subtle.encrypt(
         { name: "AES-CBC", iv: iv },
         key,
