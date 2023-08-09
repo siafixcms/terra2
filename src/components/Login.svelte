@@ -28,6 +28,11 @@
       alert(message);
     });
 
+    let initialToken = localStorage.getItem('auth_token');
+    if( !initialToken ) {
+      token.set(initialToken);
+    }
+
   });
 
   async function sendMessage(message) {
@@ -115,6 +120,7 @@
       if (!response.ok) throw new Error('Could not complete login ASDASFAFS');
       const data = response;
       token.set(data.token);
+      localStorage.setItem('auth_token', data.token);
       await updateACL(data.token);
       sendMessage('Logged in!');
       errorMessage = '';
