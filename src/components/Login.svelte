@@ -8,7 +8,7 @@
   let password = "";
   let system = "terra_balance";
   let secret = "terra_balance_seterra_balance_se";
-  const token = writable(null);
+  export const token = writable(null);
   const acl = writable([]);
   let isProcessing = false;
   let errorMessage = "";
@@ -155,6 +155,7 @@
       console.error(error);
     }
   }
+
 </script>
 
 {#if !$token}
@@ -168,7 +169,6 @@
   </form>
 </div>
 {:else}
-  <p>Welcome, you're logged in!</p>
   <button on:click|preventDefault={logout} disabled={isProcessing}>{isProcessing ? 'Processing...' : 'Logout'}</button>
 {/if}
 
