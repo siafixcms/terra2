@@ -113,7 +113,7 @@
     isProcessing = true;
     try {
       const response = await apiCall("/auth", { username, password, system, action: "login" });
-      if (!response.ok) throw new Error('Could not complete login ASDASFAFS');
+      if (!response.ok) throw new Error('Could not complete login');
       const data = response;
       token.set(data.token);
       localStorage.setItem('auth_token', data.token);
