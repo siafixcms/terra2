@@ -18,18 +18,13 @@
 
   // Load authentication status on startup
   onMount(async () => {
-    // get auth and acl if already logged in
-    // let's assume you have some methods to retrieve these
-    socket.on('new message', (message) => {
-      console.log('New message:', message);
-    });
 
     socket.on('alert', (message) => {
       alert(message);
     });
 
     let initialToken = localStorage.getItem('auth_token');
-    if( !initialToken ) {
+    if( initialToken ) {
       token.set(initialToken);
     }
 
@@ -103,6 +98,7 @@
       const response = await apiCall("/auth", { system, action: "logout", token });
       if (!response.ok) throw new Error('Could not complete logout');
       token.set(null);
+      localStorage.removeItem('auth_token');
       sendMessage('Logged out!');
       errorMessage = '';
     } catch (error) {
