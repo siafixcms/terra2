@@ -11,7 +11,7 @@
 
         </div>
         <div id="top">
-
+            <Login bind:token={token} />
         </div>
         <div id="body">
 
