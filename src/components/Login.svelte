@@ -169,7 +169,7 @@
   </form>
 </div>
 {:else}
-  <button on:click|preventDefault={logout} disabled={isProcessing}>{isProcessing ? 'Processing...' : 'Logout'}</button>
+  <button id="logout" on:click|preventDefault={logout} disabled={isProcessing}>{isProcessing ? 'Processing...' : 'Logout'}</button>
 {/if}
 
 <style>
@@ -209,5 +209,10 @@
     box-sizing: content-box;
     border-radius: 10px;
     margin-top: 20px;
+  }
+  #logout {
+    border-radius: 20px;
+    border: 0;
+    padding: 5px;
   }
 </style>
