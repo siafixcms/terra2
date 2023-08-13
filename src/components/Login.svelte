@@ -214,5 +214,6 @@
     border-radius: 20px;
     border: 0;
     padding: 5px;
+    float: right;
   }
 </style>
