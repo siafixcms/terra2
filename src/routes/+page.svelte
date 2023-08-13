@@ -40,5 +40,6 @@
 
     #body {
         flex: 1 1 70%;
+        padding: 20px;
     }
 </style>
