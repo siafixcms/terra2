@@ -7,11 +7,11 @@
     <Login bind:token={token} />
 {:else}
     <div id="all">
-        <div id="menu">
-
-        </div>
         <div id="top">
             <Login bind:token={token} />
+        </div>
+        <div id="menu">
+
         </div>
         <div id="body">
 
