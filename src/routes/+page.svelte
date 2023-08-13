@@ -20,10 +20,16 @@
 {/if}
 
 <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
     #all {
         display: flex;
         gap: 1em;
         flex-wrap: wrap;
+        height: 100%;
     }
 
     #top {
