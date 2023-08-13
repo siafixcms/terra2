@@ -36,6 +36,10 @@
         line-height: 40px;
     }
 
+    #top #logout {
+        float: right;
+    }
+
     #menu {
         flex: 1 1 30%;
         min-width: 300px;
