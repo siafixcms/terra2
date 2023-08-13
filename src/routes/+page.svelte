@@ -24,7 +24,7 @@
     #all {
         font-family: 'Noto Serif Vithkuqi', serif;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         height: 100%;
     }
 
