@@ -20,7 +20,9 @@
 {/if}
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@400;700&display=swap');
     #all {
+        font-family: 'Noto Serif Vithkuqi', serif;
         display: flex;
         flex-wrap: wrap;
         height: 100%;
