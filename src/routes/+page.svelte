@@ -33,6 +33,8 @@
         flex: 1 1 30%;
         min-width: 300px;
         max-width: 300px;
+        background-color: rgba(32,33,35,var(--tw-bg-opacity));
+        margin-right: 20px;
     }
 
     #body {
