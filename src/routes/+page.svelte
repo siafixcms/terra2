@@ -31,6 +31,8 @@
         background-color: rgba(32,33,35,1);
         max-height: 40px;
         min-height: 40px;
+        border-bottom: 2px solid gray;
+        box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
 
     #menu {
@@ -41,6 +43,8 @@
         height: 100%;
         overflow: auto;
         margin-right: 20px;
+        border-right: 2px solid gray;
+        box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
 
     #body {
