@@ -214,5 +214,8 @@
     border-radius: 20px;
     border: 0;
     padding: 5px;
+    background-color: inherit;
+    color: #fff;
+    font-weight: bold;
   }
 </style>
