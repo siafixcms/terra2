@@ -27,13 +27,14 @@
 
     #top {
         flex: 1 1 100%;
+        background-color: rgba(32,33,35,1);
     }
 
     #menu {
         flex: 1 1 30%;
         min-width: 300px;
         max-width: 300px;
-        background-color: rgba(32,33,35,var(--tw-bg-opacity));
+        background-color: rgba(32,33,35,1);
         margin-right: 20px;
     }
 
