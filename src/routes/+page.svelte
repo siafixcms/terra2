@@ -6,7 +6,7 @@
 {#if !$token}
     <Login bind:token={token} />
 {:else}
-    <div>
+    <div id="all">
         <div id="menu">
 
         </div>
@@ -18,3 +18,24 @@
         </div>
     </div>
 {/if}
+
+<style>
+    #all {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #all > * #top {
+        flex: 1 1 100%;
+    }
+
+    #all > * #menu {
+        flex: 1 1 30%;
+        min-width: 300px;
+        max-width: 300px;
+    }
+
+    #all > * #body {
+        flex: 1 1 70%;
+    }
+</style>
