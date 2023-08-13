@@ -30,6 +30,8 @@
     #top {
         flex: 1 1 100%;
         background-color: rgba(32,33,35,1);
+        max-height: 40px;
+        min-height: 40px;
     }
 
     #menu {
@@ -38,10 +40,12 @@
         max-width: 300px;
         background-color: rgba(32,33,35,1);
         margin-right: 20px;
+        height: 100%;
     }
 
     #body {
         flex: 1 1 70%;
         padding: 20px;
+        height: 100%;
     }
 </style>
