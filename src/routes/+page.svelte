@@ -36,7 +36,7 @@
         line-height: 40px;
     }
 
-    #top Login {
+    #top > * {
         float: right;
     }
 
