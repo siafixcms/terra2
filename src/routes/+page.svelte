@@ -36,6 +36,8 @@
         border-bottom: 2px solid gray;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
         line-height: 40px;
+        display: flex;
+        justify-content: end;
     }
 
     #menu {
