@@ -25,17 +25,17 @@
         flex-wrap: wrap;
     }
 
-    #all > * #top {
+    #top {
         flex: 1 1 100%;
     }
 
-    #all > * #menu {
+    #menu {
         flex: 1 1 30%;
         min-width: 300px;
         max-width: 300px;
     }
 
-    #all > * #body {
+    #body {
         flex: 1 1 70%;
     }
 </style>
