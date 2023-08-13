@@ -22,6 +22,7 @@
 <style>
     #all {
         display: flex;
+        gap: 1em;
         flex-wrap: wrap;
     }
 
