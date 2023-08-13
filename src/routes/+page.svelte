@@ -10,11 +10,13 @@
         <div id="top">
             <Login bind:token={token} />
         </div>
-        <div id="menu">
+        <div id="middle">
+            <div id="menu">
 
-        </div>
-        <div id="body">
+            </div>
+            <div id="body">
 
+            </div>
         </div>
     </div>
 {/if}
@@ -23,6 +25,12 @@
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Vithkuqi:wght@400;700&display=swap');
     #all {
         font-family: 'Noto Serif Vithkuqi', serif;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    #middle {
         display: flex;
         flex-wrap: nowrap;
         height: 100%;
