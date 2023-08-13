@@ -22,7 +22,6 @@
 <style>
     #all {
         display: flex;
-        gap: 1em;
         flex-wrap: wrap;
         height: 100%;
     }
@@ -39,8 +38,9 @@
         min-width: 300px;
         max-width: 300px;
         background-color: rgba(32,33,35,1);
-        margin-right: 20px;
         height: 100%;
+        overflow: auto;
+        margin-right: 20px;
     }
 
     #body {
