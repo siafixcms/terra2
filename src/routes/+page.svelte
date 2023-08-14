@@ -73,8 +73,8 @@
 
     /* Container for the menu */
     .menu-container {
-        width: 250px; /* Adjust as needed */
-        background-color: #f7f7f7; /* Light gray background */
+        width: 100%; /* Adjust as needed */
+        background-color: inherit; /* Light gray background */
         border: 1px solid #e0e0e0; /* Border around the menu */
         border-radius: 5px; /* Rounded corners */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
