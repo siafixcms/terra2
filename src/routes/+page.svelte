@@ -95,7 +95,7 @@
     /* Hover effect for menu items */
     .menu-item:hover {
         background-color: #e0e0e0; /* Change background color on hover */
-        color: #ccc; /* Darker text color on hover */
+        color: #000; /* Darker text color on hover */
     }
 
     /* Remove border for the last menu item */
