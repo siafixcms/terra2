@@ -13,9 +13,9 @@
         <div id="middle">
             <div id="menu">
                 <div class="menu-container">
-                    <a href="#" class="menu-item">Item 1</a>
-                    <a href="#" class="menu-item">Item 2</a>
-                    <a href="#" class="menu-item">Item 3</a>
+                    <a href="/" class="menu-item">Item 1</a>
+                    <a href="/" class="menu-item">Item 2</a>
+                    <a href="/" class="menu-item">Item 3</a>
                     <!-- Add more items as needed -->
                 </div>                
             </div>
