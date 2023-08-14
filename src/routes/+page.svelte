@@ -13,10 +13,9 @@
         <div id="middle">
             <div id="menu">
                 <div class="menu-container">
-                    <a href="/" class="menu-item">Item 1</a>
-                    <a href="/" class="menu-item">Item 2</a>
-                    <a href="/" class="menu-item">Item 3</a>
-                    <!-- Add more items as needed -->
+                    <a href="/users" class="menu-item">Users</a>
+                    <a href="/clients" class="menu-item">Clients</a>
+                    <a href="/permissions" class="menu-item">Permissions</a>
                 </div>                
             </div>
             <div id="body">
@@ -85,7 +84,7 @@
     .menu-item {
         display: block; /* Make each item a block element */
         padding: 10px 20px; /* Padding for each item */
-        color: #333; /* Text color */
+        color: #fff; /* Text color */
         text-decoration: none; /* Remove underline for links */
         font-size: 16px; /* Adjust font size as needed */
         font-weight: 500; /* Semi-bold font weight */
@@ -96,7 +95,7 @@
     /* Hover effect for menu items */
     .menu-item:hover {
         background-color: #e0e0e0; /* Change background color on hover */
-        color: #000; /* Darker text color on hover */
+        color: #ccc; /* Darker text color on hover */
     }
 
     /* Remove border for the last menu item */
