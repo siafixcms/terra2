@@ -11,6 +11,7 @@
             <a href="/" id="logo">
                 <img src="/logo.png" alt="Logo" />
             </a>
+            <input type="text" placeholder="Search..." id="search" />
             <Login bind:token={token} />
         </div>
         <div id="middle">
@@ -35,6 +36,12 @@
         display: flex;
         flex-wrap: wrap;
         height: 100%;
+    }
+
+    #search {
+        padding: 5px;
+        background-color: #fff;
+        order: -2; /* This ensures the logo is always the first item */
     }
 
     #middle {
