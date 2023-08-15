@@ -59,6 +59,7 @@
     #logo {
         order: -1; /* This ensures the logo is always the first item */
         margin-right: auto; /* This pushes all subsequent items to the end */
+        display: inline-block;
     }
 
     #menu {
