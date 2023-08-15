@@ -218,4 +218,8 @@
     color: #fff;
     font-weight: bold;
   }
+  #logout:hover {
+    background-color: #e0e0e0;
+    color: #000;
+  }
 </style>

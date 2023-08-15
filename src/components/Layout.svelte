@@ -8,7 +8,9 @@
 {:else}
     <div id="all">
         <div id="top">
-            <img src="/logo.png" alt="Logo" id="logo" />
+            <a href="/">
+                <img src="/logo.png" alt="Logo" id="logo" />
+            </a>
             <Login bind:token={token} />
         </div>
         <div id="middle">
