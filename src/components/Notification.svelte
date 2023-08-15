@@ -28,9 +28,8 @@
   <style>
     .notification {
       position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 70px;
+      right: 1px;
       padding: 10px 20px;
       background-color: #44c767;
       color: white;
