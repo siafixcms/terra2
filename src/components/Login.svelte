@@ -9,6 +9,7 @@
   let system = "terra_balance";
   let secret = "terra_balance_seterra_balance_se";
   export const token = writable(null);
+  export let notificationComponent;
   const acl = writable([]);
   let isProcessing = false;
   let errorMessage = "";
