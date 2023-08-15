@@ -39,11 +39,13 @@
     }
 
     #search {
-        padding: 5px;
+        padding: 15px;
         background-color: #fff;
-        order: -1; /* This ensures the logo is always the first item */
-        margin-right: auto; /* This pushes all subsequent items to the end */
+        order: -1;
+        margin-right: auto;
         border: 1px solid black;
+        margin-left: 15px;
+        width: 30%;
     }
 
     #middle {
