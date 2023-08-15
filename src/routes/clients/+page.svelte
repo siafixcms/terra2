@@ -3,5 +3,7 @@
 </script>
 
 <Layout>
-    Clients
+
+    <h2>Clients</h2>
+    
 </Layout>

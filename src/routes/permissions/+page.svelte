@@ -3,5 +3,7 @@
 </script>
 
 <Layout>
-    Permissions
+    
+    <h2>Permissions</h2>
+    
 </Layout>
