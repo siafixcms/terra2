@@ -1,8 +1,11 @@
 <script>
     import Login from '../components/Login.svelte';
+    import Notification from '../components/Notification.svelte';
     let token;
+    notificationComponent.displayNotification("API call was successful!");
 </script>
 
+<Notification bind:this={notificationComponent} />
 {#if !$token}
     <Login bind:token={token} />
 {:else}
