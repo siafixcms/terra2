@@ -8,7 +8,7 @@
 {:else}
     <div id="all">
         <div id="top">
-            <img src="/logo.png" alt="Logo" />
+            <img src="/logo.png" alt="Logo" id="logo" />
             <Login bind:token={token} />
         </div>
         <div id="middle">
@@ -51,6 +51,11 @@
         line-height: 40px;
         display: flex;
         justify-content: end;
+    }
+
+    #logo {
+        order: -1; /* This ensures the logo is always the first item */
+        margin-right: auto; /* This pushes all subsequent items to the end */
     }
 
     #menu {
