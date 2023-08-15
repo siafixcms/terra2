@@ -1,13 +1,14 @@
 <script>
     import Login from '../components/Login.svelte';
     import Notification from '../components/Notification.svelte';
+    let notificationComponent;
     let token;
     notificationComponent.displayNotification("API call was successful!");
 </script>
 
 <Notification bind:this={notificationComponent} />
 {#if !$token}
-    <Login bind:token={token} />
+    <Login bind:token={token} bind:notificationComponent={notificationComponent} />
 {:else}
     <div id="all">
         <div id="top">
@@ -15,7 +16,7 @@
                 <img src="/logo.png" alt="Logo" />
             </a>
             <input type="text" placeholder="Search..." id="search" autocomplete="off" />
-            <Login bind:token={token} />
+            <Login bind:token={token} bind:notificationComponent={notificationComponent} />
         </div>
         <div id="middle">
             <div id="menu">
