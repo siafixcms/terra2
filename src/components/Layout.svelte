@@ -46,6 +46,7 @@
         border: 1px solid black;
         margin-left: 15px;
         width: 100%;
+        border-radius: 20px;
     }
 
     #middle {
