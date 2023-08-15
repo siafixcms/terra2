@@ -41,8 +41,9 @@
     #search {
         padding: 5px;
         background-color: #fff;
-        order: -2; /* This ensures the logo is always the first item */
+        order: -1; /* This ensures the logo is always the first item */
         margin-right: auto; /* This pushes all subsequent items to the end */
+        border: 1px solid black;
     }
 
     #middle {
@@ -66,7 +67,6 @@
 
     #logo {
         order: -1; /* This ensures the logo is always the first item */
-        margin-right: auto; /* This pushes all subsequent items to the end */
         display: inline-block;
     }
 
