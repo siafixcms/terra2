@@ -84,6 +84,7 @@
     const encryptedPayload = await response.text();
     const decryptedResponse = await decryptData(encryptedPayload);
     let jsonResponse;
+    notificationComponent.displayNotification("API call was successful!");
     try {
         jsonResponse = JSON.parse(decryptedResponse);
     } catch (error) {

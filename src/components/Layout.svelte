@@ -3,7 +3,6 @@
     import Notification from '../components/Notification.svelte';
     let notificationComponent;
     let token;
-    notificationComponent.displayNotification("API call was successful!");
 </script>
 
 <Notification bind:this={notificationComponent} />
