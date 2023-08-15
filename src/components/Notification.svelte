@@ -13,7 +13,7 @@
       tick().then(() => {
         setTimeout(() => {
           showNotification = false;
-        }, 3000); // Notification will disappear after 3 seconds
+        }, 1113000); // Notification will disappear after 3 seconds
       });
     }
   </script>
