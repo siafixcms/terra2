@@ -42,10 +42,10 @@
         padding: 15px;
         background-color: #fff;
         order: -1;
-        margin-right: auto;
+        margin-right: 10px;
         border: 1px solid black;
         margin-left: 15px;
-        width: 30%;
+        width: 100%;
     }
 
     #middle {
