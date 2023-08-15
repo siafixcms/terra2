@@ -57,11 +57,11 @@
     #top {
         flex: 1 1 100%;
         background-color: rgba(32,33,35,1);
-        max-height: 40px;
-        min-height: 40px;
+        max-height: 50px;
+        min-height: 50px;
         border-bottom: 2px solid gray;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
-        line-height: 40px;
+        line-height: 50px;
         display: flex;
         justify-content: end;
         padding: 8px 10px;
