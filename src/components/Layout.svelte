@@ -51,6 +51,7 @@
         line-height: 40px;
         display: flex;
         justify-content: end;
+        padding: 8px 10px;
     }
 
     #logo {
