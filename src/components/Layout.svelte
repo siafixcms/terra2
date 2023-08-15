@@ -42,6 +42,7 @@
         padding: 5px;
         background-color: #fff;
         order: -2; /* This ensures the logo is always the first item */
+        margin-right: auto; /* This pushes all subsequent items to the end */
     }
 
     #middle {
