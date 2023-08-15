@@ -2,24 +2,28 @@
     import { fade } from 'svelte/transition';
     import { tick } from 'svelte';
   
+    export let message = "";
     let showNotification = false;
   
-    let notifications = [];
-
-    function displayNotification(message) {
-        notifications = [...notifications, message];
+    export function displayNotification(customMessage) {
+      if (customMessage) {
+        message = customMessage;
+      }
+      showNotification = true;
+      tick().then(() => {
         setTimeout(() => {
-        notifications = notifications.filter(notif => notif !== message);
-        }, 5000); // Remove the notification after 5 seconds
+          showNotification = false;
+        }, 3000); // Notification will disappear after 3 seconds
+      });
     }
   </script>
   
   <!-- The actual notification -->
-  {#each notifications as notification (notification)}
-    <div class="notification">
-        {notification}
+  {#if showNotification}
+    <div class="notification" transition:fade>
+      {message}
     </div>
-  {/each}
+  {/if}
   
   <style>
     .notification {
