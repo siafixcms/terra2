@@ -2,7 +2,6 @@
     import { fade } from 'svelte/transition';
     import { tick } from 'svelte';
   
-    export let message = "";
     let showNotification = false;
   
     let notifications = [];
