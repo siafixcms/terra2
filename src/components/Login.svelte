@@ -35,6 +35,10 @@
     socket.emit('message', message);
   }
 
+  async function notify(msg) {
+    notificationComponent.displayNotification(msg);
+  }
+
   async function encryptData(data) {
     const encodedData = encoder.encode(data);
     const key = await window.crypto.subtle.importKey(
@@ -85,11 +89,13 @@
     const encryptedPayload = await response.text();
     const decryptedResponse = await decryptData(encryptedPayload);
     let jsonResponse;
-    notificationComponent.displayNotification("API call was successful!");
     try {
         jsonResponse = JSON.parse(decryptedResponse);
     } catch (error) {
         console.error("Error parsing JSON:", error);
+    }
+    if( jsonResponse.notification ) {
+      notify(jsonResponse.notification);
     }
     return jsonResponse;
   }
