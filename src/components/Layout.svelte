@@ -11,7 +11,7 @@
             <a href="/" id="logo">
                 <img src="/logo.png" alt="Logo" />
             </a>
-            <input type="text" placeholder="Search..." id="search" />
+            <input type="text" placeholder="Search..." id="search" autocomplete="off" />
             <Login bind:token={token} />
         </div>
         <div id="middle">
@@ -47,6 +47,10 @@
         margin-left: 15px;
         width: 100%;
         border-radius: 20px;
+    }
+
+    #search:focus {
+        outline: none;
     }
 
     #middle {
