@@ -3,5 +3,7 @@
 </script>
 
 <Layout>
-    Dashboard
+
+    <h2>Dashboard</h2>
+    
 </Layout>
