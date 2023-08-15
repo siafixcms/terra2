@@ -1,7 +1,11 @@
 <script>
     import Layout from '../../components/Layout.svelte';
+    import InfiniteTable from '../../components/InfiniteTable.svelte';
 </script>
 
 <Layout>
-    Users
+    <h2>Users</h2>
+    
+    <InfiniteTable />
+      
 </Layout>
