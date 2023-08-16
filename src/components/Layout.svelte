@@ -12,6 +12,7 @@
         { href: '/permissions', name: 'Permissions' },
         { href: '/rooms', name: 'Rooms' },
         { href: '/specialists', name: 'Specialists' },
+        { href: '/appointments', name: 'Appointments' },
         { href: '/warehouse', name: 'Warehouse' }
     ];
     afterUpdate(async () => {  
