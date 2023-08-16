@@ -12,11 +12,10 @@
         { href: '/permissions', name: 'Permissions' }
     ];
     afterUpdate(async () => {  
-        await tick();  // <-- Wait for the next microtask
+        await tick();
         if (searchInput) {
             searchInput.focus();
         }
-        menuItems.push({href: '/rooms', name: "Rooms"});
     });
     $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
 </script>
