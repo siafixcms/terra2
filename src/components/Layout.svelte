@@ -13,6 +13,7 @@
     ];
     onMount(async () => {
         if (searchInput) {
+            searchInput.click();
             searchInput.focus();
         }
         menuItems.push({href: '/rooms', name: "Rooms"});
