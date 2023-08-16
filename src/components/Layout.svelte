@@ -1,7 +1,7 @@
 <script>
     import Login from '../components/Login.svelte';
     import Notification from '../components/Notification.svelte';
-    import { afterUpdate } from 'svelte';
+    import { afterUpdate, tick } from 'svelte';
     let notificationComponent;
     let token;
     let searchValue = '';
@@ -11,7 +11,8 @@
         { href: '/clients', name: 'Clients' },
         { href: '/permissions', name: 'Permissions' }
     ];
-    afterUpdate(async () => {
+    afterUpdate(async () => {  
+        await tick();  // <-- Wait for the next microtask
         if (searchInput) {
             searchInput.focus();
         }
