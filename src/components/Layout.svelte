@@ -9,13 +9,10 @@
         { href: '/clients', name: 'Clients' },
         { href: '/permissions', name: 'Permissions' }
     ];
-    $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
-
     onMount(async () => {
-
         menuItems.push({href: '/rooms', name: "Rooms"});
-
     });
+    $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
 </script>
 
 <Notification bind:this={notificationComponent} />
