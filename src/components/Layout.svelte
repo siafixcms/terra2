@@ -9,7 +9,9 @@
     let menuItems = [
         { href: '/users', name: 'Users' },
         { href: '/clients', name: 'Clients' },
-        { href: '/permissions', name: 'Permissions' }
+        { href: '/permissions', name: 'Permissions' },
+        { href: '/rooms', name: 'Rooms' },
+        { href: '/specialists', name: 'Specialists' }
     ];
     afterUpdate(async () => {  
         await tick();
