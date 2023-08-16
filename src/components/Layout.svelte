@@ -1,6 +1,7 @@
 <script>
     import Login from '../components/Login.svelte';
     import Notification from '../components/Notification.svelte';
+    import { onMount } from 'svelte';
     let notificationComponent;
     let token;
     let searchValue = '';
@@ -10,6 +11,10 @@
         { href: '/permissions', name: 'Permissions' }
     ];
     onMount(async () => {
+        const searchInput = document.getElementById('search');
+        if (searchInput) {
+            searchInput.focus();
+        }
         menuItems.push({href: '/rooms', name: "Rooms"});
     });
     $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
