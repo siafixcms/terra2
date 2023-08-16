@@ -3,6 +3,13 @@
     import Notification from '../components/Notification.svelte';
     let notificationComponent;
     let token;
+    let searchValue = '';
+    let menuItems = [
+        { href: '/users', name: 'Users' },
+        { href: '/clients', name: 'Clients' },
+        { href: '/permissions', name: 'Permissions' }
+    ];
+    $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
 </script>
 
 <Notification bind:this={notificationComponent} />
@@ -14,15 +21,15 @@
             <a href="/" id="logo">
                 <img src="/logo.png" alt="Logo" />
             </a>
-            <input type="text" placeholder="Search..." id="search" autocomplete="off" />
+            <input type="text" placeholder="Search..." id="search" bind:value={searchValue} autocomplete="off" />
             <Login bind:token={token} bind:notificationComponent={notificationComponent} />
         </div>
         <div id="middle">
             <div id="menu">
                 <div class="menu-container">
-                    <a href="/users" class="menu-item">Users</a>
-                    <a href="/clients" class="menu-item">Clients</a>
-                    <a href="/permissions" class="menu-item">Permissions</a>
+                    {#each filteredMenuItems as item}
+                        <a href={item.href} class="menu-item">{item.name}</a>
+                    {/each}
                 </div>                
             </div>
             <div id="body">
@@ -40,7 +47,6 @@
         flex-wrap: wrap;
         height: 100%;
     }
-
     #search {
         padding: 15px;
         background-color: #fff;
@@ -51,17 +57,14 @@
         width: 100%;
         border-radius: 20px;
     }
-
     #search:focus {
         outline: none;
     }
-
     #middle {
         display: flex;
         flex-wrap: nowrap;
         height: 100%;
     }
-
     #top {
         flex: 1 1 100%;
         background-color: rgba(32,33,35,1);
@@ -74,12 +77,10 @@
         justify-content: end;
         padding: 8px 10px;
     }
-
     #logo {
-        order: -1; /* This ensures the logo is always the first item */
+        order: -1;
         display: inline-block;
     }
-
     #menu {
         flex: 1 1 30%;
         min-width: 300px;
@@ -91,44 +92,34 @@
         border-right: 2px solid gray;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
-
     #body {
         flex: 1 1 70%;
         padding: 20px;
         height: 100%;
     }
-
-    /* Container for the menu */
     .menu-container {
-        width: 100%; /* Adjust as needed */
-        background-color: inherit; /* Light gray background */
-        border: 1px solid #e0e0e0; /* Border around the menu */
-        border-radius: 5px; /* Rounded corners */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-        overflow: hidden; /* Ensures inner items don't overflow the rounded corners */
+        width: 100%;
+        background-color: inherit;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
     }
-
-    /* Individual menu items */
     .menu-item {
-        display: block; /* Make each item a block element */
-        padding: 10px 20px; /* Padding for each item */
-        color: #fff; /* Text color */
-        text-decoration: none; /* Remove underline for links */
-        font-size: 16px; /* Adjust font size as needed */
-        font-weight: 500; /* Semi-bold font weight */
-        border-bottom: 1px solid #e0e0e0; /* Separator between items */
-        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        display: block;
+        padding: 10px 20px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.3s;
     }
-
-    /* Hover effect for menu items */
     .menu-item:hover {
-        background-color: #e0e0e0; /* Change background color on hover */
-        color: #000; /* Darker text color on hover */
+        background-color: #e0e0e0;
+        color: #000;
     }
-
-    /* Remove border for the last menu item */
     .menu-item:last-child {
         border-bottom: none;
     }
-
 </style>
