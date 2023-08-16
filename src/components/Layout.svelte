@@ -5,13 +5,13 @@
     let notificationComponent;
     let token;
     let searchValue = '';
+    let searchInput;
     let menuItems = [
         { href: '/users', name: 'Users' },
         { href: '/clients', name: 'Clients' },
         { href: '/permissions', name: 'Permissions' }
     ];
     onMount(async () => {
-        const searchInput = document.getElementById('search');
         if (searchInput) {
             searchInput.focus();
         }
@@ -29,7 +29,7 @@
             <a href="/" id="logo">
                 <img src="/logo.png" alt="Logo" />
             </a>
-            <input type="text" placeholder="Search..." id="search" bind:value={searchValue} autocomplete="off" />
+            <input type="text" placeholder="Search..." id="search" bind:value={searchValue} bind:this={searchInput} autocomplete="off" />
             <Login bind:token={token} bind:notificationComponent={notificationComponent} />
         </div>
         <div id="middle">
