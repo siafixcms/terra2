@@ -11,7 +11,8 @@
         { href: '/clients', name: 'Clients' },
         { href: '/permissions', name: 'Permissions' },
         { href: '/rooms', name: 'Rooms' },
-        { href: '/specialists', name: 'Specialists' }
+        { href: '/specialists', name: 'Specialists' },
+        { href: '/warehouse', name: 'Warehouse' }
     ];
     afterUpdate(async () => {  
         await tick();
