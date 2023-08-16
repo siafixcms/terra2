@@ -1,7 +1,7 @@
 <script>
     import Login from '../components/Login.svelte';
     import Notification from '../components/Notification.svelte';
-    import { onMount } from 'svelte';
+    import { afterUpdate } from 'svelte';
     let notificationComponent;
     let token;
     let searchValue = '';
@@ -11,9 +11,8 @@
         { href: '/clients', name: 'Clients' },
         { href: '/permissions', name: 'Permissions' }
     ];
-    onMount(async () => {
+    afterUpdate(async () => {
         if (searchInput) {
-            searchInput.click();
             searchInput.focus();
         }
         menuItems.push({href: '/rooms', name: "Rooms"});
