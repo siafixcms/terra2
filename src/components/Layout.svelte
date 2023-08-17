@@ -106,6 +106,7 @@
     }
     #body {
         flex: 1 1 70%;
+        flex-grow: 1;
         padding: 20px;
         height: 100%;
         width: 100%;
