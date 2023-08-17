@@ -16,6 +16,7 @@
   async function loadData() {
       const result = await fetchData(query, activeFilters, page);
       data = [...data, ...result];
+      console.log('data', data);
   }
 
   async function loadDistinctValues() {
