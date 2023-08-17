@@ -6,6 +6,6 @@
 <Layout>
     <h2>Users</h2>
     
-    <InfiniteTable />
+    <InfiniteTable filters={["category"]} />
       
 </Layout>
