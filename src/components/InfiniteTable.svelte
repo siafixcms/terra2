@@ -78,9 +78,9 @@
   <table class="dataTables_table" on:scroll={onScroll}>
       <thead>
           <tr>
-              {#each (visibleFields.length ? visibleFields : Object.keys(data[0] || {})) as key}
-                  <th>{headers[key] || key}</th>
-              {/each}
+            {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
+              <th>{headers[key] || key}</th>
+            {/each}
           </tr>
       </thead>
       <tbody>
