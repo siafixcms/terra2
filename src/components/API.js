@@ -9,18 +9,18 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     const response = await fetch(`/api?${params.toString()}`);
     const data = await response.json();
 
-    return data;
+    return data ? data : [];
 }
 
 export async function fetchTotalRecords() {
     const response = await fetch('/api/totalRecords');
     const { total } = await response.json();
 
-    return total;
+    return total ? total : [];
 }
 
 export async function fetchDistinctValues(field) {
     const response = await fetch(`/api/distinctValues?field=${field}`);
     const data = await response.json();
-    return data;
+    return data ? data : [];
 }
