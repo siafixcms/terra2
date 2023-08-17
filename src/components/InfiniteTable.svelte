@@ -56,8 +56,8 @@
   <Accordion>
     {#each filters as field}
       <div>
-        <label>{headers[field] || field}</label>
-        <select multiple bind:value={activeFilters[field]} on:change={() => updateFilter(field, activeFilters[field])}>
+        <label for="{field}">{headers[field] || field}</label>
+        <select id="{field}" multiple bind:value={activeFilters[field]} on:change={() => updateFilter(field, activeFilters[field])}>
           {#each distinctValues[field] || [] as value}
             <option value={value}>{value}</option>
           {/each}
