@@ -106,6 +106,7 @@
       padding: 20px;
       border: 1px solid #ddd;
       background-color: #fff;
+      width: 100%;
   }
 
   .dataTables_filter {
