@@ -77,6 +77,7 @@
         display: flex;
         flex-wrap: nowrap;
         height: 100%;
+        width: 100%;
     }
     #top {
         flex: 1 1 100%;
