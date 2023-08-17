@@ -18,3 +18,9 @@ export async function fetchTotalRecords() {
 
     return total;
 }
+
+export async function fetchDistinctValues(field) {
+    const response = await fetch(`/api/distinctValues?field=${field}`);
+    const data = await response.json();
+    return data;
+}
