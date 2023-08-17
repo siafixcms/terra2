@@ -102,7 +102,6 @@
         height: 100%;
         overflow: auto;
         margin-right: 20px;
-        border-right: 2px solid gray;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
     #body {
