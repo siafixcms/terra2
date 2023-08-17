@@ -9,6 +9,9 @@
 		"start": "concurrently \"node server.js\" \"node build/index.js\""
 	},
 	"devDependencies": {
+		"@event-calendar/core": "^1.5.1",
+		"@event-calendar/interaction": "^1.5.1",
+		"@event-calendar/time-grid": "^1.5.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.22.6",
 		"svelte": "^4.0.0",
