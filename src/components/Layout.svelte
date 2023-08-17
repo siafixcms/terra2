@@ -108,6 +108,7 @@
         flex: 1 1 70%;
         padding: 20px;
         height: 100%;
+        width: 100%;
     }
     .menu-container {
         width: 100%;
