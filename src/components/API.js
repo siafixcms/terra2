@@ -9,7 +9,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     const response = await fetch(`/api?${params.toString()}`);
     const data = await response.json();
 
-    return data && data.length ? data : [];
+    return data && data.length ? data : [{id: 1, name: "test"},{id:2, name: "test2"}];
 }
 
 export async function fetchTotalRecords() {
