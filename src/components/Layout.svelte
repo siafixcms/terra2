@@ -96,7 +96,8 @@
         display: inline-block;
     }
     #menu {
-        flex: 1 1 30%;
+        /* flex: 1 1 30%; */
+        flex: 1;
         min-width: 300px;
         max-width: 300px;
         background-color: rgba(32,33,35,1);
@@ -106,7 +107,8 @@
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
     #body {
-        flex: 1 1 70%;
+        /* flex: 1 1 70%; */
+        flex: 1;
         flex-grow: 1;
         padding: 20px;
         height: 100%;
