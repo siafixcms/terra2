@@ -76,7 +76,6 @@
     #middle {
         display: flex;
         flex-wrap: nowrap;
-        height: 100%;
         width: 100%;
     }
     #top {
