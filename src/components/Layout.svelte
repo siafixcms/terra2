@@ -57,8 +57,8 @@
     #all {
         font-family: 'Noto Serif Vithkuqi', serif;
         display: flex;
-        flex-wrap: wrap;
-        height: 100%;
+        flex-direction: column; /* Change to column direction */
+        min-height: 100vh;
     }
     #search {
         padding: 15px;
@@ -76,10 +76,10 @@
     #middle {
         display: flex;
         flex-wrap: nowrap;
+        flex-grow: 1;
         width: 100%;
     }
     #top {
-        flex: 1 1 100%;
         background-color: rgba(32,33,35,1);
         max-height: 50px;
         min-height: 50px;
@@ -95,19 +95,16 @@
         display: inline-block;
     }
     #menu {
-        /* flex: 1 1 30%; */
-        flex: 1;
+        flex: 1 1 30%;
         min-width: 300px;
         max-width: 300px;
         background-color: rgba(32,33,35,1);
-        height: 100%;
         overflow: auto;
         margin-right: 20px;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
     }
     #body {
-        /* flex: 1 1 70%; */
-        flex: 1;
+        flex: 1 1 70%;
         flex-grow: 1;
         padding: 20px;
         width: 100%;
