@@ -110,7 +110,6 @@
         flex: 1;
         flex-grow: 1;
         padding: 20px;
-        height: 100%;
         width: 100%;
     }
     .menu-container {
