@@ -58,7 +58,7 @@
 <Layout>
     <h2>Employee availability</h2>
     
-    <div id="calendar-container" />
+    <Calendar {plugins} {options} />
       
 </Layout>
 
