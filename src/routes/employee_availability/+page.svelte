@@ -8,7 +8,8 @@
         view: 'timeGridWeek',
         editable: true,
         events: [
-            {title: "test", start: "2023-08-23 10:00:00", end: "2023-08-23 15:00:00"}
+            {title: "test", start: "2023-08-23 10:00:00", end: "2023-08-23 15:00:00"},
+            {title: "test", start: "2023-08-22 10:00:00", end: "2023-08-22 12:00:00"},
         ],
         pointer: true,
         select: function(info) {
