@@ -12,7 +12,7 @@
             
         ],
         pointer: true,
-        dateClick: function(info) {
+        select: function(info) {
             console.log(info);
         }
     };
