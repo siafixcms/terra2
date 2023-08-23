@@ -10,7 +10,7 @@
         events: [
             {title: "test", start: "2023-08-23 10:00:00", end: "2023-08-23 15:00:00"},
             {title: "test1", start: "2023-08-22 10:00:00", end: "2023-08-22 12:00:00"},
-            {title: "test2", start: "2023-08-21 08:00:00", end: "2023-08-22 13:00:00"},
+            {title: "test2", start: "2023-08-21 08:00:00", end: "2023-08-21 13:00:00"},
         ],
         pointer: true,
         select: function(info) {
