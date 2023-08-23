@@ -17,7 +17,7 @@
 <Layout>
     <h2>Employee availability</h2>
     
-    <Calendar {plugins} {options} />
+    <Calendar {plugins} {options} {pointer: true} />
       
 </Layout>
 
