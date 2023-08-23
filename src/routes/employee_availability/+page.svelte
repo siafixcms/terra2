@@ -13,7 +13,7 @@
         ],
         pointer: true,
         dateClick: function(info) {
-            alert(info);
+            console.log(info);
         }
     };
 </script>
