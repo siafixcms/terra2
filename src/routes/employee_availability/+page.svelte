@@ -9,9 +9,12 @@
         view: 'timeGridWeek',
         editable: true,
         events: [
-            // your list of events
+            
         ],
-        pointer: true
+        pointer: true,
+        dateClick: function(info) {
+            alert(info);
+        }
     };
 </script>
 
