@@ -10,14 +10,15 @@
         editable: true,
         events: [
             // your list of events
-        ]
+        ],
+        pointer: true
     };
 </script>
 
 <Layout>
     <h2>Employee availability</h2>
     
-    <Calendar {plugins} {options} {pointer: true} />
+    <Calendar {plugins} {options} />
       
 </Layout>
 
