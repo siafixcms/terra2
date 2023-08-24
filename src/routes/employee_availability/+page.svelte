@@ -34,6 +34,7 @@
             }
         });
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
+        asait loadEventsFromDatabase();
     });
 
     onDestroy(() => {
@@ -81,7 +82,6 @@
     <h2>Employee availability</h2>
     
     <button on:click={saveEventsToDatabase}>Save Events</button>
-    <button on:click={loadEventsFromDatabase}>Load Events</button>
     
     <Calendar {plugins} {options} />
       
