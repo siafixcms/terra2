@@ -33,8 +33,12 @@
                 options.events = options.events.filter(event => event !== info.event);
             }
         });
+
+        calendarInstance.on('ready', () => {
+            loadEventsFromDatabase();
+        });
+
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
-        loadEventsFromDatabase();
     });
 
     onDestroy(() => {
