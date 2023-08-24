@@ -23,7 +23,7 @@
 
     let calendarInstance;
 
-    onMount(() => {
+    onMount(async () => {
         // Create the calendar instance
         calendarInstance = new Calendar({
             plugins,
@@ -34,7 +34,7 @@
             }
         });
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
-        loadEventsFromDatabase();
+        await loadEventsFromDatabase();
     });
 
     onDestroy(() => {
