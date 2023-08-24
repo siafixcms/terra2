@@ -34,8 +34,8 @@
             }
         });
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
+        loadEventsFromDatabase();
     });
-    loadEventsFromDatabase();
 
     onDestroy(() => {
         // Check if calendarInstance is defined before attempting to destroy
