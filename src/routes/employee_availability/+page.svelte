@@ -64,8 +64,9 @@
     async function loadEventsFromDatabase() {
         try {
             // Make API call to retrieve events from the database
-            const response = await fetch('your-get-events-api-url');
-            const data = await response.json();
+            // const response = await fetch('your-get-events-api-url');
+            // const data = await response.json();
+            const data = [{title:"test", start: '2023-08-24 10:00:00', end: "2023-08-24 15:00:10"}];
 
             // Update events in the options
             options.events = data;
