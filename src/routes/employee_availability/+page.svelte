@@ -34,7 +34,7 @@
             }
         });
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
-        await loadEventsFromDatabase();
+        loadEventsFromDatabase();
     });
 
     onDestroy(() => {
