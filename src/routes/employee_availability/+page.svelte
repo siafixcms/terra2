@@ -34,14 +34,12 @@
             }
         });
         calendarInstance.renderTo(document.querySelector('#calendar-container'));
-    });
-
-    calendarInstance.on('ready', () => {
-        loadEventsFromDatabase();
+        calendarInstance.on('ready', () => {
+            loadEventsFromDatabase();
+        });
     });
 
     onDestroy(() => {
-        // Check if calendarInstance is defined before attempting to destroy
         if (calendarInstance) {
             calendarInstance.destroy();
         }
