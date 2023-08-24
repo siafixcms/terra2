@@ -24,6 +24,7 @@
     let calendarInstance;
 
     onMount(() => {
+        // Create the calendar instance
         calendarInstance = new Calendar({
             plugins,
             ...options,
@@ -36,8 +37,10 @@
     });
 
     onDestroy(() => {
-        // Clean up the calendar instance when the component is destroyed
-        calendarInstance.destroy();
+        // Check if calendarInstance is defined before attempting to destroy
+        if (calendarInstance) {
+            calendarInstance.destroy();
+        }
     });
 
     async function saveEventsToDatabase() {
