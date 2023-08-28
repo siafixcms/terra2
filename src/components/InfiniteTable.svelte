@@ -140,7 +140,7 @@
     {/each}
   </div>
 
-  <table>
+  <table class="dataTables_table">
       <thead>
           <tr>
             {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
@@ -148,7 +148,7 @@
             {/each}
           </tr>
       </thead>
-      <tbody class="dataTables_table" on:scroll={onScroll}>
+      <tbody on:scroll={onScroll}>
           {#each data as row}
               <tr>
                   {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
