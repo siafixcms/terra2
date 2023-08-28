@@ -16,6 +16,10 @@
       }
       dispatch('update', { field, selectedOptions: selectValue });
     }
+  
+    function isChecked(option) {
+      return selectValue.includes(option);
+    }
   </script>
   
   <div class="filter-item">
@@ -28,7 +32,7 @@
       <div use:menu class="dropdown-menu">
         {#each options as option}
           <a class="dropdown-item" on:click={() => handleSelect(option)}>
-            <input type="checkbox" bind:checked={selectValue.includes(option)} />
+            <input type="checkbox" checked={isChecked(option)} />
             {option}
           </a>
         {/each}
