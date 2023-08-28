@@ -73,19 +73,23 @@
   }
 
   function generateFilterHTML(filters, headers, distinctValues, activeFilters) {
-    return filters.map(field => {
-      const header = headers[field] || field;
-      const options = (distinctValues[field] || []).map(value => `<option value="${value}">${value}</option>`).join('');
-      const selectValue = activeFilters[field] ? activeFilters[field].join(',') : '';
-      return `
-        <div>
-          <label for="${field}">${header}</label>
-          <select id="${field}" multiple value="${selectValue}">
-            ${options}
-          </select>
-        </div>
-      `;
-    }).join('');
+    return `
+      <div class="filter-container">
+        ${filters.map(field => {
+          const header = headers[field] || field;
+          const options = (distinctValues[field] || []).map(value => `<option value="${value}">${value}</option>`).join('');
+          const selectValue = activeFilters[field] ? activeFilters[field].join(',') : '';
+          return `
+            <div class="filter-item">
+              <label for="${field}">${header}</label>
+              <select id="${field}" multiple value="${selectValue}">
+                ${options}
+              </select>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
   }
 
   $: content = [
