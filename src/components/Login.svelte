@@ -185,6 +185,7 @@
   h2 {
     text-align: center;
     text-transform: uppercase;
+    font-family: 'Noto Serif Vithkuqi', serif;
   }
   .form-container {
     font-family: 'Noto Serif Vithkuqi', serif;
