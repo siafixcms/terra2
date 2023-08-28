@@ -28,6 +28,7 @@
         max-width: 20%;
         margin-bottom: 20px;
         box-sizing: border-box;
+        align-self: flex-start;
     }
 
     .filter-item label {
