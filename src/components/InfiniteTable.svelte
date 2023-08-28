@@ -200,7 +200,7 @@
   }
 
   .dataTables_table_head {
-    width: calc(100% - 1em); /* Adjust based on your scrollbar width */
+    width: calc(100%); /* Adjust based on your scrollbar width */
   }
 
   .dataTables_table thead {
