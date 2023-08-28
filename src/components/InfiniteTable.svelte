@@ -271,23 +271,6 @@
     overflow-x: hidden;
   }
 
-.headerClone {
-  overflow: hidden;
-  border-bottom: 1px solid #ddd;
-}
-
-.headerClone table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.headerClone th {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  background-color: #f5f5f5;
-}
-
 .dataTables_table {
   width: 100%;
   border-collapse: collapse;
