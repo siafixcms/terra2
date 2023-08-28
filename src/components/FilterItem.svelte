@@ -31,14 +31,14 @@
       </button>
       <div use:menu class="dropdown-menu">
         {#each options as option}
-          <a class="dropdown-item" 
+          <button class="dropdown-item" 
              on:click|preventDefault={() => handleSelect(option)} 
              on:keydown={(e) => e.key === 'Enter' && handleSelect(option)} 
              role="button" 
              tabindex="0">
             <input type="checkbox" checked={isChecked(option)} />
             {option}
-          </a>
+          </button>
         {/each}
       </div>
     </Dropdown>
