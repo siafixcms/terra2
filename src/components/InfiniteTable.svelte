@@ -141,14 +141,14 @@
   </div>
 
   <table class="dataTables_table">
-      <thead>
+      <thead class="dataTables_table_head">
           <tr>
             {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
               <th>{headers[key] || key}</th>
             {/each}
           </tr>
       </thead>
-      <tbody on:scroll={onScroll}>
+      <tbody class="dataTables_table_body" on:scroll={onScroll}>
           {#each data as row}
               <tr>
                   {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
@@ -185,10 +185,22 @@
     border: 1px solid #ccc;
   }
   .dataTables_table {
-      width: 100%;
-      border-collapse: collapse;
-      overflow: auto;
-      max-height: 400px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .dataTables_table_head,
+  .dataTables_table_body {
+    display: block;
+  }
+
+  .dataTables_table_body {
+    max-height: 400px;
+    overflow: auto;
+  }
+
+  .dataTables_table_head {
+    width: calc(100% - 1em); /* Adjust based on your scrollbar width */
   }
 
   .dataTables_table thead {
