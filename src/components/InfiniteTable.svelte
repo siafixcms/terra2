@@ -269,17 +269,12 @@
     max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
+    display: block;
   }
 
 .dataTables_table {
   width: 100%;
   border-collapse: collapse;
-}
-
-.dataTables_table_body {
-  display: block;
-  max-height: 400px;
-  overflow-y: auto;
 }
 
 .dataTables_table_head,
@@ -309,12 +304,6 @@
 
   .dataTables_table_head {
     overflow: hidden;
-  }
-
-  .dataTables_table_body {
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 
   .dataTables_table_head table,
