@@ -211,32 +211,4 @@
       border-radius: 50%;
       cursor: pointer;
   }
-
-  /* for filters */
-  .filter-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .filter-item {
-    flex-basis: calc(20% - 10px);
-    max-width: 20%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-
-  .filter-item label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  .filter-item select {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
 </style>
