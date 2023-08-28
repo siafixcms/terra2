@@ -12,6 +12,7 @@
   let page = 1;
   let totalRecords;
   let distinctValues = {};
+  let loading = false;
 
   async function loadData() {
     try {
@@ -73,26 +74,6 @@
           loadData();
       }
   }
-
-  function updateFilter(field, values) {
-      activeFilters[field] = values;
-      loadData();
-  }
-
-  function removeFilter(field) {
-      delete activeFilters[field];
-      loadData();
-  }
-
-  let loading = false;
-
-  async function loadData() {
-    loading = true;
-    const result = await fetchData(query, activeFilters, page);
-    data = [...data, ...result];
-    loading = false;
-  }
-
 </script>
 
 <div class="dataTables_wrapper">
