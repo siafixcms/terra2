@@ -168,7 +168,7 @@
 
 {#if !$token}
 <div class="container h-screen bg-gray-200 w-full flex justify-center items-center">
-  <form on:submit|preventDefault={login} class="w-40 h-40">
+  <form on:submit|preventDefault={login} class="w-80 h-80">
     <h2 class="left">Terra balance</h2>
     <input bind:value={username} placeholder="Username" required />
     <input bind:value={password} placeholder="Password" type="password" required />
