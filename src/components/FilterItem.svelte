@@ -6,16 +6,18 @@
     
     export let field;
     export let header;
-    export let options;
+    export let options = [];
     export let selectValue = [];
   
     function handleSelect(option) {
-      if (selectValue.includes(option)) {
-        selectValue = selectValue.filter(item => item !== option);
-      } else {
-        selectValue = [...selectValue, option];
-      }
-      dispatch('update', { field, selectedOptions: selectValue });
+        if (options && selectValue) { // Check if options and selectValue are defined
+        if (selectValue.includes(option)) {
+            selectValue = selectValue.filter(item => item !== option);
+        } else {
+            selectValue = [...selectValue, option];
+        }
+        dispatch('update', { field, selectedOptions: selectValue });
+        }
     }
   
     function isChecked(option) {
