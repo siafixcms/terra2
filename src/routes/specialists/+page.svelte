@@ -4,7 +4,7 @@
 </script>
 
 <Layout>
-    <h2>Specialists</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 my-4">Specialists</h2>
     
     <InfiniteTable />
       

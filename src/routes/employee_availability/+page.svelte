@@ -80,7 +80,7 @@
 </script>
 
 <Layout>
-    <h2>Employee availability</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 my-4">Employee availability</h2>
     
     <button on:click={saveEventsToDatabase}>Save Events</button>
     

@@ -4,6 +4,6 @@
 
 <Layout>
     
-    <h2>Permissions</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
     
 </Layout>
