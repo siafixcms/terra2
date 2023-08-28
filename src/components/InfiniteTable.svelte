@@ -183,6 +183,9 @@
       border-radius: 4px;
   }
 
+  .dataTables_table table {
+    width: 100%;
+  }
   .dataTables_table {
       width: 100%;
       border-collapse: collapse;
