@@ -32,10 +32,10 @@
       <div use:menu class="dropdown-menu">
         {#each options as option}
           <a class="dropdown-item" 
-             on:click={() => handleSelect(option)} 
+             on:click|preventDefault={() => handleSelect(option)} 
              on:keydown={(e) => e.key === 'Enter' && handleSelect(option)} 
              role="button" 
-             href="javascript:void(0)">
+             href="#">
             <input type="checkbox" checked={isChecked(option)} />
             {option}
           </a>
