@@ -117,10 +117,12 @@
       body: filterComponents
     }
   ];
-</script>
 
-<script>
-  // ... (Your script remains unchanged)
+  let columnWidth;
+  $: {
+    const columnCount = visibleFields.length ? visibleFields.length : (data[0] ? Object.keys(data[0]).length : 1);
+    columnWidth = 100 / columnCount + '%';
+  }
 </script>
 
 <div class="dataTables_wrapper">
@@ -150,7 +152,7 @@
         <thead>
           <tr>
             {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
-              <th>{headers[key] || key}</th>
+              <th style="width: {columnWidth};">{headers[key] || key}</th>
             {/each}
           </tr>
         </thead>
@@ -162,7 +164,7 @@
           {#each data as row}
             <tr>
               {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
-                <td>{row[key]}</td>
+                <td style="width: {columnWidth};">{row[key]}</td>
               {/each}
             </tr>
           {/each}
@@ -338,8 +340,4 @@
     table-layout: fixed;
   }
 
-  .dataTables_table_head th,
-  .dataTables_table_body td {
-    width: calc(100% / {visibleFields.length ? visibleFields.length : (data[0] ? Object.keys(data[0]).length : 1)});
-  }
 </style>
