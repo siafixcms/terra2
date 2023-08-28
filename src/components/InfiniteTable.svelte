@@ -26,15 +26,14 @@
     }
   }
 
-
   async function loadDistinctValues() {
-      for (let field of filters) {
-          distinctValues[field] = await fetchDistinctValues(field);
-      }
+    for (let field of filters) {
+      distinctValues[field] = await fetchDistinctValues(field);
+    }
   }
 
   async function loadTotalRecords() {
-      totalRecords = await fetchTotalRecords();
+    totalRecords = await fetchTotalRecords();
   }
 
   function resetData() {
@@ -43,7 +42,6 @@
     loadTotalRecords();
     loadData();
   }
-
 
   let timeout;
   function onSearchInput() {
@@ -63,17 +61,39 @@
     resetData();
   }
 
-
   loadTotalRecords();
   loadData();
   loadDistinctValues();
 
   function onScroll(event) {
-      if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight) {
-          page++;
-          loadData();
-      }
+    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight) {
+      page++;
+      loadData();
+    }
   }
+
+  function generateFilterHTML(filters, headers, distinctValues, activeFilters) {
+    return filters.map(field => {
+      const header = headers[field] || field;
+      const options = (distinctValues[field] || []).map(value => `<option value="${value}">${value}</option>`).join('');
+      const selectValue = activeFilters[field] ? activeFilters[field].join(',') : '';
+      return `
+        <div>
+          <label for="${field}">${header}</label>
+          <select id="${field}" multiple value="${selectValue}" onchange="updateFilter('${field}', this.value)">
+            ${options}
+          </select>
+        </div>
+      `;
+    }).join('');
+  }
+
+  $: content = [
+    {
+      header: "Filters",
+      body: generateFilterHTML(filters, headers, distinctValues, activeFilters)
+    }
+  ];
 </script>
 
 <div class="dataTables_wrapper">
@@ -86,18 +106,7 @@
   
   <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
 
-  <Accordion>
-    {#each filters as field}
-      <div>
-        <label for="{field}">{headers[field] || field}</label>
-        <select id="{field}" multiple bind:value={activeFilters[field]} on:change={() => updateFilter(field, activeFilters[field])}>
-          {#each distinctValues[field] || [] as value}
-            <option value={value}>{value}</option>
-          {/each}
-        </select>
-      </div>
-    {/each}
-  </Accordion>
+  <Accordion {content} />
 
   <div class="breadcrumbs">
     {#each Object.keys(activeFilters) as field}

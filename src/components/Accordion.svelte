@@ -1,10 +1,13 @@
 <script>
     import { AccordionItem, Accordion } from 'flowbite-svelte';
+    export let content = [];
 </script>
-  
+
 <Accordion>
-<AccordionItem>
-    <span slot="header">My Header 1</span>
-    <slot></slot>
-</AccordionItem>
+    {#each content as { header, body }}
+        <AccordionItem>
+        <span slot="header">{header}</span>
+        <div>{body}</div>
+        </AccordionItem>
+    {/each}
 </Accordion>
