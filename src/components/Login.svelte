@@ -167,7 +167,7 @@
 </script>
 
 {#if !$token}
-<div class="container h-screen bg-gray-200 w-full flex justify-center items-center">
+<div class="form-container h-screen bg-gray-200 w-full flex justify-center items-center">
   <form on:submit|preventDefault={login} class="w-80 h-80">
     <h2 class="left">Terra balance</h2>
     <input bind:value={username} placeholder="Username" required />
@@ -186,7 +186,7 @@
     text-align: center;
     text-transform: uppercase;
   }
-  .container {
+  .form-container {
     font-family: 'Noto Serif Vithkuqi', serif;
     display: grid;
     place-items: center;
