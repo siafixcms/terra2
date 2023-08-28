@@ -15,7 +15,7 @@
 
 <div class="filter-item">
     <label for="{field}">{header}</label>
-    <select id="{field}" multiple bind:value={selectValue} on:change={handleChange}>
+    <select id="{field}" multiple bind:value={selectValue} on:change={handleChange} class="bg-none">
         {#each options as option}
         <option value={option}>{option}</option>
         {/each}
