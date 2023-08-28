@@ -60,6 +60,10 @@
         flex-direction: column; /* Change to column direction */
         min-height: 100vh;
     }
+    h2 {
+        font-size: 2em;
+        margin: 0 0 20px 0;
+    }
     #search {
         padding: 15px;
         background-color: #fff;
