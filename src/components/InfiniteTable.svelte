@@ -14,9 +14,17 @@
   let distinctValues = {};
 
   async function loadData() {
+    try {
+      loading = true;
       const result = await fetchData(query, activeFilters, page);
       data = [...data, ...result];
+    } catch (error) {
+      console.error("Error loading data:", error);
+    } finally {
+      loading = false;
+    }
   }
+
 
   async function loadDistinctValues() {
       for (let field of filters) {
@@ -27,6 +35,33 @@
   async function loadTotalRecords() {
       totalRecords = await fetchTotalRecords();
   }
+
+  function resetData() {
+    data = [];
+    page = 1;
+    loadTotalRecords();
+    loadData();
+  }
+
+
+  let timeout;
+  function onSearchInput() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      resetData();
+    }, 300);
+  }
+
+  function updateFilter(field, values) {
+    activeFilters[field] = values;
+    resetData();
+  }
+
+  function removeFilter(field) {
+    delete activeFilters[field];
+    resetData();
+  }
+
 
   loadTotalRecords();
   loadData();
@@ -48,10 +83,27 @@
       delete activeFilters[field];
       loadData();
   }
+
+  let loading = false;
+
+  async function loadData() {
+    loading = true;
+    const result = await fetchData(query, activeFilters, page);
+    data = [...data, ...result];
+    loading = false;
+  }
+
 </script>
 
 <div class="dataTables_wrapper">
-  <input class="dataTables_filter" bind:value={query} on:input={loadData} placeholder="Search..." />
+  <div class="dataTables_info">
+    {#if loading}
+      <span>Loading...</span>
+    {/if}
+    Total records: {totalRecords}
+  </div>
+  
+  <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
 
   <Accordion>
     {#each filters as field}
