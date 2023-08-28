@@ -1,8 +1,9 @@
 <script>
+    import { onMount } from 'svelte';
     import { createEventDispatcher } from 'svelte';
     import { Dropdown } from 'flowbite-svelte';
     const dispatch = createEventDispatcher();
-  
+    
     export let field;
     export let header;
     export let options;
@@ -20,6 +21,11 @@
     function isChecked(option) {
       return selectValue.includes(option);
     }
+  
+    onMount(() => {
+      // This will run after the FilterItem component is mounted
+      // If there's any specific initialization for the Dropdown, you can add it here
+    });
   </script>
   
   <div class="filter-item">

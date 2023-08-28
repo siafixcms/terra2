@@ -1,7 +1,12 @@
-<!-- Accordion.svelte -->
 <script>
+    import { onMount } from 'svelte';
     import { AccordionItem, Accordion } from 'flowbite-svelte';
     export let content = [];
+  
+    onMount(() => {
+      // This will run after the Accordion component is mounted
+      // If there's any specific initialization for the Accordion, you can add it here
+    });
   </script>
   
   <Accordion>
