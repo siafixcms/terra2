@@ -1,6 +1,7 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues } from './API.js';
   import Accordion from './Accordion.svelte';
+  import FilterItem from './FilterItem.svelte';
 
   export let headers = {};
   export let visibleFields = [];
@@ -72,30 +73,25 @@
     }
   }
 
-  function generateFilterHTML(filters, headers, distinctValues, activeFilters) {
-    return `
-      <div class="filter-container">
-        ${filters.map(field => {
-          const header = headers[field] || field;
-          const options = (distinctValues[field] || []).map(value => `<option value="${value}">${value}</option>`).join('');
-          const selectValue = activeFilters[field] ? activeFilters[field].join(',') : '';
-          return `
-            <div class="filter-item">
-              <label for="${field}">${header}</label>
-              <select id="${field}" multiple value="${selectValue}">
-                ${options}
-              </select>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
+  function generateFilterComponents(filters, headers, distinctValues, activeFilters) {
+    return filters.map(field => {
+      return {
+        component: FilterItem,
+        props: {
+          field,
+          header: headers[field] || field,
+          options: distinctValues[field] || [],
+          selectValue: activeFilters[field] || []
+        }
+      };
+    });
   }
 
+  $: filterComponents = generateFilterComponents(filters, headers, distinctValues, activeFilters);
   $: content = [
     {
       header: "Filters",
-      body: generateFilterHTML(filters, headers, distinctValues, activeFilters)
+      body: filterComponents
     }
   ];
 </script>
