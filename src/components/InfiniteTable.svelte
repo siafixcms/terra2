@@ -80,7 +80,7 @@
       return `
         <div>
           <label for="${field}">${header}</label>
-          <select id="${field}" multiple value="${selectValue}" onchange="updateFilter('${field}', this.value)">
+          <select id="${field}" multiple value="${selectValue}">
             ${options}
           </select>
         </div>
@@ -186,6 +186,7 @@
 
   .dataTables_info {
       margin-top: 10px;
+      margin-bottom: 10px;
       font-size: 0.9em;
       color: #666;
   }

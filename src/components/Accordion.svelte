@@ -6,8 +6,8 @@
 <Accordion>
     {#each content as { header, body }}
         <AccordionItem>
-        <span slot="header">{header}</span>
-        <div>{body}</div>
+            <span slot="header">{header}</span>
+            <div>{@html body}</div> <!-- Use @html to render HTML strings -->
         </AccordionItem>
     {/each}
 </Accordion>
