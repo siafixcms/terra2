@@ -140,6 +140,17 @@
     {/each}
   </div>
 
+  <div class="headerClone">
+    <table>
+      <thead>
+        <tr>
+          {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
+            <th>{headers[key] || key}</th>
+          {/each}
+        </tr>
+      </thead>
+    </table>
+  </div>
   <table class="dataTables_table">
       <thead class="dataTables_table_head">
           <tr>
@@ -256,5 +267,50 @@
     overflow-y: auto;
     overflow-x: hidden;
   }
+
+  /* ... (your existing styles) ... */
+
+.headerClone {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+}
+
+.headerClone table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.headerClone th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f5f5;
+}
+
+.dataTables_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTables_table_body {
+  display: block;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dataTables_table_head,
+.dataTables_table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.dataTables_table thead {
+  display: table-header-group;
+}
+
+.dataTables_table tbody {
+  display: table-row-group;
+}
 
 </style>
