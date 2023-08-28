@@ -167,8 +167,8 @@
 </script>
 
 {#if !$token}
-<div class="container">
-  <form on:submit|preventDefault={login}>
+<div class="container h-screen bg-gray-200 w-full flex justify-center items-center">
+  <form on:submit|preventDefault={login} class="w-40 h-40">
     <h2 class="left">Terra balance</h2>
     <input bind:value={username} placeholder="Username" required />
     <input bind:value={password} placeholder="Password" type="password" required />
@@ -193,7 +193,7 @@
     height: 100vh;
   }
   form {
-    width: 350px;
+    width: 440px;
     border-radius: 10px;
     overflow: hidden;
     padding: 37px 45px 37px;
