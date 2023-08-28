@@ -25,7 +25,7 @@
   <div class="filter-item">
     <label for="{field}">{header}</label>
     <Dropdown let:toggle let:menu>
-      <button use:toggle class="btn btn-outline-primary">
+      <button use:toggle class="btn btn-outline-primary dropdown-toggle">
         {header}
         <i class="bi bi-caret-down-fill"></i>
       </button>
