@@ -189,16 +189,6 @@
     border-collapse: collapse;
   }
 
-  .dataTables_table_head,
-  .dataTables_table_body {
-    display: block;
-  }
-
-  .dataTables_table_body {
-    max-height: 400px;
-    overflow: auto;
-  }
-
   .dataTables_table_head {
     width: calc(100%); /* Adjust based on your scrollbar width */
   }
