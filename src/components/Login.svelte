@@ -225,6 +225,7 @@
     background-color: inherit;
     color: #fff;
     font-weight: bold;
+    line-height: 38px;
   }
   #logout:hover {
     background-color: #e0e0e0;
