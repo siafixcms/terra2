@@ -28,20 +28,28 @@
   }
 
   async function loadDistinctValues() {
-    for (let field of filters) {
-      distinctValues[field] = await fetchDistinctValues(field);
+    try {
+      for (let field of filters) {
+        distinctValues[field] = await fetchDistinctValues(field);
+      }
+    } catch (error) {
+      console.error("Error loading distinct values:", error);
     }
   }
 
   async function loadTotalRecords() {
-    totalRecords = await fetchTotalRecords();
+    try {
+      totalRecords = await fetchTotalRecords();
+    } catch (error) {
+      console.error("Error loading total records:", error);
+    }
   }
 
   function resetData() {
     data = [];
     page = 1;
-    loadTotalRecords();
-    loadData();
+    loadTotalRecords().catch(error => console.error("Error in resetData - loadTotalRecords:", error));
+    loadData().catch(error => console.error("Error in resetData - loadData:", error));
   }
 
   let timeout;
@@ -62,14 +70,14 @@
     resetData();
   }
 
-  loadTotalRecords();
-  loadData();
-  loadDistinctValues();
+  loadTotalRecords().catch(error => console.error("Error in initial loadTotalRecords:", error));
+  loadData().catch(error => console.error("Error in initial loadData:", error));
+  loadDistinctValues().catch(error => console.error("Error in initial loadDistinctValues:", error));
 
   function onScroll(event) {
     if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight) {
       page++;
-      loadData();
+      loadData().catch(error => console.error("Error in onScroll - loadData:", error));
     }
   }
 
