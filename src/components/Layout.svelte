@@ -87,7 +87,7 @@
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
         line-height: 50px;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         padding: 8px 10px;
     }
     #logo {
