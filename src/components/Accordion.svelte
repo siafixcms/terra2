@@ -1,20 +1,10 @@
 <script>
-    let isOpen = false;
+    import { AccordionItem, Accordion } from 'flowbite-svelte';
 </script>
-
-<button on:click={() => isOpen = !isOpen}>
-    {isOpen ? 'Close Filters' : 'Open Filters'}
-</button>
-
-<div class="{isOpen ? 'open' : 'closed'}">
+  
+<Accordion>
+<AccordionItem>
+    <span slot="header">My Header 1</span>
     <slot></slot>
-</div>
-
-<style>
-    .open {
-        display: block;
-    }
-    .closed {
-        display: none;
-    }
-</style>
+</AccordionItem>
+</Accordion>
