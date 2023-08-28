@@ -35,7 +35,7 @@
              on:click|preventDefault={() => handleSelect(option)} 
              on:keydown={(e) => e.key === 'Enter' && handleSelect(option)} 
              role="button" 
-             href="#">
+             tabindex="0">
             <input type="checkbox" checked={isChecked(option)} />
             {option}
           </a>
