@@ -249,4 +249,22 @@
       border-radius: 50%;
       cursor: pointer;
   }
+
+  .dataTables_table {
+    position: relative;
+  }
+
+  .dataTables_table_head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #f5f5f5;
+  }
+
+  .dataTables_table_body {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
 </style>
