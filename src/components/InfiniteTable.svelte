@@ -185,6 +185,7 @@
 
   .dataTables_table table {
     width: 100%;
+    border: 1px solid #ccc;
   }
   .dataTables_table {
       width: 100%;
