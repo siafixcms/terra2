@@ -81,11 +81,11 @@
     }
     #top {
         background-color: rgba(32,33,35,1);
-        max-height: 50px;
-        min-height: 50px;
+        max-height: 64px;
+        min-height: 64px;
         border-bottom: 2px solid gray;
         box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.1);
-        line-height: 50px;
+        line-height: 64px;
         display: flex;
         justify-content: flex-end;
         padding: 8px 10px;
