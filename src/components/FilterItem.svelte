@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { Dropdown } from '@flowbite/svelte';
+    import { Dropdown } from 'flowbite-svelte';
     const dispatch = createEventDispatcher();
   
     export let field;
