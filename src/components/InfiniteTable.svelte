@@ -140,24 +140,26 @@
     {/each}
   </div>
 
-  <table class="dataTables_table" on:scroll={onScroll}>
-      <thead>
-          <tr>
-            {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
-              <th>{headers[key] || key}</th>
+  <div class="dataTables_table" on:scroll={onScroll}>
+    <table>
+        <thead>
+            <tr>
+              {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
+                <th>{headers[key] || key}</th>
+              {/each}
+            </tr>
+        </thead>
+        <tbody>
+            {#each data as row}
+                <tr>
+                    {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
+                        <td>{row[key]}</td>
+                    {/each}
+                </tr>
             {/each}
-          </tr>
-      </thead>
-      <tbody>
-          {#each data as row}
-              <tr>
-                  {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
-                      <td>{row[key]}</td>
-                  {/each}
-              </tr>
-          {/each}
-      </tbody>
-  </table>
+        </tbody>
+    </table>
+  </div>
 
   <div class="dataTables_info">
       Total records: {totalRecords}
