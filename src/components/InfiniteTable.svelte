@@ -73,6 +73,11 @@
     }
   }
 
+  function handleFilterUpdate(event) {
+    const { field, selectedOptions } = event.detail;
+    updateFilter(field, selectedOptions);
+  }
+
   function generateFilterComponents(filters, headers, distinctValues, activeFilters) {
     return filters.map(field => {
       return {
@@ -82,6 +87,9 @@
           header: headers[field] || field,
           options: distinctValues[field] || [],
           selectValue: activeFilters[field] || []
+        },
+        on: {
+          update: handleFilterUpdate
         }
       };
     });
