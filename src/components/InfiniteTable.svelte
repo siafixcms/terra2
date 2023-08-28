@@ -19,7 +19,12 @@
     try {
       loading = true;
       const result = await fetchData(query, activeFilters, page);
-      data = [...data, ...result];
+      if (result && result.length > 0) { // Check if result is not empty
+        data = [...data, ...result];
+        console.log("Data loaded:", data); // Debug log
+      } else {
+        console.log("No more data to load"); // Debug log
+      }
     } catch (error) {
       console.error("Error loading data:", error);
     } finally {
@@ -75,7 +80,9 @@
   loadDistinctValues().catch(error => console.error("Error in initial loadDistinctValues:", error));
 
   function onScroll(event) {
-    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight) {
+    const target = event.target;
+    if (target.scrollHeight - target.scrollTop === target.clientHeight && !loading) {
+      console.log("Scroll event triggered"); // Debug log
       page++;
       loadData().catch(error => console.error("Error in onScroll - loadData:", error));
     }
