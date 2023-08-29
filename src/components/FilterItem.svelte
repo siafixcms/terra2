@@ -35,6 +35,7 @@
 </script>
 
 <div>
+<Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
 <Dropdown let:toggle let:menu>
   <div use:menu class="w-44 p-3 space-y-3 text-sm">
     {#each options as option}
