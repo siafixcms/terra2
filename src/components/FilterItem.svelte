@@ -11,16 +11,16 @@
     export let selectValue = [];
   
     function handleSelect(option) {
-        if (options && selectValue) { // Check if options and selectValue are defined
-          if (selectValue.includes(option)) {
-              selectValue = selectValue.filter(item => item !== option);
-          } else {
-              selectValue = [...selectValue, option];
-          }
-          dispatch('update', { field, selectedOptions: selectValue });
+      if (options && selectValue) {
+        if (selectValue.includes(option)) {
+          selectValue = selectValue.filter(item => item !== option);
+        } else {
+          selectValue = [...selectValue, option];
         }
+        dispatch('update', { field, selectedOptions: selectValue });
+      }
     }
-  
+    
     function isChecked(option) {
       return selectValue.includes(option);
     }
@@ -29,41 +29,23 @@
       // This will run after the FilterItem component is mounted
       // If there's any specific initialization for the Dropdown, you can add it here
     });
-  </script>
-
-<Button>Dropdown checkbox<Icon name="chevron-down-solid" class="w-3 h-3 ml-2 text-white dark:text-white" /></Button>
-<Dropdown class="w-44 p-3 space-y-3 text-sm">
-  <li>
-    <Checkbox>Default checkbox</Checkbox>
-  </li>
-  <li>
-    <Checkbox checked>Checked state</Checkbox>
-  </li>
-  <li>
-    <Checkbox>Default checkbox</Checkbox>
-  </li>
-</Dropdown>
+</script>
   
-  <div class="filter-item">
-    <label for="{field}">{header}</label>
-    <Dropdown let:toggle let:menu>
-      <button use:toggle class="btn btn-outline-primary dropdown-toggle">
-        {header}
-        <i class="bi bi-caret-down-fill"></i>
-      </button>
-      <div use:menu class="dropdown-menu">
-        {#each options as option}
-          <button class="dropdown-item" 
-             on:click|preventDefault={() => handleSelect(option)} 
-             on:keydown={(e) => e.key === 'Enter' && handleSelect(option)} 
-             tabindex="0">
-            <input type="checkbox" checked={isChecked(option)} />
+<div class="filter-item">
+  <label for="{field}">{header}</label>
+  <Dropdown let:toggle let:menu>
+    <Button use:toggle>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+    <div use:menu class="w-44 p-3 space-y-3 text-sm">
+      {#each options as option}
+        <li>
+          <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
             {option}
-          </button>
-        {/each}
-      </div>
-    </Dropdown>
-  </div>
+          </Checkbox>
+        </li>
+      {/each}
+    </div>
+  </Dropdown>
+</div>
   
   <style>
     .filter-item {
