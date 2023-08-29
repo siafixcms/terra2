@@ -26,23 +26,13 @@
   }
 
   onMount(async () => {
-    // Fetch the checkbox values and update the options array
-    try {
-      const response = await fetch('URL_TO_FETCH_CHECKBOX_VALUES');
-      const data = await response.json();
-      options = data; // Update the options array with the fetched values
-    } catch (error) {
-      console.error('Error fetching checkbox values:', error);
-    }
+    
   });
 </script>
 
 <div>
 <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
 <Dropdown let:toggle let:menu>
-  <div use:toggle>
-    <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-  </div>
   <div use:menu class="w-44 p-3 space-y-3 text-sm">
     {#each options as option}
       <li>
