@@ -31,25 +31,13 @@
     });
 </script>
   
-<div class="filter-item">
-  <Dropdown let:toggle let:menu>
-    <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-    {#each options as option}
-      <li>
-        <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
-          {option}
-        </Checkbox>
-      </li>
-    {/each}
-  </Dropdown>
-</div>
-  
-<style>
-  .filter-item {
-    flex-basis: calc(20% - 10px);
-    max-width: 20%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    align-self: flex-start;
-  }
-</style>
+<Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+<Dropdown let:toggle let:menu>
+  {#each options as option}
+    <li>
+      <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
+        {option}
+      </Checkbox>
+    </li>
+  {/each}
+</Dropdown>
