@@ -37,18 +37,20 @@
   });
 </script>
 
-<Button use:toggle>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+<div>
+<Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
 <Dropdown let:toggle let:menu>
-<div use:toggle>
-  <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-</div>
-<div use:menu class="w-44 p-3 space-y-3 text-sm">
-  {#each options as option}
-    <li>
-      <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
-        {option}
-      </Checkbox>
-    </li>
-  {/each}
-</div>
+  <div use:toggle>
+    <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+  </div>
+  <div use:menu class="w-44 p-3 space-y-3 text-sm">
+    {#each options as option}
+      <li>
+        <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
+          {option}
+        </Checkbox>
+      </li>
+    {/each}
+  </div>
 </Dropdown>
+</div>
