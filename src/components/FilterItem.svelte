@@ -52,10 +52,4 @@
     box-sizing: border-box;
     align-self: flex-start;
   }
-
-  .filter-item label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
 </style>
