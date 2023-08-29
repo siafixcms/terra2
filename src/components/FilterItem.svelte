@@ -32,18 +32,15 @@
 </script>
   
 <div class="filter-item">
-  <label for="{field}">{header}</label>
   <Dropdown let:toggle let:menu>
     <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-    <div use:menu class="w-44 p-3 space-y-3 text-sm">
-      {#each options as option}
-        <li>
-          <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
-            {option}
-          </Checkbox>
-        </li>
-      {/each}
-    </div>
+    {#each options as option}
+      <li>
+        <Checkbox checked={isChecked(option)} on:change={() => handleSelect(option)}>
+          {option}
+        </Checkbox>
+      </li>
+    {/each}
   </Dropdown>
 </div>
   
