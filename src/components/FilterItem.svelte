@@ -34,9 +34,7 @@
 <div class="filter-item">
   <label for="{field}">{header}</label>
   <Dropdown let:toggle let:menu>
-    <div use:toggle> <!-- Wrap the Button component with a div and apply the action here -->
-      <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-    </div>
+    <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
     <div use:menu class="w-44 p-3 space-y-3 text-sm">
       {#each options as option}
         <li>
