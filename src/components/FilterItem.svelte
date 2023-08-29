@@ -10,6 +10,10 @@
   export let options = [];
   export let selectValue = [];
 
+  if (!selectValue) {
+    selectValue = [];
+  }
+
   function handleSelect(option) {
     if (options && selectValue) {
       if (selectValue.includes(option)) {

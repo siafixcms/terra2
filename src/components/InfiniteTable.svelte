@@ -111,6 +111,7 @@
   }
 
   $: filterComponents = generateFilterComponents(filters, headers, distinctValues, activeFilters);
+  $: console.log("Filter components:", filterComponents);
   $: content = [
     {
       header: "Filters",
