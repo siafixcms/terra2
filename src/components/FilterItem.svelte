@@ -1,7 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { createEventDispatcher } from 'svelte';
-    import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+    import { Button, Dropdown, DropdownItem, Checkbox } from 'flowbite-svelte';
+    import { Icon } from 'flowbite-svelte-icons';
     const dispatch = createEventDispatcher();
     
     export let field;
@@ -29,6 +30,19 @@
       // If there's any specific initialization for the Dropdown, you can add it here
     });
   </script>
+
+<Button>Dropdown checkbox<Icon name="chevron-down-solid" class="w-3 h-3 ml-2 text-white dark:text-white" /></Button>
+<Dropdown class="w-44 p-3 space-y-3 text-sm">
+  <li>
+    <Checkbox>Default checkbox</Checkbox>
+  </li>
+  <li>
+    <Checkbox checked>Checked state</Checkbox>
+  </li>
+  <li>
+    <Checkbox>Default checkbox</Checkbox>
+  </li>
+</Dropdown>
   
   <div class="filter-item">
     <label for="{field}">{header}</label>
