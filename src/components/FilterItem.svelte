@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { createEventDispatcher } from 'svelte';
-    import { Dropdown } from 'flowbite-svelte';
+    import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     const dispatch = createEventDispatcher();
     
     export let field;
@@ -11,12 +11,12 @@
   
     function handleSelect(option) {
         if (options && selectValue) { // Check if options and selectValue are defined
-        if (selectValue.includes(option)) {
-            selectValue = selectValue.filter(item => item !== option);
-        } else {
-            selectValue = [...selectValue, option];
-        }
-        dispatch('update', { field, selectedOptions: selectValue });
+          if (selectValue.includes(option)) {
+              selectValue = selectValue.filter(item => item !== option);
+          } else {
+              selectValue = [...selectValue, option];
+          }
+          dispatch('update', { field, selectedOptions: selectValue });
         }
     }
   
