@@ -61,6 +61,21 @@ export async function fetchData(query = '', filters = {}, page = 1) {
             {id: 42, name: "test42", category: 1}
         ]
     };
+
+    // Filter the data based on the query string
+    if (query) {
+        pages[page] = pages[page].filter(item => {
+            return Object.values(item).some(value => 
+                value.toString().toLowerCase().includes(query.toLowerCase())
+            );
+        });
+    }
+
+    // Filter the data based on additional filters
+    for (const [key, value] of Object.entries(filters)) {
+        pages[page] = pages[page].filter(item => item[key] === value);
+    }
+
     return pages[page];
 }
 
