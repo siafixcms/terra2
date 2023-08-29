@@ -8,6 +8,9 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     // const response = await fetch(`/api?${params.toString()}`);
     // const data = await response.json();
     // return data && data.length ? data : [{id: 1, name: "test"},{id:2, name: "test2"}];
+    console.log('query', query);
+    console.log('filters', filters);
+    console.log('page', page);
     let pages = {
         1: [
             {id: 1, name: "test", category: 1},
