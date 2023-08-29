@@ -34,7 +34,9 @@
 <div class="filter-item">
   <label for="{field}">{header}</label>
   <Dropdown let:toggle let:menu>
-    <Button use:toggle>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+    <div use:toggle> <!-- Wrap the Button component with a div and apply the action here -->
+      <Button>{header}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+    </div>
     <div use:menu class="w-44 p-3 space-y-3 text-sm">
       {#each options as option}
         <li>
@@ -47,19 +49,18 @@
   </Dropdown>
 </div>
   
-  <style>
-    .filter-item {
-      flex-basis: calc(20% - 10px);
-      max-width: 20%;
-      margin-bottom: 20px;
-      box-sizing: border-box;
-      align-self: flex-start;
-    }
-  
-    .filter-item label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-  </style>
-  
+<style>
+  .filter-item {
+    flex-basis: calc(20% - 10px);
+    max-width: 20%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    align-self: flex-start;
+  }
+
+  .filter-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+</style>
