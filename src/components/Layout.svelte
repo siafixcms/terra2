@@ -23,6 +23,11 @@
         }
     });
     $: filteredMenuItems = menuItems.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
+
+
+
+    import { Button, Dropdown, DropdownItem, Checkbox } from 'flowbite-svelte';
+    import { Icon } from 'flowbite-svelte-icons';
 </script>
 
 <Notification bind:this={notificationComponent} />
@@ -46,6 +51,18 @@
                 </div>                
             </div>
             <div id="body">
+                <Button>Dropdown checkbox<Icon name="chevron-down-solid" class="w-3 h-3 ml-2 text-white dark:text-white" /></Button>
+<Dropdown class="w-44 p-3 space-y-3 text-sm">
+  <li>
+    <Checkbox>Default checkbox</Checkbox>
+  </li>
+  <li>
+    <Checkbox checked>Checked state</Checkbox>
+  </li>
+  <li>
+    <Checkbox>Default checkbox</Checkbox>
+  </li>
+</Dropdown>
                 <slot></slot>
             </div>
         </div>
