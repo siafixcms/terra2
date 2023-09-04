@@ -103,7 +103,7 @@
     </div>
   </div>
 
-  <div class="dataTables_info">
+  <div class="loadingView">
     {#if loading}
       <span>Loading...</span>
     {/if}
@@ -138,6 +138,14 @@
 </div>
 
 <style>
+  .loadingView {
+    position: absolute;
+    top: 60px;
+    left: 12px;
+    background-color: #fff;
+    padding: 10px;
+  }
+
   .filters {
     width: 50%;
     margin-bottom: 10px;
