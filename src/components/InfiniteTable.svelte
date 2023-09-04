@@ -49,11 +49,6 @@
     resetData();
   }
 
-  function removeFilter(field) {
-    delete activeFilters[field];
-    resetData();
-  }
-
   loadTotalRecords();
   loadData();
   loadDistinctValues();
@@ -143,171 +138,89 @@
 
 <style>
   .dataTables_wrapper {
-      font-family: Arial, sans-serif;
-      position: relative;
-      padding: 20px;
-      border: 1px solid #ddd;
-      background-color: #fff;
-  }
-
-  .dataTables_filter {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-  }
-
-  .dataTables_table table tbody {
-    border: 1px solid #ccc;
-  }
-  .dataTables_table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .dataTables_table_head {
-    width: calc(100%); /* Adjust based on your scrollbar width */
-  }
-
-  .dataTables_table thead {
-      background-color: #f5f5f5;
-  }
-
-  .dataTables_table thead th {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-  }
-
-  .dataTables_table tbody tr:hover {
-      background-color: #f5f5f5;
-  }
-
-  .dataTables_table tbody td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-  }
-
-  .dataTables_info {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      font-size: 0.9em;
-      color: #666;
-  }
-
-  .breadcrumbs {
-      margin: 10px 0;
-      font-size: 0.9em;
-  }
-
-  .breadcrumbs span {
-      margin-right: 10px;
-      background-color: #f5f5f5;
-      padding: 5px;
-      border-radius: 4px;
-  }
-
-  .breadcrumbs button {
-      margin-left: 5px;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-  }
-
-  .dataTables_table {
+    font-family: Arial, sans-serif;
     position: relative;
-  }
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
 
-  .dataTables_table_head {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: #f5f5f5;
-  }
+.dataTables_filter {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-  .dataTables_table_body {
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: block;
-  }
+.dataTables_table table tbody {
+  border: 1px solid #ccc;
+}
 
 .dataTables_table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.dataTables_table_head,
-.dataTables_table tr {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
 .dataTables_table thead {
-  display: table-header-group;
+    background-color: #f5f5f5;
 }
 
-.dataTables_table tbody {
-  display: table-row-group;
-}
-
-.dataTables_table {
-    display: block;
-    width: 100%;
-  }
-
-  .dataTables_table_head,
-  .dataTables_table_body {
-    display: block;
-  }
-
-  .dataTables_table_head {
-    overflow: hidden;
-  }
-
-  .dataTables_table_head table,
-  .dataTables_table_body table {
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  .custom-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .custom-dropdown-button {
-    background-color: #f1f1f1;
-    border: none;
+.dataTables_table thead th {
     padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-  .custom-dropdown-icon {
-    margin-left: 5px;
-  }
+.dataTables_table tbody tr:hover {
+    background-color: #f5f5f5;
+}
 
-  .custom-dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+.dataTables_table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
 
-  .custom-dropdown-item {
-    padding: 12px 16px;
-    display: block;
-  }
+.dataTables_info {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
 
-  .custom-dropdown:hover .custom-dropdown-menu {
-    display: block;
-  }
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-dropdown-button {
+  background-color: #f1f1f1;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.custom-dropdown-icon {
+  margin-left: 5px;
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.custom-dropdown-item {
+  padding: 12px 16px;
+  display: block;
+}
+
+.custom-dropdown:hover .custom-dropdown-menu {
+  display: block;
+}
 
 </style>
