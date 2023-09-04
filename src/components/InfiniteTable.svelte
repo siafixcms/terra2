@@ -98,19 +98,19 @@
 
   <div class="filters">
     {#each filters as field}
-      <div>
-        <Button>{headers[field] || field}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
-        <Dropdown let:toggle let:menu>
-          <div use:menu class="w-44 p-3 space-y-3 text-sm">
-            {#each distinctValues[field] || [] as option}
-              <li>
-                <Checkbox checked={isChecked(field, option)} on:change={() => toggleChecked(field, option)}>
-                  {option}
-                </Checkbox>
-              </li>
-            {/each}
-          </div>
-        </Dropdown>
+      <div class="custom-dropdown">
+        <button class="custom-dropdown-button">
+          {headers[field] || field}
+          <span class="custom-dropdown-icon">▼</span>
+        </button>
+        <div class="custom-dropdown-menu">
+          {#each distinctValues[field] || [] as option}
+            <div class="custom-dropdown-item">
+              <input type="checkbox" id="{field}-{option}" checked={isChecked(field, option)} on:change={() => toggleChecked(field, option)} />
+              <label for="{field}-{option}">{option}</label>
+            </div>
+          {/each}
+        </div>
       </div>
     {/each}
   </div>
@@ -273,6 +273,41 @@
   .dataTables_table_body table {
     width: 100%;
     table-layout: fixed;
+  }
+
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-dropdown-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .custom-dropdown-icon {
+    margin-left: 5px;
+  }
+
+  .custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .custom-dropdown-item {
+    padding: 12px 16px;
+    display: block;
+  }
+
+  .custom-dropdown:hover .custom-dropdown-menu {
+    display: block;
   }
 
 </style>
