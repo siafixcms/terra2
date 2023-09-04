@@ -12,6 +12,7 @@
   let totalRecords;
   let distinctValues = {};
   let loading = false;
+  let timeout;
 
   async function loadData() {
     loading = true;
@@ -118,7 +119,7 @@
           {/each}
         </tr>
       </thead>
-      <tbody>
+      <tbody on:scroll={onScroll}>
         {#each data as row}
           <tr>
             {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
