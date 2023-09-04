@@ -76,6 +76,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     for (const [key, value] of Object.entries(filters)) {
         data[page] = data[page].filter(item => item[key] === value);
     }
+    console.log(data[page]);
 
     return data[page];
 }

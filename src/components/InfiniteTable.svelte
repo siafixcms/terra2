@@ -1,7 +1,5 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues } from './API.js';
-  import { Button, Dropdown, Checkbox } from 'flowbite-svelte';
-  import { Icon } from 'flowbite-svelte-icons';
 
   export let headers = {};
   export let visibleFields = [];
