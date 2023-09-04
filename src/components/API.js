@@ -78,7 +78,8 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     }
     console.log(data[page]);
 
-    return data[page];
+    return Array.isArray(data[page]) ? data[page] : [];
+    // return data[page];
 }
 
 export async function fetchTotalRecords() {
@@ -93,5 +94,6 @@ export async function fetchDistinctValues(field) {
     // const data = await response.json();
     // return data && data.length ? data : [];
     let data = {name: ['email', 'other'], category: [1,2,3,4]};
-    return data[field];
+    return Array.isArray(data[field]) ? data[field] : [];
+    // return data[field];
 }
