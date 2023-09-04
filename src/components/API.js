@@ -1,7 +1,9 @@
 export async function fetchData(query = '', filters = {}, page = 1) {
     const payload = {
         q: query,
-        ...filters,
+        filters: {
+            ...filters
+        },
         page
     };
     
@@ -21,7 +23,9 @@ export async function fetchData(query = '', filters = {}, page = 1) {
 export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     const payload = {
         q: query,
-        ...filters,
+        filters: {
+            ...filters
+        },
         page
     };
     
