@@ -111,24 +111,26 @@
   </div>
 
   <div class="dataTables_table">
-    <table>
-      <thead>
-        <tr>
-          {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
-            <th>{headers[field] || field}</th>
-          {/each}
-        </tr>
-      </thead>
-      <tbody class="scrollable-tbody" on:scroll={onScroll}>
-        {#each data as row}
+    <div class="scrollable-div" on:scroll={onScroll}>
+      <table>
+        <thead>
           <tr>
-            {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
-              <td>{row[field]}</td>
+            {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
+              <th>{headers[field] || field}</th>
             {/each}
           </tr>
-        {/each}
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="scrollable-tbody" on:scroll={onScroll}>
+          {#each data as row}
+            <tr>
+              {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
+                <td>{row[field]}</td>
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="dataTables_info">
@@ -231,10 +233,27 @@
   display: block;
 }
 
-.scrollable-tbody {
+.scrollable-div {
   height: 400px;
   overflow-y: auto;
-  display: block;
+  position: relative;
+}
+
+.dataTables_table thead {
+  display: table;
+  width: calc(100% - 17px); /* Account for scrollbar */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dataTables_table thead th {
+  background-color: #f5f5f5;
+}
+
+.dataTables_table tbody {
+  display: table;
+  width: 100%;
 }
 
 </style>
