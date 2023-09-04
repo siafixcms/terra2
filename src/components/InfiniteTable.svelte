@@ -1,5 +1,7 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues } from './API.js';
+  import { Button, Dropdown, Checkbox } from 'flowbite-svelte';
+  import { Icon } from 'flowbite-svelte-icons';
 
   export let headers = {};
   export let visibleFields = [];
@@ -97,17 +99,18 @@
   <div class="filters">
     {#each filters as field}
       <div>
-        <button>{headers[field] || field}</button>
-        <div>
-          {#each distinctValues[field] || [] as option}
-            <label>
-              <input type="checkbox" 
-                     checked={isChecked(field, option)} 
-                     on:change={() => toggleChecked(field, option)} />
-              {option}
-            </label>
-          {/each}
-        </div>
+        <Button>{headers[field] || field}<Icon name="chevron-down-solid" class="w-3 h-3 ml-2" /></Button>
+        <Dropdown let:toggle let:menu>
+          <div use:menu class="w-44 p-3 space-y-3 text-sm">
+            {#each distinctValues[field] || [] as option}
+              <li>
+                <Checkbox checked={isChecked(field, option)} on:change={() => toggleChecked(field, option)}>
+                  {option}
+                </Checkbox>
+              </li>
+            {/each}
+          </div>
+        </Dropdown>
       </div>
     {/each}
   </div>
