@@ -1,6 +1,5 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues } from './API.js';
-  import FilterItem from './FilterItem.svelte';
 
   export let headers = {};
   export let visibleFields = [];
@@ -15,35 +14,20 @@
   let loading = false;
 
   async function loadData() {
-    try {
-      loading = true;
-      const result = await fetchData(query, activeFilters, page);
-      if (result && result.length > 0) {
-        data = [...data, ...result];
-      }
-    } catch (error) {
-      console.error("Error loading data:", error);
-    } finally {
-      loading = false;
-    }
+    loading = true;
+    const result = await fetchData(query, activeFilters, page);
+    data = result ? [...data, ...result] : data;
+    loading = false;
   }
 
   async function loadDistinctValues() {
-    try {
-      for (let field of filters) {
-        distinctValues[field] = await fetchDistinctValues(field);
-      }
-    } catch (error) {
-      console.error("Error loading distinct values:", error);
+    for (let field of filters) {
+      distinctValues[field] = await fetchDistinctValues(field);
     }
   }
 
   async function loadTotalRecords() {
-    try {
-      totalRecords = await fetchTotalRecords();
-    } catch (error) {
-      console.error("Error loading total records:", error);
-    }
+    totalRecords = await fetchTotalRecords();
   }
 
   function resetData() {
@@ -55,9 +39,7 @@
 
   function onSearchInput() {
     clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      resetData();
-    }, 300);
+    timeout = setTimeout(resetData, 300);
   }
 
   function updateFilter(field, values) {
@@ -82,30 +64,18 @@
     }
   }
 
-  function handleFilterUpdate(event) {
-    const { field, selectedOptions } = event.detail;
-    updateFilter(field, selectedOptions);
+  function handleSelect(field, option) {
+    const values = activeFilters[field] || [];
+    if (values.includes(option)) {
+      values.splice(values.indexOf(option), 1);
+    } else {
+      values.push(option);
+    }
+    updateFilter(field, values);
   }
 
-  $: filterComponents = filters.map(field => {
-    return {
-      component: FilterItem,
-      props: {
-        field,
-        header: headers[field] || field,
-        options: distinctValues[field] || [],
-        selectValue: activeFilters[field] || []
-      },
-      on: {
-        update: handleFilterUpdate
-      }
-    };
-  });
-
-  let columnWidth;
-  $: {
-    const columnCount = visibleFields.length ? visibleFields.length : (data[0] ? Object.keys(data[0]).length : 1);
-    columnWidth = 100 / columnCount + '%';
+  function isChecked(field, option) {
+    return activeFilters[field]?.includes(option);
   }
 </script>
 
@@ -120,45 +90,40 @@
   <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
 
   <div class="filters">
-    {#each filterComponents as { component, props, on }}
-      <svelte:component this={component} {...props} on={on} />
-    {/each}
-  </div>
-
-  <div class="breadcrumbs">
-    {#each Object.keys(activeFilters) as field}
-      <span>
-        {field}: {activeFilters[field].join(', ')}
-        <button on:click={() => removeFilter(field)}>x</button>
-      </span>
+    {#each filters as field}
+      <div>
+        <button>{headers[field] || field}</button>
+        <div>
+          {#each distinctValues[field] || [] as option}
+            <label>
+              <input type="checkbox" bind:checked={isChecked(field, option)} on:change={() => handleSelect(field, option)} />
+              {option}
+            </label>
+          {/each}
+        </div>
+      </div>
     {/each}
   </div>
 
   <div class="dataTables_table">
-    <div class="dataTables_table_head">
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          {#each visibleFields as field}
+            <th>{headers[field] || field}</th>
+          {/each}
+        </tr>
+      </thead>
+      <tbody>
+        {#each data as row}
           <tr>
-            {#each (visibleFields.length ? visibleFields : (data[0] ? Object.keys(data[0]) : [])) as key}
-              <th style="width: {columnWidth};">{headers[key] || key}</th>
+            {#each visibleFields as field}
+              <td>{row[field]}</td>
             {/each}
           </tr>
-        </thead>
-      </table>
-    </div>
-    <div class="dataTables_table_body" on:scroll={onScroll}>
-      <table>
-        <tbody>
-          {#each data as row}
-            <tr>
-              {#each (visibleFields.length ? visibleFields : Object.keys(row)) as key}
-                <td style="width: {columnWidth};">{row[key]}</td>
-              {/each}
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
+        {/each}
+      </tbody>
+    </table>
   </div>
 
   <div class="dataTables_info">
