@@ -157,6 +157,7 @@
 }
 
 .dataTables_table table tbody {
+  height: 400px;
   border: 1px solid #ccc;
 }
 
