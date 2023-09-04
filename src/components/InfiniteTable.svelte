@@ -164,6 +164,7 @@
 
   .dataTables_table table {
     width: 100%;
+    table-layout: fixed;
   }
 
   .dataTables_table {
