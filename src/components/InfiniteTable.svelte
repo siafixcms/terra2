@@ -159,6 +159,10 @@
   border: 1px solid #ccc;
 }
 
+.dataTables_table table {
+  width: 100%;
+}
+
 .dataTables_table {
   width: 100%;
   border-collapse: collapse;
