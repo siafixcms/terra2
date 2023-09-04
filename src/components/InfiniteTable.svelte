@@ -119,7 +119,7 @@
           {/each}
         </tr>
       </thead>
-      <tbody on:scroll={onScroll}>
+      <tbody class="scrollable-tbody" on:scroll={onScroll}>
         {#each data as row}
           <tr>
             {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
@@ -228,6 +228,12 @@
 }
 
 .custom-dropdown:hover .custom-dropdown-menu {
+  display: block;
+}
+
+.scrollable-tbody {
+  height: 400px;
+  overflow-y: auto;
   display: block;
 }
 
