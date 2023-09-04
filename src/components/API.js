@@ -1,25 +1,43 @@
 export async function fetchData(query = '', filters = {}, page = 1) {
-    const params = new URLSearchParams({
+    const payload = {
         q: query,
         ...filters,
         page,
         per_page: 30
+    };
+    
+    const response = await fetch('/api/users/get', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
     });
-    const response = await fetch(`/api/users/get?${params.toString()}`);
+    
     const data = await response.json();
-    return data && data.length ? data : [];
+
+    return data && Array.isArray(data) ? data : [];
 }
 
 export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
-    const params = new URLSearchParams({
+    const payload = {
         q: query,
         ...filters,
         page,
         per_page: 30
+    };
+    
+    const response = await fetch('/api/users/totalRecords', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
     });
-    const response = await fetch(`/api/users/totalRecords?${params.toString()}`);
+    
     const data = await response.json();
     let vreturn = data && data.length ? data : [];
+
     return vreturn;
 }
 
