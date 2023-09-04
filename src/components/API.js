@@ -2,8 +2,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     const payload = {
         q: query,
         ...filters,
-        page,
-        per_page: 30
+        page
     };
     
     const response = await fetch('/api/users/get', {
@@ -23,8 +22,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     const payload = {
         q: query,
         ...filters,
-        page,
-        per_page: 30
+        page
     };
     
     const response = await fetch('/api/users/totalRecords', {
@@ -36,7 +34,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     });
     
     const data = await response.json();
-    let vreturn = data && data.length ? data : [];
+    let vreturn = data && data.length ? data : 0;
 
     return vreturn;
 }
