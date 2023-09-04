@@ -81,12 +81,6 @@
 </script>
 
 <div class="dataTables_wrapper">
-  <div class="dataTables_info">
-    {#if loading}
-      <span>Loading...</span>
-    {/if}
-  </div>
-
   <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
     <div class="filters">
@@ -107,6 +101,12 @@
         </div>
       {/each}
     </div>
+  </div>
+
+  <div class="dataTables_info">
+    {#if loading}
+      <span>Loading...</span>
+    {/if}
   </div>
 
   <div class="dataTables_table">
