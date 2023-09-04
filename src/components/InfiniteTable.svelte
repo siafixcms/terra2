@@ -241,7 +241,7 @@
 
 .dataTables_table thead {
   display: table;
-  width: calc(100% - 17px); /* Account for scrollbar */
+  width: calc(100%);
   position: sticky;
   top: 0;
   z-index: 1;
