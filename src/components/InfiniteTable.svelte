@@ -86,25 +86,27 @@
     {/if}
   </div>
 
-  <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
+  <div>
+    <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
 
-  <div class="filters">
-    {#each filters as field}
-      <div class="custom-dropdown">
-        <button class="custom-dropdown-button">
-          {headers[field] || field}
-          <span class="custom-dropdown-icon">▼</span>
-        </button>
-        <div class="custom-dropdown-menu">
-          {#each distinctValues[field] || [] as option}
-            <div class="custom-dropdown-item">
-              <input type="checkbox" id="{field}-{option}" checked={isChecked(field, option)} on:change={() => toggleChecked(field, option)} />
-              <label for="{field}-{option}">{option}</label>
-            </div>
-          {/each}
+    <div class="filters">
+      {#each filters as field}
+        <div class="custom-dropdown">
+          <button class="custom-dropdown-button">
+            {headers[field] || field}
+            <span class="custom-dropdown-icon">▼</span>
+          </button>
+          <div class="custom-dropdown-menu">
+            {#each distinctValues[field] || [] as option}
+              <div class="custom-dropdown-item">
+                <input type="checkbox" id="{field}-{option}" checked={isChecked(field, option)} on:change={() => toggleChecked(field, option)} />
+                <label for="{field}-{option}">{option}</label>
+              </div>
+            {/each}
+          </div>
         </div>
-      </div>
-    {/each}
+      {/each}
+    </div>
   </div>
 
   <div class="dataTables_table">
@@ -134,6 +136,9 @@
 </div>
 
 <style>
+  .filters {
+    width: 50%;
+  }
   .dataTables_wrapper {
     font-family: Arial, sans-serif;
     position: relative;
@@ -143,7 +148,7 @@
 }
 
 .dataTables_filter {
-    width: 100%;
+    width: 50%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
