@@ -1,6 +1,5 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues } from './API.js';
-  import Accordion from './Accordion.svelte';
   import FilterItem from './FilterItem.svelte';
 
   export let headers = {};
@@ -19,11 +18,8 @@
     try {
       loading = true;
       const result = await fetchData(query, activeFilters, page);
-      if (result && result.length > 0) { // Check if result is not empty
+      if (result && result.length > 0) {
         data = [...data, ...result];
-        console.log("Data loaded:", data); // Debug log
-      } else {
-        console.log("No more data to load"); // Debug log
       }
     } catch (error) {
       console.error("Error loading data:", error);
@@ -53,11 +49,10 @@
   function resetData() {
     data = [];
     page = 1;
-    loadTotalRecords().catch(error => console.error("Error in resetData - loadTotalRecords:", error));
-    loadData().catch(error => console.error("Error in resetData - loadData:", error));
+    loadTotalRecords();
+    loadData();
   }
 
-  let timeout;
   function onSearchInput() {
     clearTimeout(timeout);
     timeout = setTimeout(() => {
@@ -75,16 +70,15 @@
     resetData();
   }
 
-  loadTotalRecords().catch(error => console.error("Error in initial loadTotalRecords:", error));
-  loadData().catch(error => console.error("Error in initial loadData:", error));
-  loadDistinctValues().catch(error => console.error("Error in initial loadDistinctValues:", error));
+  loadTotalRecords();
+  loadData();
+  loadDistinctValues();
 
   function onScroll(event) {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight && !loading) {
-      console.log("Scroll event triggered"); // Debug log
       page++;
-      loadData().catch(error => console.error("Error in onScroll - loadData:", error));
+      loadData();
     }
   }
 
@@ -93,31 +87,20 @@
     updateFilter(field, selectedOptions);
   }
 
-  function generateFilterComponents(filters, headers, distinctValues, activeFilters) {
-    return filters.map(field => {
-      return {
-        component: FilterItem,
-        props: {
-          field,
-          header: headers[field] || field,
-          options: distinctValues[field] || [],
-          selectValue: activeFilters[field] || []
-        },
-        on: {
-          update: handleFilterUpdate
-        }
-      };
-    });
-  }
-
-  $: filterComponents = generateFilterComponents(filters, headers, distinctValues, activeFilters);
-  $: console.log("Filter components:", filterComponents);
-  $: content = [
-    {
-      header: "Filters",
-      body: filterComponents
-    }
-  ];
+  $: filterComponents = filters.map(field => {
+    return {
+      component: FilterItem,
+      props: {
+        field,
+        header: headers[field] || field,
+        options: distinctValues[field] || [],
+        selectValue: activeFilters[field] || []
+      },
+      on: {
+        update: handleFilterUpdate
+      }
+    };
+  });
 
   let columnWidth;
   $: {
@@ -136,7 +119,11 @@
 
   <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
 
-  <Accordion {content} />
+  <div class="filters">
+    {#each filterComponents as { component, props, on }}
+      <svelte:component this={component} {...props} on={on} />
+    {/each}
+  </div>
 
   <div class="breadcrumbs">
     {#each Object.keys(activeFilters) as field}

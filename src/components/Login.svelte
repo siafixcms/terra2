@@ -1,7 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
-  import socket from '../../lib/webSocketConnection.js';
+  import socket from '../lib/webSocketConnection.js';
   
   // State variables
   let username = "";
