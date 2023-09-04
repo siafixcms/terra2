@@ -115,7 +115,7 @@
         <thead>
           <tr>
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
-              <th>{headers[field] || field}</th>
+              <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
             {/each}
           </tr>
         </thead>
@@ -123,7 +123,7 @@
           {#each data as row}
             <tr>
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
-                <td>{row[field]}</td>
+                <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
             </tr>
           {/each}
