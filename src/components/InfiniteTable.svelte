@@ -77,6 +77,11 @@
   function isChecked(field, option) {
     return activeFilters[field]?.includes(option);
   }
+
+  function toggleChecked(field, option) {
+    const checked = isChecked(field, option);
+    handleSelect(field, option, !checked);
+  }
 </script>
 
 <div class="dataTables_wrapper">
@@ -96,7 +101,9 @@
         <div>
           {#each distinctValues[field] || [] as option}
             <label>
-              <input type="checkbox" bind:checked={isChecked(field, option)} on:change={() => handleSelect(field, option)} />
+              <input type="checkbox" 
+                     checked={isChecked(field, option)} 
+                     on:change={() => toggleChecked(field, option)} />
               {option}
             </label>
           {/each}
