@@ -87,9 +87,8 @@
     {/if}
   </div>
 
-  <div>
+  <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
-
     <div class="filters">
       {#each filters as field}
         <div class="custom-dropdown">
@@ -148,112 +147,128 @@
     padding: 20px;
     border: 1px solid #ddd;
     background-color: #fff;
-}
+  }
 
-.dataTables_filter {
-    width: 50%;
-    padding: 8px;
-    margin-bottom: 10px;
+  .dataTables_filter {
+      width: 50%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+  }
+
+  .dataTables_table table tbody {
+    height: 400px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-}
+  }
 
-.dataTables_table table tbody {
-  height: 400px;
-  border: 1px solid #ccc;
-}
+  .dataTables_table table {
+    width: 100%;
+  }
 
-.dataTables_table table {
-  width: 100%;
-}
+  .dataTables_table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.dataTables_table {
-  width: 100%;
-  border-collapse: collapse;
-}
+  .dataTables_table thead {
+      background-color: #f5f5f5;
+  }
 
-.dataTables_table thead {
-    background-color: #f5f5f5;
-}
+  .dataTables_table thead th {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+  }
 
-.dataTables_table thead th {
+  .dataTables_table tbody tr:hover {
+      background-color: #f5f5f5;
+  }
+
+  .dataTables_table tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .dataTables_info {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 0.9em;
+      color: #666;
+  }
+
+  .custom-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-dropdown-button {
+    background-color: #f1f1f1;
+    border: none;
     padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-.dataTables_table tbody tr:hover {
+  .custom-dropdown-icon {
+    margin-left: 5px;
+  }
+
+  .custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .custom-dropdown-item {
+    padding: 12px 16px;
+    display: block;
+  }
+
+  .custom-dropdown:hover .custom-dropdown-menu {
+    display: block;
+  }
+
+  .scrollable-div {
+    height: 400px;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .dataTables_table thead {
+    display: table;
+    width: calc(100%);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .dataTables_table thead th {
     background-color: #f5f5f5;
-}
+  }
 
-.dataTables_table tbody td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
+  .dataTables_table tbody {
+    display: table;
+    width: 100%;
+  }
 
-.dataTables_info {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 0.9em;
-    color: #666;
-}
+  .search-and-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-}
+  .dataTables_filter {
+    margin-right: auto;
+  }
 
-.custom-dropdown-button {
-  background-color: #f1f1f1;
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.custom-dropdown-icon {
-  margin-left: 5px;
-}
-
-.custom-dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.custom-dropdown-item {
-  padding: 12px 16px;
-  display: block;
-}
-
-.custom-dropdown:hover .custom-dropdown-menu {
-  display: block;
-}
-
-.scrollable-div {
-  height: 400px;
-  overflow-y: auto;
-  position: relative;
-}
-
-.dataTables_table thead {
-  display: table;
-  width: calc(100%);
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.dataTables_table thead th {
-  background-color: #f5f5f5;
-}
-
-.dataTables_table tbody {
-  display: table;
-  width: 100%;
-}
+  .filters {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+  }
 
 </style>
