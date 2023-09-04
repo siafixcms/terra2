@@ -34,7 +34,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     });
     
     const data = await response.json();
-    let vreturn = data && data.length ? data : 0;
+    let vreturn = data ? data : 0;
 
     return vreturn;
 }
