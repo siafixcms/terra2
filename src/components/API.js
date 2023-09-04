@@ -40,7 +40,17 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
 }
 
 export async function fetchDistinctValues(field) {
-    const response = await fetch(`/api/users/distinctValues?field=${field}`);
+    const payload = {field};
+    
+    const response = await fetch('/api/users/distinctValues', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    
     const data = await response.json();
-    return data && data.length ? data : [];
+
+    return data && Array.isArray(data) ? data : [];
 }
