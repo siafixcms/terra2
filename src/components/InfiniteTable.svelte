@@ -140,7 +140,7 @@
 <style>
   .loadingView {
     position: absolute;
-    top: 60px;
+    top: 62px;
     left: 12px;
     background-color: #fff;
     padding: 10px;
