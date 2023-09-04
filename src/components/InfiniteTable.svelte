@@ -84,7 +84,6 @@
     {#if loading}
       <span>Loading...</span>
     {/if}
-    Total records: {totalRecords}
   </div>
 
   <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
@@ -112,7 +111,7 @@
     <table>
       <thead>
         <tr>
-          {#each visibleFields as field}
+          {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
             <th>{headers[field] || field}</th>
           {/each}
         </tr>
@@ -120,7 +119,7 @@
       <tbody>
         {#each data as row}
           <tr>
-            {#each visibleFields as field}
+            {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
               <td>{row[field]}</td>
             {/each}
           </tr>
