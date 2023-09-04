@@ -140,6 +140,8 @@
 <style>
   .filters {
     width: 50%;
+    margin-bottom: 10px;
+    padding-left: 15px;
   }
   .dataTables_wrapper {
     font-family: Arial, sans-serif;
