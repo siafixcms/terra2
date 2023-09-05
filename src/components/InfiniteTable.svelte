@@ -1,12 +1,11 @@
 <script>
-  import { fetchData, fetchTotalRecords, fetchDistinctValues, baseUrl } from './API.js';
+  import { fetchData, fetchTotalRecords, fetchDistinctValues, setBaseUrl } from './API.js';
 
   export let headers = {};
   export let visibleFields = [];
   export let filters = [];
   export let importbaseUrl;
-
-  baseUrl = importbaseUrl;
+  setBaseUrl(importbaseUrl);
 
   let query = '';
   let activeFilters = {};

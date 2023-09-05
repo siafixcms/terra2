@@ -1,4 +1,8 @@
-export let baseUrl = '';
+let baseUrl = '';
+
+export function setBaseUrl(newBaseUrl) {
+    baseUrl = newBaseUrl;
+}
 
 export async function fetchData(query = '', filters = {}, page = 1) {
     const payload = {
