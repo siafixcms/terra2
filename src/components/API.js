@@ -1,3 +1,5 @@
+export let baseUrl = '';
+
 export async function fetchData(query = '', filters = {}, page = 1) {
     const payload = {
         q: query,
@@ -7,7 +9,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
         page
     };
     
-    const response = await fetch('/api/users/get', {
+    const response = await fetch('/api/' + baseUrl + '/get', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,7 +31,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
         page
     };
     
-    const response = await fetch('/api/users/totalRecords', {
+    const response = await fetch('/api/' + baseUrl + '/totalRecords', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
 export async function fetchDistinctValues(field) {
     const payload = {field};
     
-    const response = await fetch('/api/users/distinctValues', {
+    const response = await fetch('/api/' + baseUrl + '/distinctValues', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
