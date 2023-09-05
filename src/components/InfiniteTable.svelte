@@ -4,7 +4,9 @@
   export let headers = {};
   export let visibleFields = [];
   export let filters = [];
-  export baseUrl;
+  export let importbaseUrl;
+
+  baseUrl = importbaseUrl;
 
   let query = '';
   let activeFilters = {};
