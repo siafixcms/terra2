@@ -81,7 +81,7 @@
 
 <style>
   /* Button styles */
-  input {
+  input, select {
     margin: 10px;
   }
 
