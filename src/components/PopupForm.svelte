@@ -8,7 +8,7 @@
   export let title = "";
   export let buttonName = "";
 
-  let data = {
+  let defaultData = {
     name: "",
     type: "person",
     jur_address: "",
@@ -18,6 +18,7 @@
     phone: "",
     web: ""
   };
+  let data = defaultData;
 
   // Store to manage the popup visibility
   let showPopup = writable(false);
@@ -25,6 +26,7 @@
   // Function to handle form submission
   const handleSubmit = async () => {
     await create(data);
+    let data = defaultData;
     showPopup.set(false);
   };
 
