@@ -200,9 +200,11 @@
   }
 
   .dataTables_table thead th {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-transform: capitalize;
   }
 
   .dataTables_table tbody tr:hover {
@@ -268,10 +270,6 @@
     position: sticky;
     top: 0;
     z-index: 1;
-  }
-
-  .dataTables_table thead th {
-    background-color: #f5f5f5;
   }
 
   .dataTables_table tbody {
