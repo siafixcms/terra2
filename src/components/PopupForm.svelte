@@ -159,6 +159,7 @@
 
   .form-header, .form-footer {
     flex-shrink: 1; /* Adjust this */
+    margin-bottom: 15px;
   }
 
   .form-content {
