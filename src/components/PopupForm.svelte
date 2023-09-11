@@ -182,5 +182,7 @@
     margin-top: 20px;
     padding: 10px;
     border-top: 1px solid #ccc;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 </style>
