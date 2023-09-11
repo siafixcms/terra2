@@ -11,5 +11,5 @@
         <PopupButton importbaseUrl={'clients'} title={'Add a new client'} buttonName={'Add client'} class="ml-auto" />
     </div>
     
-    <InfiniteTable importbaseUrl={'clients'} visibleFields={['name', 'reg_num', 'email', 'phone', 'web', 'registered']} />
+    <InfiniteTable importbaseUrl={'clients'} visibleFields={['name', 'reg_num', 'email', 'phone', 'web', 'registered']} headers={{'reg_num': 'Reg num'}} />
 </Layout>
