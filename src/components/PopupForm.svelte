@@ -21,7 +21,7 @@
   // Function to handle form submission
   const handleSubmit = () => {
     // Save data in the passed context
-    context.data = "Your data here"; // Replace this with actual form data
+    context.data = data; // Replace this with actual form data
     showPopup.set(false);
   };
 
@@ -29,7 +29,44 @@
   const closePopup = () => {
     showPopup.set(false);
   };
+
+  // Function to handle keyboard events for the close button
+  const handleKeydown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      closePopup();
+    }
+  };
 </script>
+
+<button class="button" on:click={() => showPopup.set(true)}>Open Popup</button>
+
+<!-- Popup -->
+{#if $showPopup}
+  <div class="popup">
+    <div class="popup-content">
+      <!-- Close button -->
+      <span 
+        class="close-button" 
+        on:click={closePopup} 
+        on:keydown={handleKeydown} 
+        tabindex="0" 
+        role="button" 
+        aria-label="Close popup"
+      >
+        X
+      </span>
+
+      <!-- Form -->
+      <form on:submit|preventDefault={handleSubmit}>
+        <input bind:value={data.name} type="text" placeholder="Client full name" required />
+        <select bind:value={data.type} required>
+          <option value="person">Person</option>
+          <option value="company">Company</option>
+        </select>
+      </form>
+    </div>
+  </div>
+{/if}
 
 <style>
   /* Button styles */
@@ -72,28 +109,3 @@
     cursor: pointer;
   }
 </style>
-
-<!-- Button to open the popup -->
-<button class="button" on:click={() => showPopup.set(true)}>Open Popup</button>
-
-<!-- Popup -->
-{#if $showPopup}
-  <div class="popup">
-    <div class="popup-content">
-      <!-- Close button -->
-      <span class="close-button" on:click={closePopup}>X</span>
-
-      <!-- Form -->
-      <form on:submit|preventDefault={handleSubmit}>
-        
-        <input bind:value={data.name} type="text" placeholder="Client full name" required />
-        <select bind:value={data.type} required>
-          <option value="person">Person</option>
-          <option value="company">Company</option>
-        </select>
-
-        <button type="submit">Save</button>
-      </form>
-    </div>
-  </div>
-{/if}
