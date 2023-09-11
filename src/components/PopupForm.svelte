@@ -20,8 +20,8 @@
   let showPopup = writable(false);
 
   // Function to handle form submission
-  const handleSubmit = () => {
-    data = data; // Replace this with actual form data
+  const handleSubmit = async () => {
+    await create(data);
     showPopup.set(false);
   };
 
