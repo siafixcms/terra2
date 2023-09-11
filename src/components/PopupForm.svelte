@@ -177,9 +177,17 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
-    padding: 10px; /* Add padding */
+    width: 24px; /* Set width */
+    height: 24px; /* Set height */
+    line-height: 24px; /* Center the "X" */
+    text-align: center; /* Center the "X" horizontally */
     border-radius: 50%; /* Make it circular */
-    background-color: #f1f1f1; /* Add background color */
+    background-color: transparent; /* Default to transparent */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+
+  .close-button:hover {
+    background-color: #f1f1f1; /* Background color on hover */
   }
 
   .form-footer {
