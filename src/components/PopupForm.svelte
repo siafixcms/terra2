@@ -58,7 +58,8 @@
 
       <!-- Form -->
       <form on:submit|preventDefault={handleSubmit}>
-        <div class="form-content"></div>
+        <div class="form-content">
+          <!-- Your form fields here -->
           <input bind:value={data.name} type="text" placeholder="Client full name" required />
           <select bind:value={data.type} required>
             <option value="person">Person</option>
