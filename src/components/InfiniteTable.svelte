@@ -276,7 +276,7 @@
 
   .dataTables_table tbody {
     display: table;
-    width: 100%;
+    width: calc(100%);
   }
 
   .search-and-filters {
