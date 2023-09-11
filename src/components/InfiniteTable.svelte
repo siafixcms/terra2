@@ -19,9 +19,6 @@
 
   let uniqueId = importbaseUrl + '_table';
 
-  $: columnWidth = visibleFields.length ? 100 / visibleFields.length : 100;
-  $: numColumns = visibleFields.length ? visibleFields.length : Object.keys(data[0] || {}).length;
-
   $: if ($reinitialize[uniqueId]) {
     resetData();
     reinitialize.update(state => {
@@ -126,12 +123,12 @@
   </div>
 
   <div class="dataTables_table">
-    <div class="scrollable-div" on:scroll={onScroll} style={`--num-columns: ${numColumns};`}>
+    <div class="scrollable-div" on:scroll={onScroll}>
       <table>
         <thead>
           <tr>
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
-              <th style="width: {columnWidth}%;">{headers[field] || field}</th>
+              <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
             {/each}
           </tr>
         </thead>
@@ -139,7 +136,7 @@
           {#each data as row}
             <tr>
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
-                <td style="width: {columnWidth}%;">{row[field]}</td>
+                <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
             </tr>
           {/each}
@@ -191,10 +188,6 @@
   .dataTables_table table {
     width: 100%;
     table-layout: fixed;
-  }
-
-  .dataTables_table th, .dataTables_table td {
-    width: calc(100% / var(--num-columns));
   }
 
   .dataTables_table {
