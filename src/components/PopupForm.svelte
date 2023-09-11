@@ -145,19 +145,19 @@
     position: relative;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    width: 400px;
-    max-height: 90vh;
+    max-width: 80%; /* Adjust this */
+    width: auto; /* Adjust this */
+    max-height: auto; /* Adjust this */
   }
 
   .form-header, .form-footer {
-    flex-shrink: 0; /* Prevents shrinking */
+    flex-shrink: 1; /* Adjust this */
   }
 
   .form-content {
     overflow-y: auto;
     flex-grow: 1;
-    height: calc(90vh - 100px); /* Adjust this value based on the total height of your header and footer */
+    height: auto; /* Adjust this */
   }
 
   .close-button {
