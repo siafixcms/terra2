@@ -184,6 +184,7 @@
     border-radius: 50%; /* Make it circular */
     background-color: transparent; /* Default to transparent */
     transition: background-color 0.3s ease; /* Smooth transition */
+    border: 1px solid #ccc;
   }
 
   .close-button:hover {
