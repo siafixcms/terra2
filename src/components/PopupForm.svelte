@@ -138,6 +138,8 @@
   }
 
   .popup-content {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 20px;
     position: relative;
@@ -149,9 +151,13 @@
     overflow-y: auto; /* Make it scrollable */
   }
 
-  .form-header {
-    text-align: left; /* Left-align the title */
-    margin-bottom: 20px;
+  .form-header, .form-footer {
+    flex-shrink: 0; /* Prevents shrinking */
+  }
+
+  .form-content {
+    overflow-y: auto; /* Makes it scrollable */
+    flex-grow: 1; /* Takes up remaining space */
   }
 
   .close-button {
@@ -164,14 +170,6 @@
     background-color: #f1f1f1; /* Add background color */
   }
 
-  /* Form content styles */
-  .form-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  /* Form footer styles */
   .form-footer {
     display: flex;
     justify-content: flex-end;
