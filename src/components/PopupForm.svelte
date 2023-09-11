@@ -1,8 +1,9 @@
 <script>
   import { writable } from "svelte/store";
+  import { create, setBaseUrl } from './API.js';
 
-  // Prop to receive the context
-  export let context;
+  export let importbaseUrl;
+  setBaseUrl(importbaseUrl);
 
   let data = {
     name: "",
@@ -20,8 +21,7 @@
 
   // Function to handle form submission
   const handleSubmit = () => {
-    // Save data in the passed context
-    context.data = data; // Replace this with actual form data
+    data = data; // Replace this with actual form data
     showPopup.set(false);
   };
 

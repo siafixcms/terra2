@@ -64,3 +64,48 @@ export async function fetchDistinctValues(field) {
 
     return data && Array.isArray(data) ? data : [];
 }
+
+export async function create(payload) {
+    
+    const response = await fetch('/api/' + baseUrl + '/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    
+    const data = await response.json();
+
+    return data && data.ok ? true : false;
+}
+
+export async function update(payload) {
+    
+    const response = await fetch('/api/' + baseUrl + '/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    
+    const data = await response.json();
+
+    return data && data.ok ? true : false;
+}
+
+export async function delete(payload) {
+    
+    const response = await fetch('/api/' + baseUrl + '/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    });
+    
+    const data = await response.json();
+
+    return data && data.ok ? true : false;
+}
