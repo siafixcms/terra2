@@ -148,7 +148,6 @@
     max-width: 90%; /* Set max-width */
     width: 400px; /* Set width */
     max-height: 90vh; /* Set max-height */
-    overflow-y: auto; /* Make it scrollable */
   }
 
   .form-header, .form-footer {
