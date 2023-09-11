@@ -5,6 +5,8 @@
   export let importbaseUrl;
   setBaseUrl(importbaseUrl);
 
+  export let title = "Default Title";
+
   let data = {
     name: "",
     type: "person",
@@ -44,6 +46,9 @@
 {#if $showPopup}
   <div class="popup">
     <div class="popup-content">
+      <div class="form-header">
+        <h2>{title}</h2>
+      </div>
       <!-- Close button -->
       <span 
         class="close-button" 
@@ -87,6 +92,11 @@
   /* Button styles */
   input, select {
     margin: 10px;
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   button[type="submit"] {
