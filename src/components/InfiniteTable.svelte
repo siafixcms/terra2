@@ -1,5 +1,6 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues, setBaseUrl } from './API.js';
+  import { reinitialize } from "./ReinitComponents.svelte";
 
   export let headers = {};
   export let visibleFields = [];
