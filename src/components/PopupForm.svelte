@@ -81,6 +81,10 @@
 
 <style>
   /* Button styles */
+  input {
+    margin: 10px;
+  }
+
   .button {
     padding: 10px 20px;
     background-color: blue;
