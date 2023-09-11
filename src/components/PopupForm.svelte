@@ -58,22 +58,25 @@
 
       <!-- Form -->
       <form on:submit|preventDefault={handleSubmit}>
-        <input bind:value={data.name} type="text" placeholder="Client full name" required />
-        <select bind:value={data.type} required>
-          <option value="person">Person</option>
-          <option value="company">Company</option>
-        </select>
-        <br />
-        <input bind:value={data.jur_address} type="text" placeholder="Official address" required />
-        <input bind:value={data.fact_address} type="text" placeholder="Actual address" required />
-        <br />
-        <input bind:value={data.email} type="email" placeholder="E-mail address" required />
-        <input bind:value={data.reg_num} type="text" placeholder="Registration number or personal code or social security number" required />
-        <br />
-        <input bind:value={data.phone} type="text" placeholder="Phone number" required />
-        <input bind:value={data.web} type="text" placeholder="Web page" />
-        <br />
-        <button type="submit">Save</button>
+        <div class="form-content"></div>
+          <input bind:value={data.name} type="text" placeholder="Client full name" required />
+          <select bind:value={data.type} required>
+            <option value="person">Person</option>
+            <option value="company">Company</option>
+          </select>
+          <br />
+          <input bind:value={data.jur_address} type="text" placeholder="Official address" required />
+          <input bind:value={data.fact_address} type="text" placeholder="Actual address" required />
+          <br />
+          <input bind:value={data.email} type="email" placeholder="E-mail address" required />
+          <input bind:value={data.reg_num} type="text" placeholder="Registration number or personal code or social security number" required />
+          <br />
+          <input bind:value={data.phone} type="text" placeholder="Phone number" required />
+          <input bind:value={data.web} type="text" placeholder="Web page" />
+        </div>
+        <div class="form-footer">
+          <button type="submit">Save</button>
+        </div>
       </form>
     </div>
   </div>
@@ -128,5 +131,21 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
+  }
+
+  /* Form content styles */
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Form footer styles */
+  .form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
   }
 </style>
