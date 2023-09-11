@@ -63,6 +63,10 @@
           <option value="person">Person</option>
           <option value="company">Company</option>
         </select>
+        <input bind:value={data.jur_address} type="text" placeholder="Official address" required />
+        <input bind:value={data.fact_address} type="text" placeholder="Actual address" required />
+        <input bind:value={data.email} type="email" placeholder="E-mail address" required />
+        <button type="submit">Save</button>
       </form>
     </div>
   </div>
