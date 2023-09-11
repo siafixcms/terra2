@@ -1,6 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import { create, setBaseUrl } from './API.js';
+  import { reinitialize } from "./ReinitComponents.svelte";
 
   export let importbaseUrl;
   setBaseUrl(importbaseUrl);
@@ -19,6 +20,7 @@
     web: ""
   };
   let data = defaultData;
+  let uniqueId = importbaseUrl + '_table';
 
   // Store to manage the popup visibility
   let showPopup = writable(false);
@@ -27,6 +29,10 @@
   const handleSubmit = async () => {
     await create(data);
     data = defaultData;
+    reinitialize.update(state => {
+      state[uniqueId] = true;
+      return state;
+    });
     showPopup.set(false);
   };
 

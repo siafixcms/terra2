@@ -16,6 +16,16 @@
   let loading = false;
   let timeout;
 
+  let uniqueId = importbaseUrl + '_table';
+
+  $: if ($reinitialize[uniqueId]) {
+    resetData();
+    reinitialize.update(state => {
+      state[uniqueId] = false;
+      return state;
+    });
+  }
+
   async function loadData() {
     loading = true;
     const result = await fetchData(query, activeFilters, page);
