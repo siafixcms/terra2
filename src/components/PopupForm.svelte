@@ -19,9 +19,8 @@
     phone: "",
     web: ""
   };
-  let data = {};
+  let data = { ...defaultData };
   let uniqueId = importbaseUrl + '_table';
-  resetData();
 
   // Store to manage the popup visibility
   let showPopup = writable(false);
