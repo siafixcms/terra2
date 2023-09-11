@@ -72,7 +72,7 @@ export async function create(payload) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: {data: JSON.stringify(payload)}
     });
     
     const data = await response.json();
@@ -87,7 +87,7 @@ export async function update(payload) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: {data: JSON.stringify(payload)}
     });
     
     const data = await response.json();
@@ -102,7 +102,7 @@ export async function softdelete(payload) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: {data: JSON.stringify(payload)}
     });
     
     const data = await response.json();
