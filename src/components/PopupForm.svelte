@@ -145,9 +145,9 @@
     position: relative;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 90%; /* Set max-width */
-    width: 400px; /* Set width */
-    max-height: 90vh; /* Set max-height */
+    max-width: 90%;
+    width: 400px;
+    max-height: 90vh;
   }
 
   .form-header, .form-footer {
@@ -155,8 +155,9 @@
   }
 
   .form-content {
-    overflow-y: auto; /* Makes it scrollable */
-    flex-grow: 1; /* Takes up remaining space */
+    overflow-y: auto;
+    flex-grow: 1;
+    height: calc(90vh - 100px); /* Adjust this value based on the total height of your header and footer */
   }
 
   .close-button {
