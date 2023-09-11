@@ -5,11 +5,11 @@
 </script>
 
 <Layout>
-
     <h2 class="text-2xl font-semibold text-gray-800 my-4">Clients</h2>
 
-    <PopupButton importbaseUrl={'clients'} title={'Add a new client'} buttonName={'Add client'} />
+    <div class="flex justify-end mb-4">
+        <PopupButton importbaseUrl={'clients'} title={'Add a new client'} buttonName={'Add client'} class="ml-auto" />
+    </div>
     
     <InfiniteTable importbaseUrl={'clients'} />
-    
 </Layout>
