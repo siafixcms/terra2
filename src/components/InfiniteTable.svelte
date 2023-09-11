@@ -20,6 +20,7 @@
   let uniqueId = importbaseUrl + '_table';
 
   $: columnWidth = visibleFields.length ? 100 / visibleFields.length : 100;
+  $: numColumns = visibleFields.length ? visibleFields.length : Object.keys(data[0] || {}).length;
 
   $: if ($reinitialize[uniqueId]) {
     resetData();
@@ -125,7 +126,7 @@
   </div>
 
   <div class="dataTables_table">
-    <div class="scrollable-div" on:scroll={onScroll}>
+    <div class="scrollable-div" on:scroll={onScroll} style={`--num-columns: ${numColumns};`}>
       <table>
         <thead>
           <tr>
@@ -190,6 +191,10 @@
   .dataTables_table table {
     width: 100%;
     table-layout: fixed;
+  }
+
+  .dataTables_table th, .dataTables_table td {
+    width: calc(100% / var(--num-columns));
   }
 
   .dataTables_table {
