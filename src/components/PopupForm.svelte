@@ -19,8 +19,9 @@
     phone: "",
     web: ""
   };
-  let data = defaultData;
+  let data = {};
   let uniqueId = importbaseUrl + '_table';
+  resetData();
 
   // Store to manage the popup visibility
   let showPopup = writable(false);
@@ -107,11 +108,6 @@
     margin: 10px;
   }
 
-  .form-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
   button[type="submit"] {
     padding: 10px;
     border: 1px solid black;
@@ -148,6 +144,15 @@
     position: relative;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 90%; /* Set max-width */
+    width: 400px; /* Set width */
+    max-height: 90vh; /* Set max-height */
+    overflow-y: auto; /* Make it scrollable */
+  }
+
+  .form-header {
+    text-align: left; /* Left-align the title */
+    margin-bottom: 20px;
   }
 
   .close-button {
@@ -155,6 +160,9 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
+    padding: 10px; /* Add padding */
+    border-radius: 50%; /* Make it circular */
+    background-color: #f1f1f1; /* Add background color */
   }
 
   /* Form content styles */
