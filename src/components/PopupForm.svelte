@@ -26,7 +26,7 @@
   // Function to handle form submission
   const handleSubmit = async () => {
     await create(data);
-    let data = defaultData;
+    data = defaultData;
     showPopup.set(false);
   };
 
