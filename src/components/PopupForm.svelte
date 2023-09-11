@@ -25,10 +25,14 @@
   // Store to manage the popup visibility
   let showPopup = writable(false);
 
+  const resetData = () => {
+    data = { ...defaultData };
+  };
+
   // Function to handle form submission
   const handleSubmit = async () => {
     await create(data);
-    data = defaultData;
+    resetData();
     reinitialize.update(state => {
       state[uniqueId] = true;
       return state;
