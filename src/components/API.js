@@ -1,3 +1,5 @@
+import { encryptData, decryptData } from './encodingUtils.js';
+
 let baseUrl = '';
 
 export function setBaseUrl(newBaseUrl) {

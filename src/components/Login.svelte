@@ -2,6 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
+  import { encryptData, decryptData } from './encodingUtils.js';
   
   // State variables
   let username = "";
@@ -37,45 +38,6 @@
 
   async function notify(msg) {
     notificationComponent.displayNotification(msg);
-  }
-
-  async function encryptData(data) {
-    const encodedData = encoder.encode(data);
-    const key = await window.crypto.subtle.importKey(
-        "raw",
-        encoder.encode(secret),
-        { name: "AES-CBC", length: 256 },
-        false,
-        ["encrypt"]
-    );
-    const iv = window.crypto.getRandomValues(new Uint8Array(16));
-    const encryptedContent = await window.crypto.subtle.encrypt(
-        { name: "AES-CBC", iv: iv },
-        key,
-        encodedData
-    );
-    const encryptedArray = new Uint8Array(encryptedContent);
-    const encryptedBase64 = btoa(String.fromCharCode(...encryptedArray));
-    const ivHex = Array.from(iv).map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    return { encryptedData: encryptedBase64, iv: ivHex };
-  }
-
-  async function decryptData(encryptedPayload) {
-    const [encryptedData, ivHex] = encryptedPayload.split('|_|_|');
-    const iv = new Uint8Array(ivHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-    const key = await window.crypto.subtle.importKey(
-        "raw",
-        encoder.encode(secret),
-        { name: "AES-CBC", length: 256 },
-        false,
-        ["decrypt"]
-    );
-    const decryptedContent = await window.crypto.subtle.decrypt(
-        { name: "AES-CBC", iv: iv },
-        key,
-        new Uint8Array(atob(encryptedData).split("").map(char => char.charCodeAt(0)))
-    );
-    return decoder.decode(decryptedContent);
   }
 
   async function apiCall(url, data) {
