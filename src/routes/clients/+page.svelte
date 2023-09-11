@@ -8,7 +8,7 @@
 
     <h2 class="text-2xl font-semibold text-gray-800 my-4">Clients</h2>
 
-    <PopupButton importbaseUrl={'clients'} />
+    <PopupButton importbaseUrl={'clients'} title={'Add a new client'} buttonName={'Add client'} />
     
     <InfiniteTable importbaseUrl={'clients'} />
     

@@ -5,7 +5,8 @@
   export let importbaseUrl;
   setBaseUrl(importbaseUrl);
 
-  export let title = "Default Title";
+  export let title = "";
+  export let buttonName = "";
 
   let data = {
     name: "",
@@ -40,7 +41,7 @@
   };
 </script>
 
-<button class="button" on:click={() => showPopup.set(true)}>Open Popup</button>
+<button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
 
 <!-- Popup -->
 {#if $showPopup}
