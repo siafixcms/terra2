@@ -95,7 +95,7 @@ export async function update(payload) {
     return data && data.ok ? true : false;
 }
 
-export async function delete(payload) {
+export async function softdelete(payload) {
     
     const response = await fetch('/api/' + baseUrl + '/delete', {
         method: 'POST',
