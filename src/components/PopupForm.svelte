@@ -1,7 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import { create, setBaseUrl } from './API.js';
-  import { reinitialize } from "./ReinitComponents.svelte";
+  import { reinitialize } from "./ReinitComponents.js";
 
   export let importbaseUrl;
   setBaseUrl(importbaseUrl);
