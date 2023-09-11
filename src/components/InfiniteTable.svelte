@@ -262,13 +262,13 @@
     position: relative;
   }
 
-  .dataTables_table thead {
+  /* .dataTables_table thead {
     display: table;
     width: calc(100%);
     position: sticky;
     top: 0;
     z-index: 1;
-  }
+  } */
 
   .dataTables_table thead th {
     background-color: #f5f5f5;
