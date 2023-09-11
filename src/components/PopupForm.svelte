@@ -177,9 +177,9 @@
     top: 10px;
     right: 10px;
     cursor: pointer;
-    width: 24px; /* Set width */
-    height: 24px; /* Set height */
-    line-height: 24px; /* Center the "X" */
+    width: 36px; /* Set width */
+    height: 36px; /* Set height */
+    line-height: 36px; /* Center the "X" */
     text-align: center; /* Center the "X" horizontally */
     border-radius: 50%; /* Make it circular */
     background-color: transparent; /* Default to transparent */
