@@ -8,7 +8,6 @@
   let username = "";
   let password = "";
   let system = "terra_balance";
-  let secret = "terra_balance_seterra_balance_se";
   export const token = writable(null);
   export let notificationComponent;
   const acl = writable([]);
