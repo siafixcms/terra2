@@ -19,6 +19,8 @@
 
   let uniqueId = importbaseUrl + '_table';
 
+  $: columnWidth = visibleFields.length ? 100 / visibleFields.length : 100;
+
   $: if ($reinitialize[uniqueId]) {
     resetData();
     reinitialize.update(state => {
@@ -128,7 +130,7 @@
         <thead>
           <tr>
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
-              <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
+              <th style="width: {columnWidth}%;">{headers[field] || field}</th>
             {/each}
           </tr>
         </thead>
@@ -136,7 +138,7 @@
           {#each data as row}
             <tr>
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
-                <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
+                <td style="width: {columnWidth}%;">{row[field]}</td>
               {/each}
             </tr>
           {/each}
