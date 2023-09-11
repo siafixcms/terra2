@@ -157,6 +157,12 @@
     max-height: auto; /* Adjust this */
   }
 
+  .form-header {
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
   .form-header, .form-footer {
     flex-shrink: 1; /* Adjust this */
     margin-bottom: 15px;
