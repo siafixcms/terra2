@@ -95,11 +95,6 @@
 {/if}
 
 <style>
-  /* Styles moved to external components */
-</style>
-
-
-<style>
   /* Button styles */
   .form-content-wrapper {
     max-height: calc(100vh - 200px); /* Adjust based on your header and footer height */
