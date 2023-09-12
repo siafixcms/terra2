@@ -75,7 +75,6 @@
     }
   }
 
-
   function handleSelect(field, option) {
     const values = activeFilters[field] || [];
     if (values.includes(option)) {
