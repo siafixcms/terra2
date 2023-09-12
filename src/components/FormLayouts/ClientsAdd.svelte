@@ -1,4 +1,5 @@
 <script>
+    import { reinitialize } from "../ReinitComponents.js";
     import { create, setBaseUrl } from '../API.js';
 
     export let data;
@@ -8,6 +9,17 @@
 
     export const handleSubmit = async () => {
         await create(data);
+    };
+
+    export let defaultData = {
+        name: "",
+        type: "person",
+        jur_address: "",
+        fact_address: "",
+        email: "",
+        reg_num: "",
+        phone: "",
+        web: ""
     };
 </script>
 
