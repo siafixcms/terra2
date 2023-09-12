@@ -55,10 +55,9 @@
 
     let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
     
-    console.log("Importing from:", importPath);  // For debugging
-    
     import(importPath)
       .then(module => {
+        console.log(module);
         formStore.set({
           layout: module.default,
           handleSubmit: module.handleSubmit || null,
