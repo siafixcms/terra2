@@ -1,4 +1,4 @@
-import { encryptData, decryptData } from './encodingUtils.js';
+import { encryptData, decryptData, apiCall } from './APITools.js';
 
 let baseUrl = '';
 
@@ -15,13 +15,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
         page
     };
     
-    const response = await fetch('/api/' + baseUrl + '/get', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    });
+    const response = await apiCall('/api/' + baseUrl + '/get', payload);
     
     const data = await response.json();
 
@@ -37,13 +31,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
         page
     };
     
-    const response = await fetch('/api/' + baseUrl + '/totalRecords', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    });
+    const response = await apiCall('/api/' + baseUrl + '/totalRecords', payload);
     
     const data = await response.json();
     let vreturn = data ? data : 0;
@@ -54,13 +42,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
 export async function fetchDistinctValues(field) {
     const payload = {field};
     
-    const response = await fetch('/api/' + baseUrl + '/distinctValues', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    });
+    const response = await apiCall('/api/' + baseUrl + '/distinctValues', payload);
     
     const data = await response.json();
 
@@ -69,13 +51,7 @@ export async function fetchDistinctValues(field) {
 
 export async function create(payload) {
     
-    const response = await fetch('/api/' + baseUrl + '/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({data: payload})
-    });
+    const response = await apiCall('/api/' + baseUrl + '/create', {data: payload});
     
     const data = await response.json();
 
@@ -84,13 +60,7 @@ export async function create(payload) {
 
 export async function update(payload) {
     
-    const response = await fetch('/api/' + baseUrl + '/update', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({data: payload})
-    });
+    const response = await apiCall('/api/' + baseUrl + '/update', {data: payload});
     
     const data = await response.json();
 
@@ -99,13 +69,7 @@ export async function update(payload) {
 
 export async function softdelete(payload) {
     
-    const response = await fetch('/api/' + baseUrl + '/delete', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({data: payload})
-    });
+    const response = await apiCall('/api/' + baseUrl + '/delete', {data: payload});
     
     const data = await response.json();
 

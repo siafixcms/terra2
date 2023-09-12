@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
-  import { encryptData, decryptData } from './encodingUtils.js';
+  import { encryptData, decryptData, apiCall } from './APITools.js';
   
   // State variables
   let username = "";
@@ -37,28 +37,6 @@
 
   async function notify(msg) {
     notificationComponent.displayNotification(msg);
-  }
-
-  async function apiCall(url, data) {
-    const payload = JSON.stringify(data);
-    const { encryptedData, iv } = await encryptData(payload);
-    const response = await fetch('/api' + url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: encryptedData + '|_|_|' + iv
-    });
-    const encryptedPayload = await response.text();
-    const decryptedResponse = await decryptData(encryptedPayload);
-    let jsonResponse;
-    try {
-        jsonResponse = JSON.parse(decryptedResponse);
-    } catch (error) {
-        console.error("Error parsing JSON:", error);
-    }
-    if( jsonResponse.notification ) {
-      notify(jsonResponse.notification);
-    }
-    return jsonResponse;
   }
 
   async function logout() {
