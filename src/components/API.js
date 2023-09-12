@@ -31,7 +31,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     
     const data = await apiCall('/api/' + baseUrl + '/totalRecords', payload);
     
-    let vreturn = data ? data.result : 0;
+    let vreturn = data ? parseInt(data.result) : 0;
 
     return vreturn;
 }
