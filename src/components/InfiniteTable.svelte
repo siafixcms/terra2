@@ -68,10 +68,13 @@
   function onScroll(event) {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight && !loading) {
-      page++;
-      loadData();
+      if (data.length < totalRecords) {
+        page++;
+        loadData();
+      }
     }
   }
+
 
   function handleSelect(field, option) {
     const values = activeFilters[field] || [];
