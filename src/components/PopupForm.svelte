@@ -50,9 +50,9 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`);
+  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`);
 
- 
+  
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
