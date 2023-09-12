@@ -52,7 +52,13 @@
 
   console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`);
 
-  
+  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
+    formStore.set({
+      layout: module.default,
+      handleSubmit: module.handleSubmit || null,  // Use the handler from the imported component
+      defaultData: module.defaultData || {}
+    });
+  });
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
@@ -77,9 +83,7 @@
       <form on:submit|preventDefault={handleSubmit}>
         <div class="form-content-wrapper">
           <div class="form-content">
-            {#if dynamicForm && dynamicForm.layout}
               <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
-            {/if}
           </div>
         </div>
         <div class="form-footer">
