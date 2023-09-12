@@ -1,11 +1,9 @@
 <script>
   import { writable, get } from "svelte/store";
   import formStore from "./stores/formStore.js";
-  import { create, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
 
   export let importbaseUrl;
-  setBaseUrl(importbaseUrl);
 
   export let action;
   export let title = "";
@@ -14,10 +12,8 @@
   let data = {};
   let uniqueId = importbaseUrl + '_table';
 
-  // Store to manage the popup visibility
   let showPopup = writable(false);
 
-  // Subscribe to formStore
   let dynamicForm;
   formStore.subscribe(value => {
     dynamicForm = value;
@@ -26,14 +22,12 @@
     }
   });
 
-  // Function to reset form data
   const resetData = () => {
     if (dynamicForm.defaultData) {
       data = { ...dynamicForm.defaultData };
     }
   };
 
-  // Function to handle form submission
   const handleSubmit = async () => {
     if (dynamicForm && dynamicForm.handleSubmit) {
       await dynamicForm.handleSubmit(data);
@@ -42,12 +36,10 @@
     showPopup.set(false);
   };
 
-  // Function to close the popup
   const closePopup = () => {
     showPopup.set(false);
   };
 
-  // Function to handle keyboard events for the close button
   const handleKeydown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       closePopup();
@@ -58,19 +50,10 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  // Load the form layout and handler dynamically
   import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? '/' + capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
     formStore.set({
       layout: module.default,
-      handleSubmit: async (data) => {
-        await create(data);
-        resetData();
-        reinitialize.update(state => {
-          state[uniqueId] = true;
-          return state;
-        });
-        showPopup.set(false);
-      },
+      handleSubmit: module.handleSubmit || null,  // Use the handler from the imported component
       defaultData: module.defaultData || {}
     });
   });
@@ -78,14 +61,12 @@
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
 
-<!-- Popup -->
 {#if $showPopup}
   <div class="popup">
     <div class="popup-content">
       <div class="form-header">
         <h2>{title}</h2>
       </div>
-      <!-- Close button -->
       <span 
         class="close-button" 
         on:click={closePopup} 
@@ -97,12 +78,11 @@
         X
       </span>
 
-      <!-- Form -->
       <form on:submit|preventDefault={handleSubmit}>
         <div class="form-content-wrapper">
           <div class="form-content">
             {#if dynamicForm && dynamicForm.layout}
-              <svelte:component this={dynamicForm.layout} bind:data={data} />
+              <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} />
             {/if}
           </div>
         </div>
@@ -115,11 +95,12 @@
 {/if}
 
 <style>
-  /* Button styles */
-  input, select {
-    margin: 10px;
-  }
+  /* Styles moved to external components */
+</style>
 
+
+<style>
+  /* Button styles */
   .form-content-wrapper {
     max-height: calc(100vh - 200px); /* Adjust based on your header and footer height */
     overflow-y: auto;
