@@ -31,7 +31,6 @@
     loading = true;
     const result = await fetchData(query, activeFilters, page);
     data = result ? [...data, ...result] : data;
-    console.log(data);
     loading = false;
   }
 
