@@ -45,22 +45,24 @@ export async function decryptData(encryptedPayload) {
 export async function apiCall(url, data) {
   const payload = JSON.stringify(data);
   const { encryptedData, iv } = await encryptData(payload);
-  console.log("Encrypted Data:", encryptedData); // Debug
   const response = await fetch('/api' + url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: encryptedData + '|_|_|' + iv
   });
   const encryptedPayload = await response.text();
-  console.log("Received Encrypted Payload:", encryptedPayload); // Debug
   const decryptedResponse = await decryptData(encryptedPayload);
-  console.log("Decrypted Response:", decryptedResponse); // Debug
   let jsonResponse;
   try {
-      jsonResponse = JSON.parse(decryptedResponse.trim);
+    if (typeof decryptedResponse === 'string') {
+      jsonResponse = JSON.parse(decryptedResponse);
+    } else if (typeof decryptedResponse === 'object') {
+      jsonResponse = decryptedResponse;
+    } else {
+      console.error("Unexpected data type for decryptedResponse:", typeof decryptedResponse);
+    }
   } catch (error) {
       console.error("Error parsing JSON:", error);
-      console.error("Invalid JSON String:", decryptedResponse); // Debug
   }
   if( jsonResponse.notification ) {
     notify(jsonResponse.notification);
