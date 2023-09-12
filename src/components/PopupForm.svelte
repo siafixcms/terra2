@@ -1,7 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import formStore from "../stores/formStore.js";
-  import fs from "fs";
+  import { onMount } from "svelte";
 
   export let importbaseUrl;
 
@@ -50,22 +50,8 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  import { onMount } from "svelte";
-
   onMount(() => {
-    let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
-
-    
-
-
-    fs.access(importPath, fs.constants.F_OK, (err) => {
-      if (err) {
-        console.log("File does not exist");
-      } else {
-        console.log("File exists");
-      }
-    });
-
+    let importPath = './FormLayouts/ClientsAdd.svelte';
     
     import(importPath)
       .then(module => {
