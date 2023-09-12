@@ -50,7 +50,7 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? '/' + capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
+  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
     formStore.set({
       layout: module.default,
       handleSubmit: module.handleSubmit || null,  // Use the handler from the imported component
