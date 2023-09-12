@@ -3,19 +3,16 @@
   import formStore from "../stores/formStore.js";
   import { onMount } from "svelte";
   import ClientsAdd from "./FormLayouts/ClientsAdd.svelte";
-  formStore.set({
-    layout: ClientsAdd.default,
-    handleSubmit: ClientsAdd.handleSubmit || null,
-    defaultData: ClientsAdd.defaultData || {}
-  });
+  
 
   export let importbaseUrl;
 
   export let action;
   export let title = "";
   export let buttonName = "";
-
+  
   let data = {};
+  let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
   let uniqueId = importbaseUrl + '_table';
 
 
@@ -57,6 +54,22 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  onMount(() => {
+    
+    console.log("Importing from:", importPath);  // For debugging
+    
+    import(importPath)
+      .then(module => {
+        formStore.set({
+          layout: module.default,
+          handleSubmit: module.handleSubmit || null,
+          defaultData: module.defaultData || {}
+        });
+      })
+      .catch(err => {
+        console.error("Import failed:", err);
+      });
+  });
   
 </script>
 
