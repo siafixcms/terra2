@@ -50,10 +50,10 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  onMount(() => {
-    let importPath = './FormLayouts/ClientsAdd.svelte';
+  onMount(async () => {
+    let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
     
-    import(importPath)
+    await import(importPath)
       .then(module => {
         formStore.set({
           layout: module.default,
