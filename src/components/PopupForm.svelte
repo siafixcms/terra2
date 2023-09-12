@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
   import formStore from "../stores/formStore.js";
   import { onMount } from "svelte";
-  import ClientsAdd from './FormLayouts/ClientsAdd.svelte';
+  import ClientsAdd from "./FormLayouts/ClientsAdd.svelte";
   formStore.set({
     layout: ClientsAdd.default,
     handleSubmit: ClientsAdd.handleSubmit || null,
