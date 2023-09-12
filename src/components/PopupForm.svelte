@@ -1,6 +1,7 @@
 <script>
   import { writable } from "svelte/store";
   import formStore from "../stores/formStore.js";
+  import fs from "fs";
 
   export let importbaseUrl;
 
@@ -54,7 +55,7 @@
   onMount(() => {
     let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
 
-    import fs from "fs";
+    
 
 
     fs.access(importPath, fs.constants.F_OK, (err) => {
