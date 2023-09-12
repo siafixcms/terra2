@@ -82,7 +82,7 @@
         <div class="form-content-wrapper">
           <div class="form-content">
             {#if dynamicForm && dynamicForm.layout}
-              <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} />
+              <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
             {/if}
           </div>
         </div>
