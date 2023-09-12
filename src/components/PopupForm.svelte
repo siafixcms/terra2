@@ -50,9 +50,18 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`);
+  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`)
+  .then(module => {
+    formStore.set({
+      layout: module.default,
+      handleSubmit: module.handleSubmit || null,
+      defaultData: module.defaultData || {}
+    });
+  })
+  .catch(error => {
+    console.error("Dynamic import failed:", error);
+  });
 
-  
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
