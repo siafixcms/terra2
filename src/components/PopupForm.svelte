@@ -58,8 +58,6 @@ import { onMount } from "svelte";
 onMount(() => {
   let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
   
-  console.log("Importing from:", importPath);  // For debugging
-  
   import(importPath)
     .then(module => {
       formStore.set({
