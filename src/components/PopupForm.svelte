@@ -54,7 +54,7 @@
   onMount(() => {
     let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
 
-    const fs = require('fs');
+    import fs from "fs";
 
 
     fs.access(importPath, fs.constants.F_OK, (err) => {
