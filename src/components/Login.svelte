@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
-  import { encryptData, decryptData, apiCall, setNotificationComponent } from './APITools.js';
+  import { apiCall, setNotificationComponent } from './APITools.js';
   
   // State variables
   let username = "";
@@ -14,9 +14,6 @@
   const acl = writable([]);
   let isProcessing = false;
   let errorMessage = "";
-
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
 
   // Load authentication status on startup
   onMount(async () => {
