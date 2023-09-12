@@ -50,8 +50,15 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : '');
-  
+  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`);
+
+  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
+    formStore.set({
+      layout: module.default,
+      handleSubmit: module.handleSubmit || null,  // Use the handler from the imported component
+      defaultData: module.defaultData || {}
+    });
+  });
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
