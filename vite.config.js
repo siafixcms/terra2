@@ -4,5 +4,8 @@ import VitePluginSocketIO from './plugins/vite-plugin-svelte-socketio';
 
 
 export default defineConfig({
-	plugins: [sveltekit(), VitePluginSocketIO()]
+	plugins: [sveltekit(), VitePluginSocketIO()],
+	optimizeDeps: {
+		include: ['./src/components/FormLayouts']
+	}
 });
