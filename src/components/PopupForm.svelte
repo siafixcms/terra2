@@ -1,6 +1,6 @@
 <script>
   import { writable, get } from "svelte/store";
-  import formStore from "./stores/formStore.js";
+  import formStore from "../stores/formStore.js";
   import { reinitialize } from "./ReinitComponents.js";
 
   export let importbaseUrl;
