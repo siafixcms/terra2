@@ -1,42 +1,44 @@
 <script>
-  import { writable } from "svelte/store";
+  import { writable, get } from "svelte/store";
+  import formStore from "./stores/formStore.js";
   import { create, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
 
   export let importbaseUrl;
   setBaseUrl(importbaseUrl);
 
+  export let action;
   export let title = "";
   export let buttonName = "";
 
-  let defaultData = {
-    name: "",
-    type: "person",
-    jur_address: "",
-    fact_address: "",
-    email: "",
-    reg_num: "",
-    phone: "",
-    web: ""
-  };
-  let data = { ...defaultData };
+  let data = {};
   let uniqueId = importbaseUrl + '_table';
 
   // Store to manage the popup visibility
   let showPopup = writable(false);
 
+  // Subscribe to formStore
+  let dynamicForm;
+  formStore.subscribe(value => {
+    dynamicForm = value;
+    if (dynamicForm.defaultData) {
+      data = { ...dynamicForm.defaultData };
+    }
+  });
+
+  // Function to reset form data
   const resetData = () => {
-    data = { ...defaultData };
+    if (dynamicForm.defaultData) {
+      data = { ...dynamicForm.defaultData };
+    }
   };
 
   // Function to handle form submission
   const handleSubmit = async () => {
-    await create(data);
+    if (dynamicForm && dynamicForm.handleSubmit) {
+      await dynamicForm.handleSubmit(data);
+    }
     resetData();
-    reinitialize.update(state => {
-      state[uniqueId] = true;
-      return state;
-    });
     showPopup.set(false);
   };
 
@@ -51,6 +53,27 @@
       closePopup();
     }
   };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  // Load the form layout and handler dynamically
+  import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? '/' + capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
+    formStore.set({
+      layout: module.default,
+      handleSubmit: async (data) => {
+        await create(data);
+        resetData();
+        reinitialize.update(state => {
+          state[uniqueId] = true;
+          return state;
+        });
+        showPopup.set(false);
+      },
+      defaultData: module.defaultData || {}
+    });
+  });
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
@@ -76,24 +99,12 @@
 
       <!-- Form -->
       <form on:submit|preventDefault={handleSubmit}>
-          <div class="form-content-wrapper">
-            <div class="form-content">
-              <!-- Your form fields here -->
-              <input bind:value={data.name} type="text" placeholder="Client full name" required />
-              <select bind:value={data.type} required>
-                <option value="person">Person</option>
-                <option value="company">Company</option>
-              </select>
-              <br />
-              <input bind:value={data.jur_address} type="text" placeholder="Official address" required />
-              <input bind:value={data.fact_address} type="text" placeholder="Actual address" required />
-              <br />
-              <input bind:value={data.email} type="email" placeholder="E-mail address" required />
-              <input bind:value={data.reg_num} type="text" placeholder="Registration number or personal code or social security number" required />
-              <br />
-              <input bind:value={data.phone} type="text" placeholder="Phone number" required />
-              <input bind:value={data.web} type="text" placeholder="Web page" />
-            </div>
+        <div class="form-content-wrapper">
+          <div class="form-content">
+            {#if dynamicForm && dynamicForm.layout}
+              <svelte:component this={dynamicForm.layout} bind:data={data} />
+            {/if}
+          </div>
         </div>
         <div class="form-footer">
           <button type="submit">Save</button>
