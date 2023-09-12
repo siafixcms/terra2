@@ -16,7 +16,7 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     };
     
     const data = await apiCall('/api/' + baseUrl + '/get', payload);
-    console.log({data});
+    console.log(data);
 
     return data && Array.isArray(data) ? data : [];
 }
@@ -31,7 +31,7 @@ export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
     };
     
     const data = await apiCall('/api/' + baseUrl + '/totalRecords', payload);
-    console.log({data});
+    console.log(data);
     
     let vreturn = data ? data.result : 0;
 
@@ -42,7 +42,7 @@ export async function fetchDistinctValues(field) {
     const payload = {field};
     
     const data = await apiCall('/api/' + baseUrl + '/distinctValues', payload);
-    console.log({data});
+    console.log(data);
     
     return data && Array.isArray(data) ? data : [];
 }
