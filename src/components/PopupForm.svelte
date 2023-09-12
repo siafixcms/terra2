@@ -50,6 +50,7 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  console.log(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : '');
   import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`).then(module => {
     formStore.set({
       layout: module.default,
