@@ -1,6 +1,7 @@
 <script>
     import Layout from '../../components/Layout.svelte';
     import InfiniteTable from '../../components/InfiniteTable.svelte';
+    import PopupButton from '../../components/PopupForm.svelte';
 </script>
 
 <Layout>
