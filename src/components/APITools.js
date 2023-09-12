@@ -2,6 +2,11 @@ const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
 let secret = "terra_balance_seterra_balance_se";
+let notificationComponent;
+
+export function setNotificationComponent(component) {
+  notificationComponent = component;
+}
 
 export async function encryptData(data) {
   const encodedData = encoder.encode(data);
@@ -40,6 +45,10 @@ export async function decryptData(encryptedPayload) {
       new Uint8Array(atob(encryptedData).split("").map(char => char.charCodeAt(0)))
   );
   return decoder.decode(decryptedContent);
+}
+
+export async function notify(msg) {
+  notificationComponent.displayNotification(msg);
 }
 
 export async function apiCall(url, data) {

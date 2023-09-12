@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
-  import { encryptData, decryptData, apiCall } from './APITools.js';
+  import { encryptData, decryptData, apiCall, setNotificationComponent } from './APITools.js';
   
   // State variables
   let username = "";
@@ -10,6 +10,7 @@
   let system = "terra_balance";
   export const token = writable(null);
   export let notificationComponent;
+  setNotificationComponent(notificationComponent);
   const acl = writable([]);
   let isProcessing = false;
   let errorMessage = "";
@@ -33,10 +34,6 @@
 
   async function sendMessage(message) {
     socket.emit('message', message);
-  }
-
-  async function notify(msg) {
-    notificationComponent.displayNotification(msg);
   }
 
   async function logout() {
