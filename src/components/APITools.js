@@ -51,13 +51,16 @@ export async function apiCall(url, data) {
       body: encryptedData + '|_|_|' + iv
   });
   const encryptedPayload = await response.text();
-  const decryptedResponse = await decryptData(encryptedPayload);
+  const decryptedResponse = (await decryptData(encryptedPayload)).trim();
   let jsonResponse;
   try {
-    if (typeof decryptedResponse === 'string') {
-      jsonResponse = JSON.parse(decryptedResponse);
-    } else if (typeof decryptedResponse === 'object') {
-      jsonResponse = decryptedResponse;
+    const trimmedResponse = decryptedResponse.trim();
+    if (trimmedResponse === '') {
+      console.error("Empty response received.");
+    } else if (typeof trimmedResponse === 'string') {
+      jsonResponse = JSON.parse(trimmedResponse);
+    } else if (typeof trimmedResponse === 'object') {
+      jsonResponse = trimmedResponse;
     } else {
       console.error("Unexpected data type for decryptedResponse:", typeof decryptedResponse);
     }
