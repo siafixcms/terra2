@@ -4,6 +4,7 @@
 
     export let data;
     export let importbaseUrl;
+    console.log(importbaseUrl);
 
     setBaseUrl(importbaseUrl);
 
