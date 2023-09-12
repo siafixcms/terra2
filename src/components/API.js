@@ -16,9 +16,9 @@ export async function fetchData(query = '', filters = {}, page = 1) {
     };
     
     const data = await apiCall('/api/' + baseUrl + '/get', payload);
-    console.log(data);
+    data = Object.values(data);
 
-    return data ? data : [];
+    return data && Array.isArray(data) ? data : [];
 }
 
 export async function fetchTotalRecords(query = '', filters = {}, page = 1) {
@@ -41,7 +41,7 @@ export async function fetchDistinctValues(field) {
     const payload = {field};
     
     const data = await apiCall('/api/' + baseUrl + '/distinctValues', payload);
-    console.log(data);
+    data = Object.values(data);
     
     return data && Array.isArray(data) ? data : [];
 }
