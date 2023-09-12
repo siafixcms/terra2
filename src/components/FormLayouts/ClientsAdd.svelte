@@ -4,12 +4,16 @@
 
     export let data;
     export let importbaseUrl;
-    console.log('this is it', importbaseUrl);
 
     setBaseUrl(importbaseUrl);
+    let uniqueId = importbaseUrl + '_table';
 
     export const handleSubmit = async () => {
         await create(data);
+        reinitialize.update(state => {
+            state[uniqueId] = true;
+            return state;
+        });
     };
 
     export let defaultData = {
