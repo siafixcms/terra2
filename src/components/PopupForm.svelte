@@ -55,21 +55,24 @@ console.log("action:", action);
 
 import { onMount } from "svelte";
 
-$: {
-  if (importbaseUrl && action) {
-    import(`./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`)
-      .then(module => {
-        formStore.set({
-          layout: module.default,
-          handleSubmit: module.handleSubmit || null,  // Use the handler from the imported component
-          defaultData: module.defaultData || {}
-        });
-      })
-      .catch(err => {
-        console.error("Import failed:", err);
+onMount(() => {
+  let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
+  
+  console.log("Importing from:", importPath);  // For debugging
+  
+  import(importPath)
+    .then(module => {
+      formStore.set({
+        layout: module.default,
+        handleSubmit: module.handleSubmit || null,
+        defaultData: module.defaultData || {}
       });
-  }
-}
+    })
+    .catch(err => {
+      console.error("Import failed:", err);
+    });
+});
+
 
 </script>
 
