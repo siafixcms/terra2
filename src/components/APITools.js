@@ -57,7 +57,7 @@ export async function apiCall(url, data) {
   console.log("Decrypted Response:", decryptedResponse); // Debug
   let jsonResponse;
   try {
-      jsonResponse = JSON.parse(decryptedResponse);
+      jsonResponse = JSON.parse(decryptedResponse.trim);
   } catch (error) {
       console.error("Error parsing JSON:", error);
       console.error("Invalid JSON String:", decryptedResponse); // Debug
