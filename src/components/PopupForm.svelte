@@ -49,29 +49,23 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  console.log("importbaseUrl:", importbaseUrl);
-console.log("action:", action);
+  import { onMount } from "svelte";
 
-
-import { onMount } from "svelte";
-
-onMount(() => {
-  let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
-  
-  import(importPath)
-    .then(module => {
-      formStore.set({
-        layout: module.default,
-        handleSubmit: module.handleSubmit || null,
-        defaultData: module.defaultData || {}
+  onMount(() => {
+    let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
+    
+    import(importPath)
+      .then(module => {
+        formStore.set({
+          layout: module.default,
+          handleSubmit: module.handleSubmit || null,
+          defaultData: module.defaultData || {}
+        });
+      })
+      .catch(err => {
+        console.error("Import failed:", err);
       });
-    })
-    .catch(err => {
-      console.error("Import failed:", err);
-    });
-});
-
-
+  });
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
