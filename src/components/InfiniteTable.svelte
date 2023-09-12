@@ -30,9 +30,6 @@
   async function loadData() {
     loading = true;
     const result = await fetchData(query, activeFilters, page);
-    if( result.ok ) {
-      delete result.ok;
-    }
     data = result ? [...data, ...result] : data;
     console.log(data);
     loading = false;
