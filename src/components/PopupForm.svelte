@@ -53,6 +53,18 @@
 
   onMount(() => {
     let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
+
+    const fs = require('fs');
+
+
+    fs.access(importPath, fs.constants.F_OK, (err) => {
+      if (err) {
+        console.log("File does not exist");
+      } else {
+        console.log("File exists");
+      }
+    });
+
     
     import(importPath)
       .then(module => {
