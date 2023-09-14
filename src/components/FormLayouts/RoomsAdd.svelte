@@ -31,7 +31,7 @@
     };
 </script>
 
-<input bind:value={data.name} type="text" placeholder="Client full name" required />
+<input bind:value={data.name} type="text" placeholder="Room name" required />
 
 <style>
     input, select {
