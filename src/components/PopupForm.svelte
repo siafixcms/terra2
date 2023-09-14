@@ -1,21 +1,19 @@
 <script>
   import { writable } from "svelte/store";
   import formStore from "../stores/formStore.js";
+  import componentRegistry from './componentRegistry.js'; // Import the registry
   import { onMount } from "svelte";
-  
 
   export let importbaseUrl;
-
   export let action;
   export let title = "";
   export let buttonName = "";
-  
+
   let data = {};
   let uniqueId = importbaseUrl + '_table';
-
   let showPopup = writable(false);
-
   let dynamicForm;
+
   formStore.subscribe(value => {
     dynamicForm = value;
     if (dynamicForm.defaultData) {
@@ -51,24 +49,22 @@
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  onMount(() => {
+  let Component; // Declare a variable to hold the dynamically selected component
 
-    let importPath = `./FormLayouts/${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}.svelte`;
-    
-    import(importPath)
-      .then(module => {
-        console.log(module);
-        formStore.set({
-          layout: module.default,
-          handleSubmit: module.handleSubmit || null,
-          defaultData: module.defaultData || {}
-        });
-      })
-      .catch(err => {
-        console.error("Import failed:", err);
+  onMount(() => {
+    const componentName = `${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`;
+    Component = componentRegistry[componentName]; // Look up the component in the registry
+
+    if (Component) {
+      formStore.set({
+        layout: Component,
+        handleSubmit: Component.handleSubmit || null,
+        defaultData: Component.defaultData || {}
       });
+    } else {
+      console.error("Component not found in registry:", componentName);
+    }
   });
-  
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
