@@ -93,6 +93,17 @@
     const checked = isChecked(field, option);
     handleSelect(field, option, !checked);
   }
+
+  function editRow(row) {
+    // Your edit logic here
+    console.log("Editing row:", row);
+  }
+
+  function deleteRow(row) {
+    // Your delete logic here
+    console.log("Deleting row:", row);
+  }
+
 </script>
 
 <div class="dataTables_wrapper">
@@ -132,6 +143,7 @@
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
               <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
             {/each}
+            <th style="width: auto;">Actions</th>
           </tr>
         </thead>
         <tbody class="scrollable-tbody" on:scroll={onScroll}>
@@ -140,6 +152,9 @@
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
                 <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
+              <td style="width: auto;">
+                <a href="#" class="action-link" on:click={() => editRow(row)}>Edit</a> | <a href="#" class="action-link" on:click={() => deleteRow(row)}>Delete</a>
+              </td>
             </tr>
           {/each}
         </tbody>
@@ -153,6 +168,16 @@
 </div>
 
 <style>
+  .action-link {
+    margin-right: 10px;
+    color: blue;
+    text-decoration: none;
+  }
+
+  .action-link:last-child {
+    margin-right: 0;
+  }
+
   .loadingView {
     position: absolute;
     top: 65px;
