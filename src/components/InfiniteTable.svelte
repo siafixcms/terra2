@@ -153,8 +153,9 @@
                 <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
               <td style="width: auto;">
-                <a href="#" class="action-link" on:click={() => editRow(row)}>Edit</a> | <a href="#" class="action-link" on:click={() => deleteRow(row)}>Delete</a>
-              </td>
+                <button class="action-button" on:click={() => editRow(row)}>Edit</button> |
+                <button class="action-button" on:click={() => deleteRow(row)}>Delete</button>
+              </td>              
             </tr>
           {/each}
         </tbody>
@@ -168,6 +169,20 @@
 </div>
 
 <style>
+  .action-button {
+    background: none;
+    color: blue;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .action-button:last-child {
+    margin-right: 0;
+  }
   .action-link {
     margin-right: 10px;
     color: blue;
