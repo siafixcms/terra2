@@ -12,7 +12,6 @@
   export let buttonName = "";
 
   let data = {};
-  let uniqueId = importbaseUrl + '_table';
   let showPopup = writable(false);
   let dynamicForm;
 
@@ -61,7 +60,7 @@
 
   onMount(() => {
     const componentName = `${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`;
-    Component = componentRegistry[componentName]; // Look up the component in the registry
+    Component = componentRegistry[componentName];
 
     if (Component) {
       formStore.set({
@@ -109,9 +108,8 @@
 {/if}
 
 <style>
-  /* Button styles */
   .form-content-wrapper {
-    max-height: calc(100vh - 200px); /* Adjust based on your header and footer height */
+    max-height: calc(100vh - 200px);
     overflow-y: auto;
   }
 
@@ -131,7 +129,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  /* Popup styles */
   .popup {
     position: fixed;
     top: 0;
@@ -189,7 +186,7 @@
   }
 
   .close-button:hover {
-    background-color: #f1f1f1; /* Background color on hover */
+    background-color: #f1f1f1;
   }
 
   .form-footer {
