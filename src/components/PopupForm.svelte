@@ -1,7 +1,8 @@
 <script>
-  import { writable, onMount } from "svelte/store";
+  import { writable } from "svelte/store";
   import formStore from "../stores/formStore.js";
   import componentRegistry from './ComponentRegistry.js';
+  import { onMount } from "svelte";
   import handleSubmitStore from '../stores/handleSubmitStore';
 
   export let importbaseUrl;
