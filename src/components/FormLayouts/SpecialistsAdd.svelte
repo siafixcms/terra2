@@ -34,7 +34,7 @@
 <input bind:value={data.name} type="text" placeholder="Specialist name" required />
 
 <style>
-    input, select {
+    input {
         margin: 10px;
     }
 </style>
