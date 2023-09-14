@@ -1,10 +1,9 @@
 <script>
-  import { writable } from "svelte/store";
+  import { writable, onMount } from "svelte/store";
   import formStore from "../stores/formStore.js";
   import componentRegistry from './ComponentRegistry.js';
   import { onMount } from "svelte";
   import handleSubmitStore from '../stores/handleSubmitStore';
-
 
   export let importbaseUrl;
   export let action;
@@ -12,6 +11,7 @@
   export let buttonName = "";
 
   let data = {};
+  let formElement;
   let showPopup = writable(false);
   let dynamicForm;
 
@@ -72,6 +72,13 @@
       console.error("Component not found in registry:", componentName);
     }
   });
+
+  $: if ($showPopup && formElement) {
+    const firstInput = formElement.querySelector('input');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }
 </script>
 
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
@@ -93,7 +100,7 @@
         X
       </span>
 
-      <form on:submit|preventDefault={handleSubmit}>
+      <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
         <div class="form-content-wrapper">
           <div class="form-content">
               <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
