@@ -29,6 +29,8 @@
 
   const handleSubmit = async () => {
     console.log('got to handleSubmit in popup');
+    console.log('dynamicForm', dynamicForm);
+    console.log('dynamicForm.handleSubmit', dynamicForm.handleSubmit);
     if (dynamicForm && dynamicForm.handleSubmit) {
       console.log('found dynamic handler from component');
       await dynamicForm.handleSubmit(data);
