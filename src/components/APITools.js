@@ -85,6 +85,5 @@ export async function apiCall(url, data) {
       notify(responseQ.notification);
     }
   }
-  console.log('api response:', jsonResponse.notification, jsonResponse);
   return jsonResponse;
 }
