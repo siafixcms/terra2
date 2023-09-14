@@ -183,15 +183,6 @@
   .action-button:last-child {
     margin-right: 0;
   }
-  .action-link {
-    margin-right: 10px;
-    color: blue;
-    text-decoration: none;
-  }
-
-  .action-link:last-child {
-    margin-right: 0;
-  }
 
   .loadingView {
     position: absolute;
