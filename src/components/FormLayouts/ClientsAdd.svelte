@@ -9,11 +9,14 @@
     let uniqueId = importbaseUrl + '_table';
 
     export const handleSubmit = async () => {
+        console.log('HandleSubmit triggered');
         await create(data);
+        console.log('create called');
         reinitialize.update(state => {
             state[uniqueId] = true;
             return state;
         });
+        console.log('reinit should hav happened');
     };
 
     export let defaultData = {
