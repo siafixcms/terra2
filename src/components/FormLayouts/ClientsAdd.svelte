@@ -1,6 +1,7 @@
 <script>
     import { reinitialize } from "../ReinitComponents.js";
     import { create, setBaseUrl } from '../API.js';
+    import handleSubmitStore from '../stores/handleSubmitStore';
 
     export let data;
     export let importbaseUrl;
@@ -18,6 +19,8 @@
         });
         console.log('reinit should have happened');
     };
+
+    handleSubmitStore.set(handleSubmit);
 
     export const defaultData = {
         name: "",

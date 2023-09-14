@@ -3,6 +3,8 @@
   import formStore from "../stores/formStore.js";
   import componentRegistry from './ComponentRegistry.js';
   import { onMount } from "svelte";
+  import handleSubmitStore from '../stores/handleSubmitStore';
+
 
   export let importbaseUrl;
   export let action;
@@ -21,20 +23,21 @@
     }
   });
 
+  let handleSubmitFunction;
+
+  handleSubmitStore.subscribe(value => {
+    handleSubmitFunction = value;
+  });
+
   const resetData = () => {
     if (dynamicForm.defaultData) {
       data = { ...dynamicForm.defaultData };
     }
   };
 
-  async function handleSubmit() {
-    console.log('got to handleSubmit in popup');
-    console.log('dynamicForm', dynamicForm);
-    console.log('dynamicForm.handleSubmit', dynamicForm.handleSubmit);
-    if (dynamicForm && dynamicForm.handleSubmit) {
-      console.log('found dynamic handler from component');
-      await dynamicForm.handleSubmit(data);
-      console.log('handle submit init called');
+  const handleSubmit = async () => {
+    if (handleSubmitFunction) {
+      await handleSubmitFunction(data);
     }
     resetData();
     showPopup.set(false);
