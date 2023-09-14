@@ -1,7 +1,7 @@
 <script>
     import { reinitialize } from "../ReinitComponents.js";
     import { create, setBaseUrl } from '../API.js';
-    import handleSubmitStore from '../stores/handleSubmitStore';
+    import handleSubmitStore from '../../stores/handleSubmitStore';
 
     export let data;
     export let importbaseUrl;
