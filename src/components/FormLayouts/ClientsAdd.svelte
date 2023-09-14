@@ -16,10 +16,10 @@
             state[uniqueId] = true;
             return state;
         });
-        console.log('reinit should hav happened');
+        console.log('reinit should have happened');
     };
 
-    export let defaultData = {
+    export const defaultData = {
         name: "",
         type: "person",
         jur_address: "",
