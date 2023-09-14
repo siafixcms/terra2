@@ -2,7 +2,6 @@
     import { onMount } from 'svelte';
     import { AccordionItem, Accordion } from 'flowbite-svelte';
     export let content = [];
-    $: console.log("Accordion content:", content);
   
     onMount(() => {
       // This will run after the Accordion component is mounted
