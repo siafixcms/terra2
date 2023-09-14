@@ -8,7 +8,7 @@
     setBaseUrl(importbaseUrl);
     let uniqueId = importbaseUrl + '_table';
 
-    export async function handleSubmit() => {
+    export async function handleSubmit() {
         console.log('HandleSubmit triggered');
         await create(data);
         console.log('create called');
