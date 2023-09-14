@@ -64,8 +64,6 @@
     Component = componentRegistry[componentName]; // Look up the component in the registry
 
     if (Component) {
-      console.log('Component', Component);
-      console.log('Component.handleSubmit', Component.handleSubmit);
       formStore.set({
         layout: Component,
         handleSubmit: Component.handleSubmit || null,
