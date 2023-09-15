@@ -60,7 +60,7 @@ export async function update(payload) {
 
 export async function softdelete(payload) {
     
-    const data = await apiCall('/api/' + baseUrl + '/delete', payload);
+    const data = await apiCall('/api/' + baseUrl + '/delete', {data: payload});
     console.log('data', data);
     
     return data && data.ok ? true : false;
