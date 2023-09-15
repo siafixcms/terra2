@@ -4,7 +4,8 @@
   import formStore from "../stores/formStore.js";
   import componentRegistry from './ComponentRegistry.js';
   import handleSubmitStore from '../stores/handleSubmitStore';
-
+  
+  export let selectedRow = null;
   export let importbaseUrl;
   export let action;
   export let title = "";
@@ -14,6 +15,10 @@
   let formElement;
   let showPopup = writable(false);
   let dynamicForm;
+
+  $: if (selectedRow) {
+    data = { ...selectedRow };
+  }
 
   formStore.subscribe(value => {
     dynamicForm = value;

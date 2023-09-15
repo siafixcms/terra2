@@ -5,12 +5,17 @@
 
     export let data;
     export let importbaseUrl;
+    export let selectedRow = null;
 
     setBaseUrl(importbaseUrl);
     let uniqueId = importbaseUrl + '_table';
 
     export async function handleSubmit() {
-        await create(data);
+        if (selectedRow) {
+            await update(data);
+        } else {
+            await create(data);
+        }
         reinitialize.update(state => {
             state[uniqueId] = true;
             return state;
@@ -29,6 +34,7 @@
         phone: "",
         web: ""
     };
+
 </script>
 
 <input bind:value={data.name} type="text" placeholder="Client full name" required />
