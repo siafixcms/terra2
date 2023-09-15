@@ -1,5 +1,5 @@
 <script>
-  import { fetchData, fetchTotalRecords, fetchDistinctValues, setBaseUrl } from './API.js';
+  import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
 
   export let headers = {};
@@ -94,14 +94,14 @@
     handleSelect(field, option, !checked);
   }
 
-  function editRow(row) {
+  async function editRow(row) {
     // Your edit logic here
     console.log("Editing row:", row);
   }
 
-  function deleteRow(row) {
-    // Your delete logic here
-    console.log("Deleting row:", row);
+  async function deleteRow(row) {
+    await softdelete(row.id);
+    resetData();
   }
 
 </script>
