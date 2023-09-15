@@ -1,9 +1,7 @@
 <script>
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
-  import PopupForm from './PopupForm.svelte';
 
-  let selectedRow = null;
   export let headers = {};
   export let visibleFields = [];
   export let filters = [];
@@ -97,7 +95,7 @@
   }
 
   async function editRow(row) {
-    selectedRow = row;
+    // await update(row);
   }
 
   async function deleteRow(row) {
@@ -107,7 +105,6 @@
 
 </script>
 
-<PopupForm bind:selectedRow={$selectedRow} />
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
