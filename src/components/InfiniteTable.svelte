@@ -1,5 +1,5 @@
 <script>
-  import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, setBaseUrl } from './API.js';
+  import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
 
   export let headers = {};
@@ -95,8 +95,7 @@
   }
 
   async function editRow(row) {
-    // Your edit logic here
-    console.log("Editing row:", row);
+    // await update(row);
   }
 
   async function deleteRow(row) {
