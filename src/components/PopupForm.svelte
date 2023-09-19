@@ -5,6 +5,8 @@
   import componentRegistry from './ComponentRegistry.js';
   import handleSubmitStore from '../stores/handleSubmitStore';
   import Popup from './Popup.svelte';
+  import PopupForm from './PopupForm.svelte';
+  import { editFormData } from '../stores/editFormDataStore.js';
 
   export let importbaseUrl;
   export let action;
@@ -15,7 +17,6 @@
   let formElement;
   let showPopup = writable(false);
   let dynamicForm;
-  let editFormData = writable({});
 
   formStore.subscribe(value => {
     dynamicForm = value;
