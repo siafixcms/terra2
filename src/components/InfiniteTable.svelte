@@ -108,16 +108,19 @@
   }
 
   function confirmDelete(row) {
-    confirmPopup.set(true);
+    selectedRow = row; // Set the selected row
+    confirmPopup.set(true); // Show the popup
   }
 
 </script>
 
-<Popup title="Confirm Delete" {confirmPopup}>
-  Are you sure?
-  <button on:click={() => deleteRow(selectedRow)}>Yes</button>
-  <button on:click={() => confirmPopup.set(false)}>No</button>
-</Popup>
+{#if $confirmPopup}
+  <Popup title="Confirm Delete" {confirmPopup}>
+    Are you sure?
+    <button on:click={() => deleteRow(selectedRow)}>Yes</button>
+    <button on:click={() => confirmPopup.set(false)}>No</button>
+  </Popup>
+{/if}
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
