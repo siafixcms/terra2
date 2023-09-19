@@ -43,10 +43,6 @@
     showPopup.set(false);
   };
 
-  const closePopup = () => {
-    showPopup.set(false);
-  };
-
   const handleKeydown = async (event) => {
     if (event.key === 'Enter') {
       await handleSubmit();
@@ -83,7 +79,7 @@
 </script>
 
 <Popup {title} {showPopup}>
-  <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
+  <form bind:this={formElement} on:submit|preventDefault={handleSubmit} on:keydown={handleKeydown}>
     <div class="form-content-wrapper">
       <div class="form-content">
           <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
