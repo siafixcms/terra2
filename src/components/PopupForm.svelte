@@ -47,9 +47,9 @@
     showPopup.set(false);
   };
 
-  const handleKeydown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      closePopup();
+  const handleKeydown = async (event) => {
+    if (event.key === 'Enter') {
+      await handleSubmit();
     }
   };
 
