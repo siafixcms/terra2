@@ -166,7 +166,7 @@
               {/each}
               <td style="width: auto;">
                 <button class="action-button" on:click={() => editRow(row)}>Edit</button> |
-                <button class="action-button" on:click={() => deleteRow(row)}>Delete</button>
+                <button class="action-button" on:click={() => confirmDelete(row)}>Delete</button>
               </td>              
             </tr>
           {/each}
