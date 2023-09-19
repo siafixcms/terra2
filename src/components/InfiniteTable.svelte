@@ -119,6 +119,9 @@
 
 </script>
 
+{#if $showPopup}
+  <PopupForm bind:editFormData={editFormData} importbaseUrl={importbaseUrl} />
+{/if}
 {#if $confirmPopup}
   <Popup title="Are you sure?" showPopup={confirmPopup}>
     <button on:click={() => {
