@@ -2,6 +2,7 @@
   import Popup from './Popup.svelte';
   import { writable } from "svelte/store";
   let confirmPopup = writable(false);
+  let showPopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
   import { editFormData } from '../stores/editFormDataStore.js';
