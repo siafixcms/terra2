@@ -120,7 +120,7 @@
   <!-- Debugging -->
   <Popup title="Confirm Delete" showPopup={confirmPopup}>
     Are you sure?
-    <button on:click={() => deleteRow(selectedRow)}>Yes</button>
+    <button on:click={() => {deleteRow(selectedRow); confirmPopup.set(false)}}>Yes</button>
     <button on:click={() => confirmPopup.set(false)}>No</button>
   </Popup>
 {/if}
