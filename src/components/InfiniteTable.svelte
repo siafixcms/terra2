@@ -1,4 +1,7 @@
 <script>
+  import Popup from './Popup.svelte';
+  import { writable } from "svelte/store";
+  let confirmPopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
 
@@ -103,8 +106,17 @@
     resetData();
   }
 
+  function confirmDelete(row) {
+    confirmPopup.set(true);
+  }
+
 </script>
 
+<Popup title="Confirm Delete" {confirmPopup}>
+  Are you sure?
+  <button on:click={() => deleteRow(selectedRow)}>Yes</button>
+  <button on:click={() => confirmPopup.set(false)}>No</button>
+</Popup>
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
