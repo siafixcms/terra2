@@ -79,14 +79,14 @@
 </script>
 
 <Popup {title} {showPopup}>
-  <form bind:this={formElement} on:submit|preventDefault={handleSubmit} on:keydown={handleKeydown}>
+  <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
     <div class="form-content-wrapper">
       <div class="form-content">
           <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
       </div>
     </div>
     <div class="form-footer">
-      <button type="submit">Save</button>
+      <button type="submit" on:keydown={handleKeydown}>Save</button>
     </div>
   </form>
 </Popup>
