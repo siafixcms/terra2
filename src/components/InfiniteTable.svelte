@@ -108,8 +108,11 @@
   }
 
   function confirmDelete(row) {
+    console.log('asfasfa');
     selectedRow = row; // Set the selected row
+    console.log('asfasfa 2222222');
     confirmPopup.set(true); // Show the popup
+    console.log('asfasfa333333333333');
   }
 
 </script>
