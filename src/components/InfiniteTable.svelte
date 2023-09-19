@@ -6,6 +6,7 @@
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
   import { editFormData } from '../stores/editFormDataStore.js';
+  let localEditFormData = writable({});
   let selectedRow;
 
   export let headers = {};
@@ -120,7 +121,7 @@
 </script>
 
 {#if $showPopup}
-  <PopupForm bind:editFormData={editFormData} importbaseUrl={importbaseUrl} />
+  <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} />
 {/if}
 {#if $confirmPopup}
   <Popup title="Are you sure?" showPopup={confirmPopup}>
