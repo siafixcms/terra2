@@ -98,6 +98,17 @@
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
 
 <style>
+  .form-header {
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .form-header, .form-footer {
+    flex-shrink: 1; /* Adjust this */
+    margin-bottom: 15px;
+  }
+
   .form-content-wrapper {
     max-height: calc(100vh - 200px);
     overflow-y: auto;
@@ -119,16 +130,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  .form-header {
-    border-bottom: 1px solid #ccc;
-    font-weight: bold;
-    font-size: 20px;
-  }
-
-  .form-header, .form-footer {
-    flex-shrink: 1; /* Adjust this */
-    margin-bottom: 15px;
-  }
+  
 
   .form-content {
     flex-grow: 1;
