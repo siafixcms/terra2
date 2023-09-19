@@ -124,6 +124,7 @@
 {#if $showPopup}
   <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false} />
 {/if}
+
 {#if $confirmPopup}
   <Popup title="Are you sure?" showPopup={confirmPopup}>
     <button on:click={() => {
@@ -135,6 +136,7 @@
     }}>No</button>
   </Popup>
 {/if}
+
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
     <input class="dataTables_filter" bind:value={query} on:input={onSearchInput} placeholder="Search..." />
