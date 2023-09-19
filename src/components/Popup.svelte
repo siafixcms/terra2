@@ -2,7 +2,7 @@
     import { writable } from "svelte/store";
     import { onMount, onDestroy } from "svelte"; // Correct import
     export let title = "";
-    export let showPopup = writable(false);
+    export let showPopup;
   
     const closePopup = () => {
       showPopup.set(false);
