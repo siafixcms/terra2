@@ -98,13 +98,8 @@
 <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
 
 <style>
-  .form-header {
-    border-bottom: 1px solid #ccc;
-    font-weight: bold;
-    font-size: 20px;
-  }
 
-  .form-header, .form-footer {
+  .form-footer {
     flex-shrink: 1; /* Adjust this */
     margin-bottom: 15px;
   }
@@ -129,8 +124,6 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-
-  
 
   .form-content {
     flex-grow: 1;
