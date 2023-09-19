@@ -108,16 +108,16 @@
   }
 
   function confirmDelete(row) {
-    console.log('asfasfa');
     selectedRow = row; // Set the selected row
-    console.log('asfasfa 2222222');
     confirmPopup.set(true); // Show the popup
-    console.log('asfasfa333333333333');
   }
 
 </script>
 
 {#if $confirmPopup}
+  <!-- Debugging -->
+  <div>Popup should be visible</div>
+  <!-- Debugging -->
   <Popup title="Confirm Delete" {confirmPopup}>
     Are you sure?
     <button on:click={() => deleteRow(selectedRow)}>Yes</button>
