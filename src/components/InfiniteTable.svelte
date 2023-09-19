@@ -118,7 +118,7 @@
   <!-- Debugging -->
   <div>Popup should be visible</div>
   <!-- Debugging -->
-  <Popup title="Confirm Delete" {confirmPopup}>
+  <Popup title="Confirm Delete" showPopup={confirmPopup}>
     Are you sure?
     <button on:click={() => deleteRow(selectedRow)}>Yes</button>
     <button on:click={() => confirmPopup.set(false)}>No</button>
