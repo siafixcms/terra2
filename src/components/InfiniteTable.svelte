@@ -4,6 +4,7 @@
   let confirmPopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
+  let selectedRow;
 
   export let headers = {};
   export let visibleFields = [];
