@@ -1,5 +1,6 @@
 <script>
-    import { writable, onMount, onDestroy } from "svelte/store";
+    import { writable } from "svelte/store";
+    import { onMount, onDestroy } from "svelte"; // Correct import
     export let title = "";
     export let showPopup = writable(false);
   
@@ -22,7 +23,7 @@
     onDestroy(() => {
       window.removeEventListener('keydown', handleKeydown);
     });
-  </script>
+</script>
   
   {#if $showPopup}
     <div class="popup">
