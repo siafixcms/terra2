@@ -20,6 +20,7 @@
   let distinctValues = {};
   let loading = false;
   let timeout;
+  let action = "create";
 
   let uniqueId = importbaseUrl + '_table';
 
@@ -99,7 +100,9 @@
   }
 
   async function editRow(row) {
-    // await update(row);
+    editFormData.set(row);
+    action = "edit";
+    showPopup.set(true);
   }
 
   async function deleteRow(row) {
@@ -115,13 +118,14 @@
 </script>
 
 {#if $confirmPopup}
-  <!-- Debugging -->
-  <div>Popup should be visible</div>
-  <!-- Debugging -->
-  <Popup title="Confirm Delete" showPopup={confirmPopup}>
-    Are you sure?
-    <button on:click={() => {deleteRow(selectedRow); confirmPopup.set(false)}}>Yes</button>
-    <button on:click={() => confirmPopup.set(false)}>No</button>
+  <Popup title="Are you sure?" showPopup={confirmPopup}>
+    <button on:click={() => {
+      deleteRow(selectedRow);
+      confirmPopup.set(false);
+    }}>Yes</button>
+    <button on:click={() => {
+      confirmPopup.set(false);
+    }}>No</button>
   </Popup>
 {/if}
 <div class="dataTables_wrapper">

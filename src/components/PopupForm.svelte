@@ -15,6 +15,7 @@
   let formElement;
   let showPopup = writable(false);
   let dynamicForm;
+  let editFormData = writable({});
 
   formStore.subscribe(value => {
     dynamicForm = value;
@@ -37,7 +38,7 @@
 
   const handleSubmit = async () => {
     if (handleSubmitFunction) {
-      await handleSubmitFunction(data);
+      await handleSubmitFunction(data, action);
     }
     resetData();
     showPopup.set(false);
@@ -76,6 +77,10 @@
       firstInput.focus();
     }
   }
+
+  editFormData.subscribe(value => {
+    data = { ...value };
+  });
 </script>
 
 <Popup {title} {showPopup}>
