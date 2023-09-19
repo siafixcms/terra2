@@ -96,7 +96,7 @@
 <style>
 
   .form-footer {
-    flex-shrink: 1; /* Adjust this */
+    flex-shrink: 1;
     margin-bottom: 15px;
   }
 
