@@ -167,7 +167,7 @@
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
               <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
             {/each}
-            <th style="width: auto; white-space: nowrap;">Actions</th>
+            <th style="width: 100px; white-space: nowrap;">Actions</th>
           </tr>
         </thead>
         <tbody class="scrollable-tbody" on:scroll={onScroll}>
@@ -176,7 +176,7 @@
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
                 <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
-              <td style="width: auto; white-space: nowrap;">
+              <td style="width: 100px; white-space: nowrap;">
                 <button class="action-button" on:click={() => editRow(row)}>Edit</button> |
                 <button class="action-button" on:click={() => confirmDelete(row)}>Delete</button>
               </td>              
