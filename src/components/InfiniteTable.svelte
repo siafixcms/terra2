@@ -122,7 +122,7 @@
 </script>
 
 {#if $showPopup}
-  <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} />
+  <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false} />
 {/if}
 {#if $confirmPopup}
   <Popup title="Are you sure?" showPopup={confirmPopup}>

@@ -5,13 +5,13 @@
   import componentRegistry from './ComponentRegistry.js';
   import handleSubmitStore from '../stores/handleSubmitStore';
   import Popup from './Popup.svelte';
-  import PopupForm from './PopupForm.svelte';
   import { editFormData } from '../stores/editFormDataStore.js';
 
   export let importbaseUrl;
   export let action;
   export let title = "";
   export let buttonName = "";
+  export let buttonVisible = true;
 
   let data = {};
   let formElement;
@@ -97,7 +97,9 @@
   </form>
 </Popup>
 
-<button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
+{#if $buttonVisible}
+  <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
+{/if}
 
 <style>
 
