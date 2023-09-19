@@ -1,16 +1,22 @@
 <script>
     import { reinitialize } from "../ReinitComponents.js";
-    import { create, setBaseUrl } from '../API.js';
+    import { create, update, setBaseUrl } from '../API.js';
     import handleSubmitStore from '../../stores/handleSubmitStore';
 
     export let data;
+    export let action = 'create';
     export let importbaseUrl;
 
     setBaseUrl(importbaseUrl);
     let uniqueId = importbaseUrl + '_table';
 
     export async function handleSubmit() {
-        await create(data);
+        if( action === 'create' ) {
+            await create(data);
+        }
+        if( action === 'edit' ) {
+            await update(data);
+        }
         reinitialize.update(state => {
             state[uniqueId] = true;
             return state;
