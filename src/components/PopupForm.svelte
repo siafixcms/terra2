@@ -79,9 +79,9 @@
     }
   }
 
-  editFormData.subscribe(value => {
-    data = { ...value };
-  });
+  // editFormData.subscribe(value => {
+  //   data = { ...value };
+  // });
 </script>
 
 <Popup {title} {showPopup}>
