@@ -122,7 +122,7 @@
 </script>
 
 {#if $showPopup}
-  <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false} />
+  <PopupForm bind:editFormData={$localEditFormData} importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false} showPopup={showPopup}/>
 {/if}
 
 {#if $confirmPopup}
@@ -184,8 +184,8 @@
                 <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
               <td style="width: 100px; white-space: nowrap;">
-                <button class="action-button" on:click={() => editRow(row)}>Edit</button> |
-                <button class="action-button" on:click={() => confirmDelete(row)}>Delete</button>
+                <button class="action-button" on:click|preventDefault={() => editRow(row)}>Edit</button> |
+                <button class="action-button" on:click|preventDefault={() => confirmDelete(row)}>Delete</button>
               </td>              
             </tr>
           {/each}

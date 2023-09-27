@@ -12,10 +12,10 @@
   export let title = "";
   export let buttonName = "";
   export let buttonVisible = true;
+  export let showPopup;
 
   let data = {};
   let formElement;
-  let showPopup = writable(false);
   let dynamicForm;
 
   formStore.subscribe(value => {
@@ -97,7 +97,7 @@
   </form>
 </Popup>
 
-{#if $buttonVisible}
+{#if buttonVisible}
   <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
 {/if}
 
