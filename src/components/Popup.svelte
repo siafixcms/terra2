@@ -2,7 +2,7 @@
     import { writable } from "svelte/store";
     import { onMount, onDestroy } from "svelte"; // Correct import
     export let title = "";
-    export let showPopup;
+    import { showPopup } from '../stores/editFormDataStore.js';
   
     const closePopup = () => {
       showPopup.set(false);

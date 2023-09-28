@@ -1,11 +1,10 @@
 <script>
   import Popup from './Popup.svelte';
   import { writable } from "svelte/store";
+  import { editFormData, showPopup } from '../stores/editFormDataStore.js';
   let confirmPopup = writable(false);
-  let showPopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
-  import { editFormData } from '../stores/editFormDataStore.js';
   import PopupForm from './PopupForm.svelte';
   let localEditFormData = writable({});
   let selectedRow;
@@ -122,7 +121,7 @@
 </script>
 
 {#if $showPopup}
-  <PopupForm importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false} showPopup={showPopup}/>
+  <PopupForm importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false}/>
 {/if}
 
 {#if $confirmPopup}

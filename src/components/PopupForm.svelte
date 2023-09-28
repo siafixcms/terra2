@@ -5,14 +5,13 @@
   import componentRegistry from './ComponentRegistry.js';
   import handleSubmitStore from '../stores/handleSubmitStore';
   import Popup from './Popup.svelte';
-  import { editFormData } from '../stores/editFormDataStore.js';
+  import { editFormData, showPopup } from '../stores/editFormDataStore.js';
 
   export let importbaseUrl;
   export let action;
   export let title = "";
   export let buttonName = "";
   export let buttonVisible = true;
-  export let showPopup;
 
   let data = {};
   let formElement;
@@ -65,7 +64,7 @@
       formStore.set({
         layout: Component,
         handleSubmit: Component.handleSubmit || null,
-        defaultData: Component.defaultData || {}
+        defaultData: Component.defaultData || data || {}
       });
     } else {
       console.error("Component not found in registry:", componentName);
@@ -84,7 +83,7 @@
   });
 </script>
 
-<Popup {title} {showPopup}>
+<Popup {title}>
   <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
     <div class="form-content-wrapper">
       <div class="form-content">

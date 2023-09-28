@@ -7,6 +7,7 @@
     export let action = 'create';
     export let importbaseUrl;
 
+    $: console.info(data);
     setBaseUrl(importbaseUrl);
     let uniqueId = importbaseUrl + '_table';
 
