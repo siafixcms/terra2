@@ -20,7 +20,7 @@
   formStore.subscribe(value => {
     dynamicForm = value;
     if (dynamicForm.defaultData) {
-      data = { ...dynamicForm.defaultData };
+      data = { ...data, ...dynamicForm.defaultData };
     }
   });
 
@@ -64,7 +64,7 @@
       formStore.set({
         layout: Component,
         handleSubmit: Component.handleSubmit || null,
-        defaultData:data || Component.defaultData  || {}
+        defaultData: Component.defaultData  || {}
       });
     } else {
       console.error("Component not found in registry:", componentName);
