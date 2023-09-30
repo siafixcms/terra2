@@ -57,7 +57,7 @@
   let Component; // Declare a variable to hold the dynamically selected component
 
   onMount(() => {
-    const componentName = `${capitalizeFirstLetter(importbaseUrl.toLowerCase())}${action ? capitalizeFirstLetter(action.toLowerCase()) : ''}`;
+    const componentName = `${capitalizeFirstLetter(importbaseUrl.toLowerCase())}Add`;
     Component = componentRegistry[componentName];
 
     if (Component) {

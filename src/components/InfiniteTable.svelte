@@ -122,7 +122,7 @@
 </script>
 
 {#if $showPopup}
-  <PopupForm importbaseUrl={importbaseUrl} action={"Add"} buttonVisible={false}/>
+  <PopupForm importbaseUrl={importbaseUrl} action={"edit"} buttonVisible={false}/>
 {/if}
 
 {#if $confirmPopup}
