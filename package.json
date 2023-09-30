@@ -1,6 +1,6 @@
 {
   "name": "terra-balance",
-  "version": "0.0.519",
+  "version": "0.0.520",
   "private": true,
   "scripts": {
     "dev": "vite dev",
