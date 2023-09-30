@@ -2,10 +2,10 @@
     import { writable } from "svelte/store";
     import { onMount, onDestroy } from "svelte"; // Correct import
     export let title = "";
-    import { showPopup } from '../stores/editFormDataStore.js';
-  
+    export let showPopup= false;
+
     const closePopup = () => {
-      showPopup.set(false);
+      showPopup=false;
     };
   
     const handleKeydown = (event) => {
@@ -25,7 +25,7 @@
     });
 </script>
   
-  {#if $showPopup}
+  {#if showPopup}
     <div class="popup">
       <div class="popup-content">
         <div class="form-header">

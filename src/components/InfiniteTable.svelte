@@ -114,6 +114,7 @@
   }
 
   function confirmDelete(row) {
+    console.info("getting called???")
     selectedRow = row; // Set the selected row
     confirmPopup.set(true); // Show the popup
   }
@@ -125,7 +126,7 @@
 {/if}
 
 {#if $confirmPopup}
-  <Popup title="Are you sure?" showPopup={confirmPopup}>
+  <Popup title="Are you sure?" bind:showPopup={$confirmPopup}>
     <button on:click={() => {
       deleteRow(selectedRow);
       confirmPopup.set(false);

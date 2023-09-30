@@ -64,7 +64,7 @@
       formStore.set({
         layout: Component,
         handleSubmit: Component.handleSubmit || null,
-        defaultData: Component.defaultData || data || {}
+        defaultData:data || Component.defaultData  || {}
       });
     } else {
       console.error("Component not found in registry:", componentName);
@@ -83,7 +83,7 @@
   });
 </script>
 
-<Popup {title}>
+<Popup {title} bind:showPopup={$showPopup}>
   <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
     <div class="form-content-wrapper">
       <div class="form-content">
@@ -97,7 +97,7 @@
 </Popup>
 
 {#if buttonVisible}
-  <button class="button" on:click={() => showPopup.set(true)}>{buttonName}</button>
+  <button class="button" on:click={() =>{showPopup.set(true); editFormData.set({})}}>{buttonName}</button>
 {/if}
 
 <style>
