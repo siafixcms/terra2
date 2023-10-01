@@ -10,7 +10,6 @@
     let uniqueId = importbaseUrl + '_table';
 
     export async function handleSubmit(data, action) {
-        console.log(action, data)
         if( action === 'create' ) {
             await create(data);
         }
@@ -24,8 +23,6 @@
     };
 
     handleSubmitStore.set(handleSubmit);
-
-    $: console.info($handleSubmitStore)
 
     export const defaultData = {
         name: "",
