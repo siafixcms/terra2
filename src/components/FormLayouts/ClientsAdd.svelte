@@ -4,14 +4,13 @@
     import handleSubmitStore from '../../stores/handleSubmitStore';
 
     export let data;
-    export let action = 'create';
     export let importbaseUrl;
 
-    $: console.info(data);
     setBaseUrl(importbaseUrl);
     let uniqueId = importbaseUrl + '_table';
 
-    export async function handleSubmit() {
+    export async function handleSubmit(data, action) {
+        console.log(action, data)
         if( action === 'create' ) {
             await create(data);
         }
@@ -25,6 +24,8 @@
     };
 
     handleSubmitStore.set(handleSubmit);
+
+    $: console.info($handleSubmitStore)
 
     export const defaultData = {
         name: "",

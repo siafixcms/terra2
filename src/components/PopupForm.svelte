@@ -1,6 +1,5 @@
 <script>
-  import { writable } from "svelte/store";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import formStore from "../stores/formStore.js";
   import componentRegistry from './ComponentRegistry.js';
   import handleSubmitStore from '../stores/handleSubmitStore';
@@ -10,8 +9,6 @@
   export let importbaseUrl;
   export let action;
   export let title = "";
-  export let buttonName = "";
-  export let buttonVisible = true;
 
   let data = {};
   let formElement;
@@ -46,7 +43,7 @@
 
   const handleKeydown = async (event) => {
     if (event.key === 'Enter') {
-      await handleSubmit();
+      await handleSubmit(data, action);
     }
   };
 
@@ -81,13 +78,18 @@
   editFormData.subscribe(value => {
     data = { ...value };
   });
+
+  onDestroy(() => {
+    formStore.set({});
+    action = ''
+  });
 </script>
 
 <Popup {title} bind:showPopup={$showPopup}>
   <form bind:this={formElement} on:submit|preventDefault={handleSubmit}>
     <div class="form-content-wrapper">
       <div class="form-content">
-          <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl} action={action} />
+          <svelte:component this={dynamicForm.layout} bind:data={data} importbaseUrl={importbaseUrl}/>
       </div>
     </div>
     <div class="form-footer">
@@ -95,10 +97,6 @@
     </div>
   </form>
 </Popup>
-
-{#if buttonVisible}
-  <button class="button" on:click={() =>{showPopup.set(true); editFormData.set({})}}>{buttonName}</button>
-{/if}
 
 <style>
 

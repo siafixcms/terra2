@@ -1,7 +1,7 @@
 <script>
   import Popup from './Popup.svelte';
   import { writable } from "svelte/store";
-  import { editFormData, showPopup } from '../stores/editFormDataStore.js';
+  import { editFormData, showPopup} from '../stores/editFormDataStore.js';
   let confirmPopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
@@ -13,6 +13,9 @@
   export let visibleFields = [];
   export let filters = [];
   export let importbaseUrl;
+  export let buttonName = "";
+  export let buttonVisible = true;
+
   setBaseUrl(importbaseUrl);
 
   let query = '';
@@ -23,7 +26,7 @@
   let distinctValues = {};
   let loading = false;
   let timeout;
-  let action = "create";
+  let action;
 
   let uniqueId = importbaseUrl + '_table';
 
@@ -120,6 +123,12 @@
   }
 
 </script>
+
+{#if buttonVisible}
+  <div class="flex justify-end mb-4">
+    <button class="button" on:click|stopPropagation={() =>{showPopup.set(true); editFormData.set({}); action='create'}}>{buttonName}</button>
+  </div>
+{/if}
 
 {#if $showPopup}
   <PopupForm importbaseUrl={importbaseUrl} {action} buttonVisible={false}/>
@@ -357,4 +366,19 @@
     gap: 10px;
   }
 
+  button[type="submit"] {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 18px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 </style>
