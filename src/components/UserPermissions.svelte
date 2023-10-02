@@ -1,7 +1,9 @@
 <script>
 // Import necessary functions from API.js
 import {
-    fetchData,
+    rolesList,
+    userRoles,
+    userPermissions,
     setBaseUrl,
     // Add other API functions as needed
 } from './API.js';
@@ -18,13 +20,13 @@ let permissions = [];
 // Function to fetch user data and related information
 async function fetchUserData(userId) {
     // Fetch general roles
-    roles = await fetchData('roles'); // Adjust the endpoint as per your API
+    roles = await rolesList(); // Adjust the endpoint as per your API
 
     // Fetch assigned roles for the selected user
-    assignedRoles = await fetchData(`users/${userId}/roles`); // Adjust the endpoint
+    assignedRoles = await userRoles(userId); // Adjust the endpoint
 
     // Fetch individual permissions for the selected user
-    permissions = await fetchData(`users/${userId}/permissions`); // Adjust the endpoint
+    permissions = await userPermissions(userId); // Adjust the endpoint
 }
 
 // Function to handle user selection
