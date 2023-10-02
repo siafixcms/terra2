@@ -34,6 +34,8 @@
   };
 
   const handleSubmit = async () => {
+    console.log('data', data);
+    console.log('action', action);
     if (handleSubmitFunction) {
       await handleSubmitFunction(data, action);
     }
