@@ -19,8 +19,7 @@ let permissions = [];
 
 // Function to fetch user data and related information
 async function fetchUserData(userId) {
-    // Fetch general roles
-    roles = await rolesList(); // Adjust the endpoint as per your API
+    
 
     // Fetch assigned roles for the selected user
     assignedRoles = await userRoles(userId); // Adjust the endpoint
@@ -39,6 +38,12 @@ async function selectUser(userId) {
 async function searchUsers(query) {
     users = await fetchData('users', { query }); // Adjust the endpoint and filters
 }
+
+onMount(() => {
+    // Fetch general roles
+    roles = await rolesList(); // Adjust the endpoint as per your API
+    users = await fetchData('users', { query }); // Adjust the endpoint and filters
+});
 </script>
 
 <!-- User List -->
