@@ -108,7 +108,7 @@
   async function editRow(row) {
     editFormData.set(row);
     action = "edit";
-    // showPopup.set(true);
+    showPopup.set(true);
   }
 
   async function deleteRow(row) {
