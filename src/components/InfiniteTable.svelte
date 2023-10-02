@@ -106,6 +106,7 @@
   }
 
   async function editRow(row) {
+    console.log('edit row called');
     editFormData.set(row);
     action = "edit";
     showPopup.set(true);
