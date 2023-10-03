@@ -159,7 +159,8 @@
 
 {#if buttonVisible}
   <div class="flex justify-end mb-4">
-    <button class="button_blue" on:click|stopPropagation={() =>{showPopup.set(true); editFormData.set({}); action='create'}}>{buttonName}</button>
+    <button class="button_blue" on:click|stopPropagation={() =>{showPopup.set(true); editFormData.set({}); action='create'}}>Add {buttonName}</button>
+    <button class="button_red" on:click={() => $confirmMassDeletePopup = true;} disabled={selectedRows.length === 0}>Delete {buttonName} ({selectedRows.length})</button>
   </div>
 {/if}
 
@@ -184,16 +185,6 @@
     <button on:click={() => $confirmMassDeletePopup = false}>No</button>
   </Popup>
 {/if}
-
-<div class="flex justify-end mb-4">
-  <button
-    class="button_red"
-    on:click={() => $confirmMassDeletePopup = true}
-    disabled={selectedRows.length === 0}
-  >
-    Delete Selected ({selectedRows.length})
-  </button>
-</div>
 
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
