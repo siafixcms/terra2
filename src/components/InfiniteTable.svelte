@@ -3,6 +3,7 @@
   import { writable } from "svelte/store";
   import { editFormData, showPopup} from '../stores/editFormDataStore.js';
   let confirmPopup = writable(false);
+  let confirmMassDeletePopup = writable(false);
   import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, massDelete, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
   import PopupForm from './PopupForm.svelte';
@@ -150,7 +151,7 @@
 
     selectedRows = []; // Clear selected rows after deletion
     resetData();
-    $confirmMassDeletePopup = false; // Close the confirm popup
+    $confirmMassDeletePopup.set(false); // Close the confirm popup
   }
 
 
