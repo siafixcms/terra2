@@ -151,7 +151,7 @@
 
     selectedRows = []; // Clear selected rows after deletion
     resetData();
-    $confirmMassDeletePopup.set(false); // Close the confirm popup
+    $confirmMassDeletePopup = false; // Close the confirm popup
   }
 
 
