@@ -6,6 +6,6 @@
 <Layout>
     <h2 class="text-2xl font-semibold text-gray-800 my-4">Users</h2>
     
-    <InfiniteTable importbaseUrl={'users'} visibleFields={['login', 'name', 'surname']} />
+    <InfiniteTable importbaseUrl={'users'} visibleFields={['login', 'name', 'surname']} buttonName={'Add user'}/>
       
 </Layout>
