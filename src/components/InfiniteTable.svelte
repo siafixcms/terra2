@@ -140,23 +140,19 @@
     }
   }
 
-  async function deleteSelectedRows() {
+  async function performMassDelete() {
     if (selectedRows.length === 0) {
       return; // Do nothing if no rows are selected
     }
 
-    let deletables = [];
-    for (const rowId of selectedRows) {
-      const row = data.find((row) => row.id === rowId);
-      if (row) {
-        deletables.push(row.id);
-      }
-    }
+    const deletables = selectedRows;
     await massDelete(deletables);
 
     selectedRows = []; // Clear selected rows after deletion
     resetData();
+    $confirmMassDeletePopup = false; // Close the confirm popup
   }
+
 
 </script>
 
@@ -181,10 +177,17 @@
     }}>No</button>
   </Popup>
 {/if}
+{#if $confirmMassDeletePopup}
+  <Popup title="Confirm Mass Delete" bind:showPopup={$confirmMassDeletePopup}>
+    <button on:click={performMassDelete}>Yes</button>
+    <button on:click={() => $confirmMassDeletePopup = false}>No</button>
+  </Popup>
+{/if}
+
 <div class="flex justify-end mb-4">
   <button
     class="button_red"
-    on:click={deleteSelectedRows}
+    on:click={() => $confirmMassDeletePopup = true}
     disabled={selectedRows.length === 0}
   >
     Delete Selected ({selectedRows.length})
