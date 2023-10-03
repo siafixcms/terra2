@@ -155,6 +155,7 @@
     await massDelete(deletables);
 
     selectedRows = []; // Clear selected rows after deletion
+    resetData();
   }
 
 </script>
