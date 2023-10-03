@@ -3,7 +3,7 @@
   import { writable } from "svelte/store";
   import { editFormData, showPopup} from '../stores/editFormDataStore.js';
   let confirmPopup = writable(false);
-  import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, update, setBaseUrl } from './API.js';
+  import { fetchData, fetchTotalRecords, fetchDistinctValues, softdelete, massDelete, setBaseUrl } from './API.js';
   import { reinitialize } from "./ReinitComponents.js";
   import PopupForm from './PopupForm.svelte';
   let localEditFormData = writable({});
@@ -122,6 +122,41 @@
     confirmPopup.set(true); // Show the popup
   }
 
+  let selectedRows = [];
+
+  function selectAllRows() {
+    selectedRows = data.map((row) => row.id);
+  }
+
+  function deselectAllRows() {
+    selectedRows = [];
+  }
+
+  function toggleRowSelection(rowId) {
+    if (selectedRows.includes(rowId)) {
+      selectedRows = selectedRows.filter((id) => id !== rowId);
+    } else {
+      selectedRows = [...selectedRows, rowId];
+    }
+  }
+
+  async function deleteSelectedRows() {
+    if (selectedRows.length === 0) {
+      return; // Do nothing if no rows are selected
+    }
+
+    let deletables = [];
+    for (const rowId of selectedRows) {
+      const row = data.find((row) => row.id === rowId);
+      if (row) {
+        deletables.push(row.id);
+      }
+    }
+    await massDelete(deletables);
+
+    selectedRows = []; // Clear selected rows after deletion
+  }
+
 </script>
 
 {#if buttonVisible}
@@ -145,6 +180,15 @@
     }}>No</button>
   </Popup>
 {/if}
+<div class="flex justify-end mb-4">
+  <button
+    class="button"
+    on:click={deleteSelectedRows}
+    disabled={selectedRows.length === 0}
+  >
+    Delete Selected ({selectedRows.length})
+  </button>
+</div>
 
 <div class="dataTables_wrapper">
   <div class="search-and-filters">
@@ -180,6 +224,18 @@
       <table>
         <thead>
           <tr>
+            <th style="width: 30px;">
+              <input
+                type="checkbox"
+                id="selectAll"
+                checked={selectedRows.length === data.length}
+                on:change={() => {
+                  selectedRows.length === data.length
+                    ? deselectAllRows()
+                    : selectAllRows();
+                }}
+              />
+            </th>
             {#each visibleFields.length ? visibleFields : Object.keys(data[0] || {}) as field}
               <th style="width: {100 / visibleFields.length}%;">{headers[field] || field}</th>
             {/each}
@@ -189,6 +245,14 @@
         <tbody class="scrollable-tbody" on:scroll={onScroll}>
           {#each data as row}
             <tr>
+              <td style="width: 30px;">
+                <input
+                  type="checkbox"
+                  id="{row.id}"
+                  checked={selectedRows.includes(row.id)}
+                  on:change={() => toggleRowSelection(row.id)}
+                />
+              </td>
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
                 <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
               {/each}
@@ -205,6 +269,7 @@
 
   <div class="dataTables_info">
     Total records: {totalRecords}
+    Selected: {selectedRows.length}
   </div>
 </div>
 

@@ -64,3 +64,9 @@ export async function softdelete(payload) {
     
     return data && data.ok ? true : false;
 }
+
+export async function massDelete(payload) {
+    const data = await apiCall('/api/' + baseUrl + '/massdelete', {data: payload});
+    
+    return data && data.ok ? true : false;
+}
