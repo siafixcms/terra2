@@ -118,16 +118,6 @@
     border-radius: 18px;
   }
 
-  .button {
-    padding: 10px 20px;
-    background-color: blue;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
   .form-content {
     flex-grow: 1;
   }
