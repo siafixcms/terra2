@@ -161,7 +161,7 @@
 
 {#if buttonVisible}
   <div class="flex justify-end mb-4">
-    <button class="button" on:click|stopPropagation={() =>{showPopup.set(true); editFormData.set({}); action='create'}}>{buttonName}</button>
+    <button class="button_blue" on:click|stopPropagation={() =>{showPopup.set(true); editFormData.set({}); action='create'}}>{buttonName}</button>
   </div>
 {/if}
 
@@ -182,7 +182,7 @@
 {/if}
 <div class="flex justify-end mb-4">
   <button
-    class="button"
+    class="button_red"
     on:click={deleteSelectedRows}
     disabled={selectedRows.length === 0}
   >
@@ -437,9 +437,19 @@
     border-radius: 18px;
   }
 
-  .button {
+  .button_blue {
     padding: 10px 20px;
     background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .button_red {
+    padding: 10px 20px;
+    background-color: red;
     color: white;
     border: none;
     cursor: pointer;
