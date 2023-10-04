@@ -7,6 +7,6 @@
 <Layout>
     <h2 class="text-2xl font-semibold text-gray-800 my-4">Specialists</h2>
     
-    <InfiniteTable importbaseUrl={'specialists'} visibleFields={['name', 'created', 'updated']} buttonName={'Add specialist'}/>
+    <InfiniteTable importbaseUrl={'specialists'} visibleFields={['name', 'created', 'updated']} buttonName={'specialist'}/>
       
 </Layout>
