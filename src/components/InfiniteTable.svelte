@@ -427,12 +427,6 @@
     gap: 10px;
   }
 
-  button[type="submit"] {
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 18px;
-  }
-
   .button_blue {
     padding: 10px 20px;
     background-color: blue;
