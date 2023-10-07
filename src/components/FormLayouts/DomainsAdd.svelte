@@ -25,14 +25,9 @@
     handleSubmitStore.set(handleSubmit);
 
     export const defaultData = {
+        id: "",
         name: "",
-        type: "person",
-        jur_address: "",
-        fact_address: "",
-        email: "",
-        reg_num: "",
-        phone: "",
-        web: ""
+        type: "full",
     };
 </script>
 
