@@ -19,7 +19,6 @@ let permissions = [];
 
 // Function to fetch user data and related information
 async function fetchUserData(userId) {
-    
 
     // Fetch assigned roles for the selected user
     assignedRoles = await userRoles(userId); // Adjust the endpoint
