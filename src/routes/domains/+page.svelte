@@ -6,8 +6,8 @@
 
 <Layout>
     
-    <h2 class="text-2xl font-semibold text-gray-800 my-4">Rooms</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 my-4">Domains</h2>
+
+    <InfiniteTable importbaseUrl={'domains'} visibleFields={['name', 'created']} buttonName={'domain'}/>
     
-    <InfiniteTable importbaseUrl={'rooms'} visibleFields={['name', 'created', 'updated']} buttonName={'room'}/>
-      
 </Layout>
