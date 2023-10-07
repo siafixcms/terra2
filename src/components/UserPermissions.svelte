@@ -39,7 +39,7 @@ async function searchUsers(query) {
     users = await fetchData('users', { query }); // Adjust the endpoint and filters
 }
 
-onMount(() => {
+onMount(async () => {
     // Fetch general roles
     roles = await rolesList(); // Adjust the endpoint as per your API
     users = await fetchData('users', { query }); // Adjust the endpoint and filters
