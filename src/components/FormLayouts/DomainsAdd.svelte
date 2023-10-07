@@ -32,6 +32,7 @@
 </script>
 
 <input bind:value={data.name} type="text" placeholder="Name" required />
+<input bind:value={data.type} type="text" placeholder="Type" required />
 
 <style>
     input {
