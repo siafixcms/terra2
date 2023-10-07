@@ -14,8 +14,8 @@
         { href: '/specialists', name: 'Specialists' },
         { href: '/employee_availability', name: 'Employee availability' },
         { href: '/appointments', name: 'Appointments' },
-        { href: '/warehouse', name: 'Warehouse' }
-        { href: '/domains', name: 'Domains' }
+        { href: '/warehouse', name: 'Warehouse' },
+        { href: '/domains', name: 'Domains' },
     ];
     afterUpdate(async () => {  
         await tick();
