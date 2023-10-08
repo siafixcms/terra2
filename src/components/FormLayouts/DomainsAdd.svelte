@@ -29,6 +29,7 @@
         name: "",
         type: "full",
     };
+    console.log(data);
 </script>
 
 <input bind:value={data.name} type="text" placeholder="Name" required />
