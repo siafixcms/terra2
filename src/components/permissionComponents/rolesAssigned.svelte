@@ -21,6 +21,6 @@
 {#each final_data as role}
 <div class="flex items-center space-x-2">
     <input type="{role?.active ? 'checkbox' : 'checkbox'}" class="form-checkbox h-5 w-5 text-blue-600" checked="{role?.active}" on:change={handleChange(role?.id)} />
-    <label class="text-gray-700 font-bold">{role?.name}</label>
+    <label class="text-gray-700 font-bold" for="roleConfig" id={role?.name}>{role?.name}</label>
   </div>
 {/each}

@@ -13,7 +13,7 @@
 </script>
 
 <div class="accordion">
-	<div class="accordion-header bg-{bgColor} border-[{borderColor}] py-{paddingY} px-{paddingX} border-t border-b {customClass}" on:click={()=> show = !show}>
+	<button class="accordion-header bg-{bgColor} border-[{borderColor}] py-{paddingY} px-{paddingX} border-t border-b {customClass}" on:click={()=> show = !show}>
 			<span class="title">{title} 
 			</span>
 			{#if show}
@@ -21,7 +21,7 @@
 			{:else}
 				<span class="cursor-pointer"><ChevronIcon/></span>
 			{/if}
-	</div>
+		</button>
 	{#if show}
 			<slot></slot>
 	{/if}
