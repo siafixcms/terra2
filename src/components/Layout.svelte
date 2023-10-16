@@ -9,6 +9,7 @@
     let menuItems = [
         { href: '/users', name: 'Users' },
         { href: '/clients', name: 'Clients' },
+        { href: '/client-cards', name: 'Client cards' },
         { href: '/permissions', name: 'Permissions' },
         { href: '/rooms', name: 'Rooms' },
         { href: '/specialists', name: 'Specialists' },
