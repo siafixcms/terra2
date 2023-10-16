@@ -1,4 +1,7 @@
 <script>
+    import {onMount} from 'svelte';
+    import InfiniteTable from './InfiniteTable.svelte';
+    import RolesAssigned from './permissionComponents/rolesAssigned.svelte';
 // Import necessary functions from API.js
 import {
     rolesList,
@@ -7,6 +10,7 @@ import {
     setBaseUrl,
     // Add other API functions as needed
 } from './API.js';
+    import PermissionAssigned from './permissionComponents/permissionAssigned.svelte';
 
 // Initialize base URL for API calls
 setBaseUrl('users');
@@ -43,70 +47,26 @@ onMount(async () => {
     roles = await rolesList(); // Adjust the endpoint as per your API
     users = await fetchData('users', { query }); // Adjust the endpoint and filters
 });
+
+let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
 </script>
 
-<!-- User List -->
-<div class="user-list">
-<input
-    type="text"
-    placeholder="Search users..."
-    on:input={(e) => searchUsers(e.target.value)}
-/>
-<ul>
-    {#each users as user (user.id)}
-    <li
-        class="{selectedUser === user.id ? 'selected' : ''}"
-        on:click={() => selectUser(user.id)}
-    >
-        {user.name}
-    </li>
-    {/each}
-</ul>
-</div>
-
-<!-- Role List -->
-<div class="role-list">
-<h2>Available Roles</h2>
-<ul>
-    {#each roles as role (role.id)}
-    <li>{role.name}</li>
-    {/each}
-</ul>
-</div>
-
-<!-- Assigned Roles -->
-<div class="assigned-roles">
-<h2>Assigned Roles</h2>
-<ul>
-    {#each assignedRoles as assignedRole (assignedRole.id)}
-    <li>{assignedRole.name}</li>
-    {/each}
-</ul>
-</div>
-
-<!-- Permissions -->
-<div class="permissions">
-<h2>Permissions</h2>
-{#each permissions as permission (permission.id)}
-    <!-- Accordion for each permission group -->
-    <div class="accordion">
-    <div class="accordion-header">
-        {permission.groupName}
+<div class="flex gap-8">
+    <div class="w-1/2">
+        <h2 class="text-2xl font-semibold text-gray-800 my-4">Users</h2>
+        <InfiniteTable importbaseUrl={'users'} visibleFields={['login', 'name', 'surname']} buttonName={'Add user'}/>       
     </div>
-    <div class="accordion-content">
-        <ul>
-        {#each permission.permissions as individualPermission (individualPermission.id)}
-            <li>
-            <label>
-                <input type="checkbox" bind:checked={individualPermission.assigned} />
-                {individualPermission.name}
-            </label>
-            </li>
-        {/each}
-        </ul>
+    <div class="w-1/4">
+        <h2 class="text-2xl font-semibold text-gray-800 mt-4 mb-[4.7rem] ">ROLES ASSIGNED</h2>
+        <RolesAssigned data={RolesAssignedData} />
     </div>
+    <div class="w-1/4">
+        <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
+        <PermissionAssigned/>
     </div>
-{/each}
+</div>
+<div class="w-1/2">
+    permissions
 </div>
 
 <style>

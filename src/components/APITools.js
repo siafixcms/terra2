@@ -1,5 +1,7 @@
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();
+const api = import.meta.env.VITE_API_URL;
+
 
 let secret = "terra_balance_seterra_balance_se";
 let notificationComponent;
@@ -54,7 +56,7 @@ export async function notify(msg) {
 export async function apiCall(url, data) {
   const payload = JSON.stringify(data);
   const { encryptedData, iv } = await encryptData(payload);
-  const response = await fetch('/api' + url, {
+  const response = await fetch(api+'/api' + url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: encryptedData + '|_|_|' + iv

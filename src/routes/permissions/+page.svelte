@@ -6,8 +6,6 @@
 
 <Layout>
     
-    <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
-
     <UserPermissions />
     
 </Layout>
