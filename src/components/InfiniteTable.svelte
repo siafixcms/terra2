@@ -9,6 +9,9 @@
   import PopupForm from './PopupForm.svelte';
   let localEditFormData = writable({});
   let selectedRow;
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
   export let headers = {};
   export let visibleFields = [];
@@ -139,6 +142,10 @@
     } else {
       selectedRows = [...selectedRows, rowId];
     }
+    console.log(selectedRows)
+    dispatch('checkSelector', {
+        data_id: selectedRows
+    });
   }
 
   async function performMassDelete() {
