@@ -59,7 +59,7 @@ let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'Use
 <div class="flex gap-8">
     <div class="w-1/2">
         <h2 class="text-2xl font-semibold text-gray-800 my-4">Users</h2>
-        <InfiniteTable importbaseUrl={'users'} visibleFields={['login', 'name', 'surname']} buttonName={'Add user'} on:checkSelector={handleCheckSelector}/>       
+        <InfiniteTable importbaseUrl={'users'} visibleFields={['login', 'name', 'surname']} buttonName={'Add user'} selectButtonVisible={true} on:checkSelector={handleCheckSelector}/>       
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 mt-4 mb-[4.7rem] ">ROLES ASSIGNED</h2>

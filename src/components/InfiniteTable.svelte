@@ -19,6 +19,7 @@
   export let importbaseUrl;
   export let buttonName = "";
   export let buttonVisible = true;
+  export let selectButtonVisible = false;
 
   setBaseUrl(importbaseUrl);
 
@@ -142,9 +143,11 @@
     } else {
       selectedRows = [...selectedRows, rowId];
     }
-    console.log(selectedRows)
+  }
+
+  function selectUser(rowId){
     dispatch('checkSelector', {
-        data_id: selectedRows
+        data_id: rowId
     });
   }
 
@@ -257,11 +260,14 @@
                 />
               </td>
               {#each visibleFields.length ? visibleFields : Object.keys(row) as field}
-                <td style="width: {100 / visibleFields.length}%;">{row[field]}</td>
+                <td>{row[field]}</td>
               {/each}
               <td style="width: 100px; white-space: nowrap;">
                 <button class="action-button" on:click|preventDefault={() => editRow(row)}>Edit</button> |
                 <button class="action-button" on:click|preventDefault={() => confirmDelete(row)}>Delete</button>
+                {#if selectButtonVisible}|
+                  <button class="action-button" on:click|preventDefault={() => selectUser(row.id)}>Select</button>
+                {/if}
               </td>              
             </tr>
           {/each}
