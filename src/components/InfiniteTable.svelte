@@ -263,8 +263,8 @@
                 <td>{row[field]}</td>
               {/each}
               <td style="width: 100px; white-space: nowrap;">
-                {#if selectButtonVisible}|
-                  <button class="action-button" on:click|preventDefault={() => selectUser(row.id)}>Select</button>
+                {#if selectButtonVisible}
+                  <button class="action-button" on:click|preventDefault={() => selectUser(row.id)}>Select</button> |
                 {/if}
                 <button class="action-button" on:click|preventDefault={() => editRow(row)}>Edit</button> |
                 <button class="action-button" on:click|preventDefault={() => confirmDelete(row)}>Delete</button>
