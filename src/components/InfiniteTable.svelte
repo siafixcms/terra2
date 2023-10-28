@@ -19,7 +19,7 @@
   export let importbaseUrl;
   export let buttonName = "";
   export let buttonVisible = true;
-  export let selectButtonVisible = false;
+  export let customAction = false;
 
   setBaseUrl(importbaseUrl);
 
@@ -145,12 +145,6 @@
     }
   }
 
-  function selectUser(rowId){
-    dispatch('checkSelector', {
-        data_id: rowId
-    });
-  }
-
   async function performMassDelete() {
     if (selectedRows.length === 0) {
       return; // Do nothing if no rows are selected
@@ -263,8 +257,10 @@
                 <td>{row[field]}</td>
               {/each}
               <td style="width: 100px; white-space: nowrap;">
-                {#if selectButtonVisible}
-                  <button class="action-button" on:click|preventDefault={() => selectUser(row.id)}>Select</button> | 
+                {#if customAction}
+                  {#each customAction as action}
+                    <button class="action-button" on:click|preventDefault={() => action.handler(row.id)}>{action.button}</button> |
+                  {/each}
                 {/if}
                 <button class="action-button" on:click|preventDefault={() => editRow(row)}>Edit</button> | 
                 <button class="action-button" on:click|preventDefault={() => confirmDelete(row)}>Delete</button>
