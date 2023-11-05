@@ -71,10 +71,3 @@ let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'Use
         <PermissionAssigned/>
     </div>
 </div>
-<div class="w-1/2">
-    permissions
-</div>
-
-<style>
-/* Add your CSS styles here for layout and styling */
-</style>  
