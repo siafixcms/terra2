@@ -3,7 +3,7 @@
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
   import { updateACL } from './API.js';
-  import { apiCall, setNotificationComponent, updateACL } from './APITools.js';
+  import { apiCall, setNotificationComponent } from './APITools.js';
   
   // State variables
   let username = "";
