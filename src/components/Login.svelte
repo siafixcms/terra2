@@ -2,7 +2,8 @@
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
   import socket from '../lib/webSocketConnection.js';
-  import { apiCall, setNotificationComponent } from './APITools.js';
+  import { updateACL } from './API.js';
+  import { apiCall, setNotificationComponent, updateACL } from './APITools.js';
   
   // State variables
   let username = "";
@@ -58,7 +59,7 @@
       const data = response;
       token.set(data.token);
       localStorage.setItem('auth_token', data.token);
-      await updateACL(data.token);
+      acl.set(await updateACL(data.token));
       sendMessage('Logged in!');
       errorMessage = '';
     } catch (error) {
@@ -76,24 +77,13 @@
       if (!response.ok) throw new Error('Could not complete refresh');
       const data = response;
       token.set(data.token);
-      await updateACL(data.token);
+      acl.set(await updateACL(data.token));
       errorMessage = '';
     } catch (error) {
       console.error(error);
       errorMessage = 'Could not complete refresh';
     } finally {
       isProcessing = false;
-    }
-  }
-
-  async function updateACL(authToken) {
-    try {
-      const response = await apiCall("/acl", { token: authToken });
-      if (!response.ok) throw new Error('Could not fetch ACL');
-      const data = response;
-      acl.set(data.acl);
-    } catch (error) {
-      console.error(error);
     }
   }
 

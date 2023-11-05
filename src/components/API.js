@@ -74,3 +74,14 @@ export async function userPermissions(payload) {
     const data = await apiCall('/api/permissions/userPermissions', {data: payload});
     return data && data.ok ? true : false;
 }
+
+export async function updateACL(authToken) {
+    try {
+        const response = await apiCall("/acl", { token: authToken });
+        if (!response.ok) throw new Error('Could not fetch ACL');
+        const data = response;
+        return data.acl;
+    } catch (error) {
+        console.error(error);
+    }
+}
