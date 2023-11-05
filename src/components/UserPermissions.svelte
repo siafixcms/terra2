@@ -39,7 +39,7 @@ async function selectUser(userId) {
 
 onMount(async () => {
     // Fetch general roles
-    roles = await rolesList(); // Adjust the endpoint as per your API
+    // roles = await rolesList(); // Adjust the endpoint as per your API
 });
 
 function handleCheckSelector(event) {
