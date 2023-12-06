@@ -43,8 +43,8 @@ onMount(async () => {
 });
 
 function handleCheckSelector(event) {
-        console.log(event.detail.data_id);
-    }
+    console.log(event.detail.data_id);
+}
 
 function handleClick(value) {
     alert(`Button ${value} clicked`);
