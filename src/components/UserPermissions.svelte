@@ -92,7 +92,7 @@ let permissionsAssigned = [
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 mt-4 mb-[4.7rem] ">ROLES ASSIGNED</h2>
-        <RolesAssigned data={RolesAssignedData} />
+        <RolesAssigned data={roles} />
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
