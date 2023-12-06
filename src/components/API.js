@@ -62,18 +62,35 @@ export async function massDelete(payload) {
 
 export async function rolesList() {
     const data = await apiCall('/api/permissions/rolesList');
-    console.log('data', data);
-    return data && data.ok ? data : false;
+    if( data && data.ok ) {
+        delete data.ok;
+        data = data;
+    } else {
+        data = false;
+    }
+    return data;
 }
 
 export async function userRoles(payload) {
     const data = await apiCall('/api/permissions/userRoles', {data: payload});
-    return data && data.ok ? data : false;
+    if( data && data.ok ) {
+        delete data.ok;
+        data = data;
+    } else {
+        data = false;
+    }
+    return data;
 }
 
 export async function userPermissions(payload) {
     const data = await apiCall('/api/permissions/userPermissions', {data: payload});
-    return data && data.ok ? data : false;
+    if( data && data.ok ) {
+        delete data.ok;
+        data = data;
+    } else {
+        data = false;
+    }
+    return data;
 }
 
 export async function updateACL(authToken) {
