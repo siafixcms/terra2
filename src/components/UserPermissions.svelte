@@ -25,7 +25,7 @@ let permissions = [];
 async function fetchUserData(userId) {
 
     // Fetch assigned roles for the selected user
-    // assignedRoles = await userRoles(userId); // Adjust the endpoint
+    assignedRoles = await userRoles(userId); // Adjust the endpoint
 
     // Fetch individual permissions for the selected user
     permissions = await userPermissions(userId); // Adjust the endpoint
@@ -54,7 +54,7 @@ let userSelected = [{
     button: 'select', 
     handler: handleClick,
   }];
-let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
+// let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
 </script>
 
 <div class="flex gap-8">
@@ -64,7 +64,7 @@ let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'Use
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 mt-4 mb-[4.7rem] ">ROLES ASSIGNED</h2>
-        <RolesAssigned data={RolesAssignedData} />
+        <RolesAssigned data={assignedRoles} />
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
