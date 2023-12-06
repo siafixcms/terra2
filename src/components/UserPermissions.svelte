@@ -48,7 +48,6 @@ let userSelected = [{
     button: 'Select', 
     handler: handleClick,
 }];
-let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
 let permissionsAssigned = [
         {
             name: "permission1",
