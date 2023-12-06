@@ -64,7 +64,7 @@ export async function rolesList() {
     const data = await apiCall('/api/permissions/rolesList');
     if( data && data.ok ) {
         delete data.ok;
-        data = data;
+        data = Object.values(data);
     } else {
         data = false;
     }
@@ -75,7 +75,7 @@ export async function userRoles(payload) {
     const data = await apiCall('/api/permissions/userRoles', {data: payload});
     if( data && data.ok ) {
         delete data.ok;
-        data = data;
+        data = Object.values(data);
     } else {
         data = false;
     }
@@ -86,7 +86,7 @@ export async function userPermissions(payload) {
     const data = await apiCall('/api/permissions/userPermissions', {data: payload});
     if( data && data.ok ) {
         delete data.ok;
-        data = data;
+        data = Object.values(data);
     } else {
         data = false;
     }
