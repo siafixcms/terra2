@@ -56,7 +56,7 @@ export async function notify(msg) {
 export async function apiCall(url, data) {
   const payload = JSON.stringify(data);
   const { encryptedData, iv } = await encryptData(payload);
-  const response = await fetch(api+'/api' + url, {
+  const response = await fetch(api + url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: encryptedData + '|_|_|' + iv

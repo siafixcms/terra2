@@ -48,40 +48,7 @@ let userSelected = [{
     button: 'Select', 
     handler: handleClick,
 }];
-let permissionsAssigned = [
-        {
-            name: "permission1",
-            show: true,
-            data: [
-                {
-                    name: "Adming",
-                    active: true,
-                    show: true,
-                },
-                {
-                    name: "User",
-                    active: true,
-                    show: true,
-                },
-            ],
-        },
-        {
-            name: "group2",
-            show: true,
-            data: [
-                {
-                    name: "worker",
-                    active: true,
-                    show: true,
-                },
-                {
-                    name: "shaper",
-                    active: true,
-                    show: true,
-                },
-            ],
-        },
-    ];
+
 </script>
 
 <div class="flex gap-8">
@@ -95,6 +62,6 @@ let permissionsAssigned = [
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
-        <PermissionAssigned data={permissionsAssigned} />
+        <PermissionAssigned data={permissions} />
     </div>
 </div>
