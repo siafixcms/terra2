@@ -62,6 +62,7 @@ export async function massDelete(payload) {
 
 export async function rolesList() {
     const data = await apiCall('/api/permissions/rolesList');
+    console.log('data', data);
     return data && data.ok ? true : false;
 }
 
