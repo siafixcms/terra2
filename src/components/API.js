@@ -61,7 +61,7 @@ export async function massDelete(payload) {
 }
 
 export async function rolesList() {
-    const data = await apiCall('/api/permissions/rolesList');
+    let data = await apiCall('/api/permissions/rolesList');
     if( data && data.ok ) {
         delete data.ok;
         data = Object.values(data);
@@ -72,7 +72,7 @@ export async function rolesList() {
 }
 
 export async function userRoles(payload) {
-    const data = await apiCall('/api/permissions/userRoles', {data: payload});
+    let data = await apiCall('/api/permissions/userRoles', {data: payload});
     if( data && data.ok ) {
         delete data.ok;
         data = Object.values(data);
@@ -83,7 +83,7 @@ export async function userRoles(payload) {
 }
 
 export async function userPermissions(payload) {
-    const data = await apiCall('/api/permissions/userPermissions', {data: payload});
+    let data = await apiCall('/api/permissions/userPermissions', {data: payload});
     if( data && data.ok ) {
         delete data.ok;
         data = Object.values(data);
