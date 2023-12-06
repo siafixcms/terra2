@@ -15,7 +15,6 @@ import {
 // Initialize base URL for API calls
 setBaseUrl('users');
 
-let users = [];
 let selectedUser = null;
 let roles = [];
 let assignedRoles = [];
@@ -25,10 +24,10 @@ let permissions = [];
 async function fetchUserData(userId) {
 
     // Fetch assigned roles for the selected user
-    assignedRoles = await userRoles(userId); // Adjust the endpoint
+    assignedRoles = await userRoles(userId);
 
     // Fetch individual permissions for the selected user
-    permissions = await userPermissions(userId); // Adjust the endpoint
+    permissions = await userPermissions(userId);
 }
 
 // Function to handle user selection
@@ -38,23 +37,52 @@ async function selectUser(userId) {
 }
 
 onMount(async () => {
-    // Fetch general roles
-    // roles = await rolesList(); // Adjust the endpoint as per your API
+    roles = await rolesList();
 });
 
-function handleCheckSelector(event) {
-    console.log(event.detail.data_id);
-}
-
-function handleClick(value) {
-    alert(`Button ${value} clicked`);
+async function handleClick(userId) {
+    await selectUser(userId);
 }
 
 let userSelected = [{
-    button: 'select', 
+    button: 'Select', 
     handler: handleClick,
-  }];
-// let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
+}];
+let RolesAssignedData = [{id: 1, name: 'Admin', active:true}, {id: 2, name: 'User', active:true}, {id: 3, name: 'Guest', active:false}];
+let permissionsAssigned = [
+        {
+            name: "permission1",
+            show: true,
+            data: [
+                {
+                    name: "Adming",
+                    active: true,
+                    show: true,
+                },
+                {
+                    name: "User",
+                    active: true,
+                    show: true,
+                },
+            ],
+        },
+        {
+            name: "group2",
+            show: true,
+            data: [
+                {
+                    name: "worker",
+                    active: true,
+                    show: true,
+                },
+                {
+                    name: "shaper",
+                    active: true,
+                    show: true,
+                },
+            ],
+        },
+    ];
 </script>
 
 <div class="flex gap-8">
@@ -64,10 +92,10 @@ let userSelected = [{
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 mt-4 mb-[4.7rem] ">ROLES ASSIGNED</h2>
-        <RolesAssigned data={assignedRoles} />
+        <RolesAssigned data={RolesAssignedData} />
     </div>
     <div class="w-1/4">
         <h2 class="text-2xl font-semibold text-gray-800 my-4">Permissions</h2>
-        <PermissionAssigned/>
+        <PermissionAssigned data={permissionsAssigned} />
     </div>
 </div>

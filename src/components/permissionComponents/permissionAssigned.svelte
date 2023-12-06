@@ -1,40 +1,7 @@
 <script>
     import Accordion from "./Accordion.svelte";
     let query = "";
-    let data = [
-        {
-            name: "permission1",
-            show: true,
-            data: [
-                {
-                    name: "Adming",
-                    active: true,
-                    show: true,
-                },
-                {
-                    name: "User",
-                    active: true,
-                    show: true,
-                },
-            ],
-        },
-        {
-            name: "group2",
-            show: true,
-            data: [
-                {
-                    name: "worker",
-                    active: true,
-                    show: true,
-                },
-                {
-                    name: "shaper",
-                    active: true,
-                    show: true,
-                },
-            ],
-        },
-    ];
+    export let data;
 
     function onSearchInput() {
         for (let i = 0; i < data.length; i++) {
