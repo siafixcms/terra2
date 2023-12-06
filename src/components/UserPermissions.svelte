@@ -25,9 +25,11 @@ async function fetchUserData(userId) {
 
     // Fetch assigned roles for the selected user
     assignedRoles = await userRoles(userId);
+    console.log('assignedRoles', assignedRoles);
 
     // Fetch individual permissions for the selected user
     permissions = await userPermissions(userId);
+    console.log('permissions', permissions);
 }
 
 // Function to handle user selection
@@ -38,6 +40,7 @@ async function selectUser(userId) {
 
 onMount(async () => {
     roles = await rolesList();
+    console.log('roles', roles);
 });
 
 async function handleClick(userId) {
